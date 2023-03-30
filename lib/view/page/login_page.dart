@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/login_controller.dart';
+import 'package:sfac_project/view/widget/elecatedbutton.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
@@ -10,7 +11,7 @@ class LoginPage extends GetView<LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
+      body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20),
@@ -19,19 +20,21 @@ class LoginPage extends GetView<LoginController> {
               children: [
                 TextField(
                   controller: controller.emailController,
+                  onChanged: (_) => controller.activateButton(),
                   decoration: InputDecoration(hintText: '이메일을 입력하세요'),
                 ),
                 TextField(
                   controller: controller.pwController,
+                  onChanged: (_) => controller.activateButton(),
                   decoration: InputDecoration(hintText: '비밀번호를 입력하세요.'),
                 ),
-                ElevatedButton(
+                Obx(
+                  () => ElevatedActivateButton(
                     onPressed: controller.login,
-                    onFocusChange: controller.isButtonActivate,
-                    child: Text(
-                      '로그인',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
+                    childText: '로그인',
+                    isActivateButton: controller.isButtonActivate.value,
+                  ),
+                ),
               ],
             ),
           ),

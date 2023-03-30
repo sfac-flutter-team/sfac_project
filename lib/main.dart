@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: BindingsBuilder(() {
         Get.put(AuthController());
-        Get.lazyPut(() => LoginController());
+        Get.put(LoginController());
       }),
       getPages: AppPages.pages,
       initialRoute: AppRoutes.login,
