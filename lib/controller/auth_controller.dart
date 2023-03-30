@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/service/auth_service.dart';
+import 'package:sfac_project/util/app_routes.dart';
 
 class AuthController extends GetxController {
   final Rxn<User> _user = Rxn();
@@ -19,9 +20,9 @@ class AuthController extends GetxController {
       _user(value);
       if (value != null) {
         //Get.offAllNamed은 이전 페이지 모두 삭제 후 이동
-        //Get.offAllNamed(내 팀 페이지로이동);
+        Get.offAllNamed(AppRoutes.main);
       } else {
-        //Get.offAllNamed(로그인페이지?);
+        Get.offAllNamed(AppRoutes.login);
       }
     });
   }

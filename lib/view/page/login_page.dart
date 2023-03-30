@@ -8,8 +8,35 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('로그인페이지')),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextField(
+                  controller: controller.emailController,
+                  decoration: InputDecoration(hintText: '이메일을 입력하세요'),
+                ),
+                TextField(
+                  controller: controller.pwController,
+                  decoration: InputDecoration(hintText: '비밀번호를 입력하세요.'),
+                ),
+                ElevatedButton(
+                    onPressed: controller.login,
+                    onFocusChange: controller.isButtonActivate,
+                    child: Text(
+                      '로그인',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
