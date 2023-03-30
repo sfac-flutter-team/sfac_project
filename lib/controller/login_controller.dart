@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/view/page/main_page.dart';
 
 class LoginController extends GetxController {
   var emailController = TextEditingController();
@@ -12,7 +13,7 @@ class LoginController extends GetxController {
   login() async {
     if (await Get.find<AuthController>()
         .login(emailController.text, pwController.text)) {
-      // Get.offAllNamed(메인페이지로 이동);
+      Get.offAllNamed(MainPage.route);
     } else {
       Get.snackbar('로그인 오류!!', '존재하지 않는 회원 정보입니다.',
           duration: const Duration(seconds: 3),
