@@ -26,7 +26,7 @@ class LoginController extends GetxController {
     if (emailController.text.isNotEmpty && pwController.text.isNotEmpty) {
       isButtonActivate(true);
     } else {
-      isButtonActivate;
+      isButtonActivate(false);
     }
   }
 }
