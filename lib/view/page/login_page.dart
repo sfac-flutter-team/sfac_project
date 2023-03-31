@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/login_controller.dart';
+import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/view/widget/custom_elevated_button.dart';
 
@@ -8,7 +10,10 @@ class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
   static const route = '/login';
 
-  @override
+
+
+
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -38,7 +43,7 @@ class LoginPage extends GetView<LoginController> {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: controller.signInWithGoogle,
                   child: const Text('구글 로그인'),
                 ),
                 TextButton(

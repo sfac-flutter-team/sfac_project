@@ -21,6 +21,9 @@ class AuthController extends GetxController {
   //비밀번호 찾기
   resetPassword(email) => AuthService().resetPassword(email);
 
+  //구글 계정
+  signInWithGoogle() => AuthService().signInWithGoogle();
+
   //Firebase에 유저값이 있으면 메인페이지로 이동, 아니면 로그인페이지
   @override
   void onInit() {
@@ -35,4 +38,6 @@ class AuthController extends GetxController {
       }
     });
   }
+
+
 }
