@@ -6,12 +6,20 @@ import 'package:sfac_project/util/app_routes.dart';
 
 class AuthController extends GetxController {
   final Rxn<User> _user = Rxn();
-  var pwFindController = TextEditingController();
+
   User? get user => _user.value;
 
+  //로그인
   login(id, pw) => AuthService().login(id, pw);
 
+  //로그아웃
   logout() => AuthService().logout();
+
+  //회원가입
+  signup(id, pw, nickName) => AuthService().signup(id, pw, nickName);
+
+  //비밀번호 찾기
+  resetPassword(email) => AuthService().resetPassword(email);
 
   //Firebase에 유저값이 있으면 메인페이지로 이동, 아니면 로그인페이지
   @override
@@ -27,9 +35,4 @@ class AuthController extends GetxController {
       }
     });
   }
-  Future<void> resetPassword(String email) async{
-  await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-  Get.snackbar("비밀번호 재인증", "메일을 성공적으로 보냈습니다");
-  Get.toNamed("/login");
- }
 }
