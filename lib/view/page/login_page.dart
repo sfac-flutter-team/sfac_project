@@ -4,16 +4,14 @@ import 'package:get/get.dart';
 import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_routes.dart';
-import 'package:sfac_project/view/widget/custom_elevated_button.dart';
+import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/app_elevated_button.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
   static const route = '/login';
 
-
-
-
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -36,10 +34,11 @@ class LoginPage extends GetView<LoginController> {
                   decoration: InputDecoration(hintText: '비밀번호를 입력하세요.'),
                 ),
                 Obx(
-                  () => CustomElevatedButton(
-                    onPressed: controller.login,
+                  () => AppElevatedButton(
+                    onPressed: controller.isButtonActivate.value
+                        ? controller.login
+                        : null,
                     childText: '로그인',
-                    isActivateButton: controller.isButtonActivate.value,
                   ),
                 ),
                 TextButton(

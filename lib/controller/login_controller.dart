@@ -23,13 +23,12 @@ class LoginController extends GetxController {
 
   signInWithGoogle() => Get.find<AuthController>().signInWithGoogle();
 
-
   //로그인버튼 활성화하는 함수
   activateButton() {
     if (emailController.text.isNotEmpty && pwController.text.isNotEmpty) {
-      isButtonActivate(true);
+      isButtonActivate.value = true;
     } else {
-      isButtonActivate(false);
+      isButtonActivate.value = false;
     }
   }
 }
