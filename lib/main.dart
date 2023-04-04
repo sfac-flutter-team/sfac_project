@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/controller/find_password_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
+import 'package:sfac_project/controller/main_controller.dart';
 import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_pages.dart';
 import 'package:sfac_project/util/app_routes.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => LoginController(), fenix: true);
         Get.lazyPut(() => SignupController(), fenix: true);
         Get.lazyPut(() => FindPasswordController(), fenix: true);
+        Get.lazyPut(() => MainController(), fenix: true);
       }),
       getPages: AppPages.pages,
       initialRoute: AppRoutes.login,
