@@ -11,9 +11,7 @@ class Product {
   List<String>? option;
 
   Product(
-      {
-      //마켓스크린에서 사진,상품이름,가격만 나와있으니 다른건 nullable?
-      required this.productId,
+      {required this.productId,
       required this.productName,
       required this.price,
       this.delivery,
@@ -43,8 +41,8 @@ class Product {
         delivery: map['delivery'] as String,
         imageUrl: map['imageUrl'] as String,
         productInfo: map['productInfo'] as String,
-        productDetail: map['productDetail'],
-        option: map['option']);
+        productDetail: List<String>.from(map['productDetail']),
+        option: List<String>.from(map['option']));
   }
 
   String toJson() => json.encode(toMap());

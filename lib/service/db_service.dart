@@ -7,4 +7,9 @@ class DBService {
       .withConverter(
           fromFirestore: (snapshot, _) => Product.fromMap(snapshot.data()!),
           toFirestore: (product, _) => product.toMap());
+
+  Future<List<QueryDocumentSnapshot<Product>>> readProduct() async {
+    var items = await productRef.get();
+    return items.docs;
+  }
 }
