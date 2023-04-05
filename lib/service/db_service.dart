@@ -114,4 +114,8 @@ class DBService {
             .toList();
         return result.first;
       }).catchError((e) => print(e));
+  Future<List<QueryDocumentSnapshot<Product>>> readProduct() async {
+    var items = await productRef.get();
+    return items.docs;
+  }
 }
