@@ -4,6 +4,7 @@ import 'package:sfac_project/view/page/find_password_page.dart';
 import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
+import 'package:sfac_project/view/screen/my_info_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -13,5 +14,6 @@ class AppPages {
     GetPage(
         name: AppRoutes.findPassword,
         page: () => const FindPasswordPage()), //비밀번호 찾기
+    GetPage(name: AppRoutes.myInfo, page: () => const MyInfoScreen()), //내 정보 페이지    
   ];
 }
