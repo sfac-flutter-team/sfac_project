@@ -117,22 +117,33 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   SizedBox(width: 10,),
                 ],
               ),
-                controller.teamInfo.value?.data().name == null?
-                   Card(
-                     child: ListTile(
+              Obx(() {
+                if(controller.teamInfo.value?.data().name == null){
+                  return Card(
+                    child: ListTile(
                           leading: CircleAvatar(),
                           title: Text('팀을선택해주세요'),
                           trailing: TextButton(onPressed: controller.choiceTeam, child: Text("선택")),
                         ),
-                   )
-                 :
-                    Obx(()=>Card(
-                      child: ListTile(
+                  );
+                }
+                else {
+                  return Card(
+                    child: ListTile(
                         leading: CircleAvatar(backgroundImage: NetworkImage(controller.teamInfo.value!.data().logo),backgroundColor: Colors.white,),
                         title: Text(controller.teamInfo.value!.data().name),
                         trailing: TextButton(onPressed: controller.choiceTeam, child: Text("선택")),),
-                    ),
-                    )
+                  );
+                }
+              })
+                // controller.teamInfo.value?.data().name == null?
+                //    Card(
+                     
+                //    )
+                //  :
+                //     Obx(()=>Card(
+                      
+                //     )
                 
           ]
       ),
