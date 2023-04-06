@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/model/myInfo.dart';
+import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_text_style.dart';
 
 
 import '../../controller/my_info_controller.dart';
@@ -15,54 +17,126 @@ class MyInfoScreen extends GetView<MyInfoController> {
   Widget build(BuildContext context) {
     var teamId = controller.getData();
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: controller.openBottomSheet,
-                child: Obx(()=>
-                  CircleAvatar(
-                    radius: 100,
-                    backgroundImage: controller.user!.photoURL != null ? NetworkImage(controller.user!.photoURL!) : null,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        //leading: IconButton(onPressed: Get.toNamed(), icon: icon),
+      ),
+      extendBodyBehindAppBar: true,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(controller.user.value.displayName!),
+          Text(controller.user.value.email!),
+            
+             GestureDetector(
+                  onTap: controller.openBottomSheet,
+                  child: Obx(()=>
+                    CircleAvatar(
+                      radius: 55,
+                      backgroundImage: controller.profileUrl.value != null ? NetworkImage(controller.profileUrl.value!) : null,
+                    ),
                   ),
                 ),
+              Row(
+                children: [
+                  Container(
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColor.mainBlue
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("내 댓글"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Colors.white,
+                            child: Icon(Icons.edit),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 30,),
+                    Container(
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColor.mainBlue
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("구매내역"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Colors.white,
+                            child: Icon(Icons.edit),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 30,),
+                   Container(
+                    width: 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: AppColor.mainBlue
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text("로그아웃"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: Colors.white,
+                            child: Icon(Icons.edit),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                ],
               ),
-              Text(controller.user!.displayName!),
-              Text(controller.user!.email!),
-              //controller.getCard(),
-              ListTile(
-                leading: CircleAvatar(),
-                title: Text("팀을 선택해주세요"),
-                trailing: TextButton(onPressed: controller.choiceTeam, child: Text("선택")),
-              ),
-              
-            ],
-          ),
-        ),
+                controller.teamInfo.value?.data().name == null?
+                   Card(
+                     child: ListTile(
+                          leading: CircleAvatar(),
+                          title: Text('팀을선택해주세요'),
+                          trailing: TextButton(onPressed: controller.choiceTeam, child: Text("선택")),
+                        ),
+                   )
+                 :
+                    Obx(()=>Card(
+                      child: ListTile(
+                        leading: CircleAvatar(backgroundImage: NetworkImage(controller.teamInfo.value!.data().logo),backgroundColor: Colors.white,),
+                        title: Text(controller.teamInfo.value!.data().name),
+                        trailing: TextButton(onPressed: controller.choiceTeam, child: Text("선택")),),
+                    ),
+                    )
+                
+          ]
       ),
     );
   }
-  // Stream<List<MyInfo>> streamInfo(){
-  //   try{
-  //     //찾고자 하는 컬렉션의 스냅샷(Stream)을 가져온다.
-  //     final Stream<QuerySnapshot> snapshots = FirebaseFirestore.instance.collection('myInfo/${controller.user!.uid}/teamId').snapshots();
-  //     return snapshots.map((querySnapshot){
-  //       List<MyInfo> messages = [];//querySnapshot을 message로 옮기기 위해 List<MessageModel> 선언
-  //       querySnapshot.docs.forEach((element) { //해당 컬렉션에 존재하는 모든 docs를 순회하며 messages 에 데이터를 추가한다.
-  //          messages.add(
-  //             MyInfo.fromMap(
-  //                 map:element.data() as Map<String, dynamic>
-  //             )
-  //          );
-  //       });
-  //       return messages; //QuerySnapshot에서 List<MessageModel> 로 변경이 됐으니 반환
-  //     }); //Stream<QuerySnapshot> 에서 Stream<List<MessageModel>>로 변경되어 반환됨
-
-  //   }catch(ex){//오류 발생 처리
-    
-  //     return Stream.error(ex.toString());
-  //   }
-  // }
+ 
 }
