@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:sfac_project/model/fixture.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/product.dart';
@@ -81,4 +82,36 @@ class DBService {
       .get()
       .then((value) => value.docs.first)
       .catchError((e) => print(e));
+
+  //전체 결과, 일정 날짜별로 필터링 (전체 결과 일정을 저장해 놓고 필터링을 하는게 더 좋을 것 같다.)
+  readFixturesWithDate(DateTime date) => fixtureRef.get().then((value) {
+        List fixtures = value.docs.first.data();
+        return fixtures
+            .where((e) =>
+                DateFormat('dd-MM-yyyy').format(e.date) ==
+                DateFormat('dd-MM-yyyy').format(date))
+            .toList();
+      }).catchError((e) => print(e));
+
+  //팀 가장 최근 경기 결과 (전체 결과 일정을 저장해 놓고 필터링을 하는게 더 좋을 것 같다.)
+  getLastFixturesWithTeamId(int teamId) => fixtureRef.get().then((value) {
+        List fixtures = value.docs.first.data();
+        var result = fixtures
+            .where((e) =>
+                (e.home.id == teamId || e.away.id == teamId) &&
+                e.date.isBefore(DateTime.now()))
+            .toList();
+        return result.last;
+      }).catchError((e) => print(e));
+
+  //팀 바로 다음 일정 조회 (전체 결과 일정을 저장해 놓고 필터링을 하는게 더 좋을 것 같다.)
+  getNextScheduleWithTeamId(int teamId) => fixtureRef.get().then((value) {
+        List fixtures = value.docs.first.data();
+        var result = fixtures
+            .where((e) =>
+                (e.home.id == teamId || e.away.id == teamId) &&
+                e.date.isAfter(DateTime.now()))
+            .toList();
+        return result.first;
+      }).catchError((e) => print(e));
 }
