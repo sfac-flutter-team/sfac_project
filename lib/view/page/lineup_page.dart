@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/lineup_controller.dart';
 
@@ -12,9 +13,7 @@ class LineupPage extends GetView<LineupController> {
       appBar: AppBar(
         title: const Text('라인업'),
       ),
-      body: Text(
-        controller.fixtureId.toString(),
-      ),
+      body: Obx(() => Text(controller.tempStr.value)),
     );
   }
 }

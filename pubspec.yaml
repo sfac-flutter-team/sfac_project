@@ -36,9 +36,11 @@ dependencies:
   firebase_storage: ^11.0.15
   flutter:
     sdk: flutter
+  flutter_dotenv: ^5.0.2
   flutter_localization: ^0.1.10
   get: ^4.6.5
   google_sign_in: ^6.0.2
+  http: ^0.13.5
   image_picker: ^0.8.7
   intl: ^0.17.0
 
@@ -58,6 +60,7 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - .env
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
