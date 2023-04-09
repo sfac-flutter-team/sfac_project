@@ -17,30 +17,39 @@ class MyTeamController extends GetxController{
    Rxn<QueryDocumentSnapshot<Standing>> teamRank = Rxn<QueryDocumentSnapshot<Standing>>();
   
    Future<int> getData() async{
-    var docRef = db.collection('userInfo').doc(user.value.uid);
-    docRef.snapshots().listen((event) async {
-      team = event.data()!['teamId'];
-      teamInfo.value = await DBService().getTeamWithId(team)??'null';
-      print(teamInfo.value!.data().name);
-    });
+    var result = await db.collection('userInfo').doc(user.value.uid).get();
+    // docRef.snapshots().listen((event) async {
+      // team = event.data()!['teamId'];
+      // teamInfo.value = await DBService().getTeamWithId(team)??'null';
+      // print(teamInfo.value!.data().name);
+    // });
+      team = result.data()!['teamId'];
+     teamInfo.value = await DBService().getTeamWithId(team)?? "null";
+     getRank();
      return team;
   }
 
+  getUpadateTeam() async{
+    var docRef = db.collection('userInfo').doc(user.value.uid);
+    docRef.snapshots().listen((event) async{
+      team = event.data()!['teamId'];
+      teamInfo.value = await DBService().getTeamWithId(team)??'null';
+      print(teamInfo.value!.data().name);
+       getRank();
+     });
+  }
    @override
-   void onInit(){
+   void onInit() async{
     super.onInit();
-    getData();
-    
+    await getData();
+    getUpadateTeam();
    }
 
-  //  Future<QueryDocumentSnapshot<Standing>> getRank() async{
-  //   teamRank.value = await DBService().getStandingWithId(team)??'null';
-  //   print(teamRank.value!.data().rank);
-  //   return teamRank.value!;
-  // }
-  getRank() async{
-    
+    getRank() async{
+    teamRank.value = await DBService().getStandingWithId(team)??'null';
+    print(teamRank.value!.data().rank);
   }
+
   
  
 }

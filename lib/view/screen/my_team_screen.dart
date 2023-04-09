@@ -18,8 +18,8 @@ class MyTeamScreen extends GetView<MyTeamController> {
         children: [
           Text(controller.user.value.displayName!),
           Text(controller.teamInfo.value!.data().name),
-        //  Obx(()=> Text(controller.teamRank.value!.data().rank.toString())),
-        // Text(controller.teamRank.value!.data().rank.toString())
+          Text(controller.team.toString())
+          
         ],
       );
     
