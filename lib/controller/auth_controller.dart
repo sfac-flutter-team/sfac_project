@@ -34,10 +34,10 @@ class AuthController extends GetxController {
         //Get.offAllNamed은 이전 페이지 모두 삭제 후 이동
         Get.offAllNamed(AppRoutes.main);
       } else {
-        Get.offAllNamed(AppRoutes.login);
+        if (Get.currentRoute != AppRoutes.login) {
+          Get.offAllNamed(AppRoutes.login);
+        }
       }
     });
   }
-
-
 }
