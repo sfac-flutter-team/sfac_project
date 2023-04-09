@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:sfac_project/util/api_routes.dart';
@@ -8,15 +10,13 @@ class ApiSerive {
       'x-rapidapi-key': dotenv.env['API_KEY'].toString(),
       'x-rapidapi-host': 'v3.football.api-sports.io'
     };
-    var request = http.Request('GET',
-        Uri.parse('${ApiRoutes.football}fixtures/lineups?fixture=$fixtureId'));
+    var request =
+        Uri.parse('${ApiRoutes.football}fixtures/lineups?fixture=$fixtureId');
 
-    request.headers.addAll(headers);
-
-    http.StreamedResponse response = await request.send();
+    var response = await http.get(request, headers: headers);
 
     if (response.statusCode == 200) {
-      return await response.stream.bytesToString();
+      return jsonDecode(response.body)['response'];
     } else {
       return '';
     }

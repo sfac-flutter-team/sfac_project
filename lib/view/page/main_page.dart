@@ -25,7 +25,7 @@ class MainPage extends GetView<MainController> {
                 const Text('페이지 1'),
                 const Text('여러분 페이지 이동은 했는데 각자 만드는 페이지 연결은 해주세요'),
                 TextButton(
-                  onPressed: () => DBService().getNextScheduleWithTeamId(33),
+                  onPressed: () => DBService().readTopScorers(),
                   child: const Text('로그아웃'),
                 ),
               ],
