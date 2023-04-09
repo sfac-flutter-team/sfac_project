@@ -11,20 +11,23 @@ class AppElevatedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColor.mainBlue,
-        disabledBackgroundColor: AppColor.subGrey,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColor.mainBlue,
+          disabledBackgroundColor: AppColor.subGrey,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
         ),
-      ),
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Text(
-          style: AppTextStyle.hKorPreSemiBold18(color: AppColor.white),
-          childText,
+        onPressed: onPressed,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text(
+            style: AppTextStyle.hKorPreSemiBold18(color: AppColor.white),
+            childText,
+          ),
         ),
       ),
     );

@@ -13,6 +13,8 @@ class AppColor {
   static const Color lightMint = Color(0xFFB1FFFA); //서브컬러 밝은민트색?
   static const Color deepMint = Color(0xFF9EFFC5); //서브컬러 민트색
 
+  static const Color tempGrey = Color(0xFFEEEEF2);
+
   //그라데이션 위에서 아래로
   static const LinearGradient lineargradient = LinearGradient(
       colors: [Color(0xFF0538FF), Color(0xFF0030AC)],

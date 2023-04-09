@@ -70,6 +70,10 @@ class AppTextStyle {
   static const hKorPreBold24 =
       TextStyle(fontFamily: 'PretendardBold', fontSize: 24);
 
+  //헤더 한글 프리텐다드 세미볼드폰트 36사이즈
+  static const hKorPreSemiBold36 =
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 36);
+
   //헤더 한글 프리텐다드 세미볼드폰트 28사이즈
   static const hKorPreSemiBold28 =
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 28);
