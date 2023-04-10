@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/view/widget/app_dialog.dart';
 
 class SignupController extends GetxController {
   var emailController = TextEditingController(); //이메일 컨트롤러
@@ -19,20 +20,24 @@ class SignupController extends GetxController {
   signup() async {
     if (await Get.find<AuthController>().signup(
         emailController.text, pwController.text, nickNameController.text)) {
-      Get.snackbar(
-        '회원가입 성공',
-        '회원가입이 완료되었습니다.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.black,
-        colorText: Colors.white,
+      Get.dialog(
+        AppDialog(
+          content: '회원가입에 성공했습니다.',
+          cancelText: '닫기',
+          confirmText: '확인',
+          onCancel: () => Get.back(),
+          onConfirm: () => Get.back(),
+        ),
       );
     } else {
-      Get.snackbar(
-        '회원가입 실패',
-        '회원가입에 실패했습니다.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.black,
-        colorText: Colors.white,
+      Get.dialog(
+        AppDialog(
+          content: '회원가입에 실패했습니다.',
+          cancelText: '닫기',
+          confirmText: '확인',
+          onCancel: () => Get.back(),
+          onConfirm: () => Get.back(),
+        ),
       );
     }
   }

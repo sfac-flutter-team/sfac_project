@@ -8,9 +8,10 @@ class AuthController extends GetxController {
   final Rxn<User> _user = Rxn();
 
   User? get user => _user.value;
+  bool isPersisted = false;
 
   //로그인
-  login(id, pw) => AuthService().login(id, pw);
+  login(id, pw, isPersisted) => AuthService().login(id, pw);
 
   //로그아웃
   logout() => AuthService().logout();
