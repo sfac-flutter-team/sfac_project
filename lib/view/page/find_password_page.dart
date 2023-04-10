@@ -24,34 +24,37 @@ class FindPasswordPage extends GetView<FindPasswordController> {
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(18.0, 0, 18.0, 18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const Text(
-              style: AppTextStyle.hKorPreSemiBold36,
-              '비밀번호 찾기',
-            ),
-            const SizedBox(height: 88),
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                children: [
-                  AppTextField(
-                    hintText: '이메일을 입력하세요',
-                    errorText: '비밀번호 재설정 메일을 보냅니다.',
-                    controller: controller.pwFindController,
-                  ),
-                  const SizedBox(height: 44),
-                  AppElevatedButton(
-                    childText: '확인',
-                    onPressed: () => controller
-                        .resetPassword(controller.pwFindController.text),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Text(
+                style: AppTextStyle.hKorPreSemiBold36,
+                '비밀번호 찾기',
               ),
-            ),
-          ],
+              const SizedBox(height: 88),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Column(
+                  children: [
+                    AppTextField(
+                      hintText: '이메일을 입력하세요',
+                      errorText: '비밀번호 재설정 메일을 보냅니다.',
+                      controller: controller.pwFindController,
+                    ),
+                    const SizedBox(height: 44),
+                    AppElevatedButton(
+                      childText: '확인',
+                      onPressed: () => controller
+                          .resetPassword(controller.pwFindController.text),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

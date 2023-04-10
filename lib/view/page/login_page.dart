@@ -50,7 +50,7 @@ class LoginPage extends GetView<LoginController> {
                           shape: const CircleBorder(),
                           value: controller.isAutoLoginChecked.value,
                           onChanged: (value) =>
-                              controller.isAutoLoginChecked(value),
+                              controller.handleAutoLoginCheck(value),
                         ),
                       ),
                     ),

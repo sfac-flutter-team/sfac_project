@@ -82,9 +82,9 @@ class AppTextStyle {
   static const hKorPreSemiBold24 =
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 24);
 
-  //헤더 한글 프리텐다드 세미볼드폰트 20사이즈
-  static const hKorPreSemiBold20 =
-      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 20);
+  //헤더 한글 프리텐다드 세미볼드폰트 20사이즈 (사용함)
+  static TextStyle hKorPreSemiBold20({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 20, color: color);
 
   //헤더 한글 프리텐다드 세미볼드폰트 18사이즈 (사용함)
   static TextStyle hKorPreSemiBold18({Color color = AppColor.black}) =>
