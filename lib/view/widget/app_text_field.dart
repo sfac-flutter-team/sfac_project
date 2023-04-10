@@ -7,13 +7,13 @@ class AppTextField extends StatelessWidget {
       {super.key,
       required this.hintText,
       required this.controller,
-      required this.onChanged,
+      this.onChanged,
       this.errorText,
       this.obscure = false});
 
   final String hintText;
   final TextEditingController controller;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
   final String? errorText;
   final bool obscure;
 
