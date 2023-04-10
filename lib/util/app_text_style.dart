@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:sfac_project/util/app_color.dart';
 //자간: letterSpacing
 
 //영문 제목서체 Monserrat
@@ -69,6 +70,10 @@ class AppTextStyle {
   static const hKorPreBold24 =
       TextStyle(fontFamily: 'PretendardBold', fontSize: 24);
 
+  //헤더 한글 프리텐다드 세미볼드폰트 36사이즈
+  static const hKorPreSemiBold36 =
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 36);
+
   //헤더 한글 프리텐다드 세미볼드폰트 28사이즈
   static const hKorPreSemiBold28 =
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 28);
@@ -81,6 +86,14 @@ class AppTextStyle {
   static const hKorPreSemiBold20 =
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 20);
 
+  //헤더 한글 프리텐다드 세미볼드폰트 18사이즈 (사용함)
+  static TextStyle hKorPreSemiBold18({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 18, color: color);
+
+  //헤더 한글 프리텐다드 세미볼드폰트 16사이즈 (사용함)
+  static TextStyle hKorPreSemiBold16({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 16, color: color);
+
   //본문(body) 한글 프리텐다드 레귤러폰트 20사이즈
   static const bKorPreRegular20 =
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 20);
@@ -92,7 +105,7 @@ class AppTextStyle {
   static const bKorPreRegular16 =
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 16);
 
-  //본문(body) 한글 프리텐다드 레귤러폰트 14사이즈
-  static const bKorPreRegular14 =
-      TextStyle(fontFamily: 'PretendardRegular', fontSize: 14);
+  //본문(body) 한글 프리텐다드 레귤러폰트 14사이즈 (사용함)
+  static TextStyle bKorPreRegular14({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 14, color: color);
 }

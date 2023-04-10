@@ -7,6 +7,7 @@ class LoginController extends GetxController {
   var emailController = TextEditingController();
   var pwController = TextEditingController();
 
+  RxBool isAutoLoginChecked = false.obs;
   RxBool isButtonActivate = false.obs; //로그인 버튼 비활성화
 
   //로그인 불러오고 값이 없으면 스낵바출력
