@@ -48,6 +48,7 @@ class MyInfoController extends GetxController {
       var downloadUrl = await ref.getDownloadURL();
       user.value.updatePhotoURL(downloadUrl);
       profileUrl(downloadUrl);
+      DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
     }
     Get.back();
   }
@@ -64,6 +65,7 @@ class MyInfoController extends GetxController {
       var downloadUrl = await ref.getDownloadURL();
       user.value.updatePhotoURL(downloadUrl);
       profileUrl(downloadUrl);
+      DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
     }
     Get.back();
   }
@@ -89,7 +91,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 33})
+                    .update({"teamId": 33})
                   ..onError((e, _) => print("Error writing document: $e"));
                 getData();
                 Get.back();
@@ -100,7 +102,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 34});
+                    .update({"teamId": 34});
                 getData();
                 Get.back();
               },
@@ -110,7 +112,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 35});
+                    .update({"teamId": 35});
                 getData();
                 Get.back();
               },
@@ -120,7 +122,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 36});
+                    .update({"teamId": 36});
                 getData();
                 Get.back();
               },
@@ -130,7 +132,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 39});
+                    .update({"teamId": 39});
                 getData();
                 Get.back();
               },
@@ -140,7 +142,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 40});
+                    .update({"teamId": 40});
                 getData();
                 Get.back();
               },
@@ -150,7 +152,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 41});
+                    .update({"teamId": 41});
                 getData();
                 Get.back();
               },
@@ -160,7 +162,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 42});
+                    .update({"teamId": 42});
                 getData();
                 Get.back();
               },
@@ -170,7 +172,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 45});
+                    .update({"teamId": 45});
                 getData();
                 Get.back();
               },
@@ -180,7 +182,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 46});
+                    .update({"teamId": 46});
                 getData();
                 Get.back();
               },
@@ -190,7 +192,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 47});
+                    .update({"teamId": 47});
                 getData();
                 Get.back();
               },
@@ -200,7 +202,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 48});
+                    .update({"teamId": 48});
                 getData();
                 Get.back();
               },
@@ -210,7 +212,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 49});
+                    .update({"teamId": 49});
                 getData();
                 Get.back();
               },
@@ -220,7 +222,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 50});
+                    .update({"teamId": 50});
                 getData();
                 Get.back();
               },
@@ -230,7 +232,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 51});
+                    .update({"teamId": 51});
                 getData();
                 Get.back();
               },
@@ -240,7 +242,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 52});
+                    .update({"teamId": 52});
                 getData();
                 Get.back();
               },
@@ -250,7 +252,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 55});
+                    .update({"teamId": 55});
                 getData();
                 Get.back();
               },
@@ -260,7 +262,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 63});
+                    .update({"teamId": 63});
                 getData();
                 Get.back();
               },
@@ -270,7 +272,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 65});
+                    .update({"teamId": 65});
                 getData();
                 Get.back();
               },
@@ -280,7 +282,7 @@ class MyInfoController extends GetxController {
                 db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .set({"teamId": 66});
+                    .update({"teamId": 66});
                 getData();
                 Get.back();
               },
