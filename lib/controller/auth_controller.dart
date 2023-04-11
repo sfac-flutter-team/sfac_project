@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/service/auth_service.dart';
 import 'package:sfac_project/util/app_routes.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController extends GetxController {
   final Rxn<User> _user = Rxn();
 
   User? get user => _user.value;
-  bool isPersisted = false;
 
   //로그인
   login(id, pw, isPersisted) => AuthService().login(id, pw);
@@ -26,10 +25,18 @@ class AuthController extends GetxController {
   //구글 계정
   signInWithGoogle() => AuthService().signInWithGoogle();
 
-  //Firebase에 유저값이 있으면 메인페이지로 이동, 아니면 로그인페이지
+  //자동 로그인 확인
+  checkAutoSigning() async {
+    var prefs = await SharedPreferences.getInstance();
+    var isAutoSigningOn = prefs.getBool('isAutoSigningOn') ?? true;
+    if (!isAutoSigningOn) await logout();
+  }
+
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
+    await checkAutoSigning();
+    //Firebase에 유저값이 있으면 메인페이지로 이동, 아니면 로그인페이지
     FirebaseAuth.instance.authStateChanges().listen((value) {
       _user(value);
       if (value != null) {
