@@ -4,6 +4,7 @@ import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
 import 'package:sfac_project/view/screen/my_info_screen.dart';
+import 'package:sfac_project/view/screen/my_team_screen.dart';
 
 class AppRoutes {
   static const login = LoginPage.route; //로그인
@@ -12,4 +13,5 @@ class AppRoutes {
   static const findPassword = FindPasswordPage.route; //비밀번호 찾기
   static const myInfo = MyInfoScreen.route;
   static const lineup = LineupPage.route; //라인업 페이지
+  static const comment = MyTeamScreen.route;
 }
