@@ -55,7 +55,7 @@ class ProductPage extends GetView<ProductController> {
                 ),
                 Text(
                   '${controller.product.price} 원',
-                  style: AppTextStyle.hKorPreSemiBold20,
+                  style: AppTextStyle.hKorPreSemiBold20(),
                 ),
                 const SizedBox(
                   height: 40,
@@ -69,7 +69,7 @@ class ProductPage extends GetView<ProductController> {
                 ),
                 Text(
                   controller.product.productInfo,
-                  style: AppTextStyle.bKorPreRegular14,
+                  style: AppTextStyle.bKorPreRegular14(),
                 ),
                 const SizedBox(
                   height: 20,
@@ -82,7 +82,7 @@ class ProductPage extends GetView<ProductController> {
                   height: 20,
                 ),
                 Text(controller.product.delivery,
-                    style: AppTextStyle.bKorPreRegular14),
+                    style: AppTextStyle.bKorPreRegular14()),
                 const SizedBox(
                   height: 20,
                 ),
@@ -105,10 +105,8 @@ class ProductPage extends GetView<ProductController> {
                   child: SizedBox(
                     width: 280,
                     height: 64,
-                    child: AppElevatedButton(
-                        backgroundColor: AppColor.mainBlue,
-                        childText: '구매하기',
-                        onPressed: () {}),
+                    child:
+                        AppElevatedButton(childText: '구매하기', onPressed: () {}),
                   ),
                 ),
               ),

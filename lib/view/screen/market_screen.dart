@@ -73,7 +73,7 @@ class MarketScreen extends GetView<MarketController> {
                                   .imageUrl)),
                           Text(
                             controller.productList[index].data().productName,
-                            style: AppTextStyle.bKorPreRegular14,
+                            style: AppTextStyle.bKorPreRegular14(),
                           ),
                           Text(
                             '${controller.productList[index].data().price} 원',
