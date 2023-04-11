@@ -9,6 +9,7 @@ import 'package:sfac_project/view/screen/ranking_screen.dart';
 import 'package:sfac_project/view/screen/my_team_screen.dart';
 import 'package:sfac_project/view/widget/app_navigation_bar.dart';
 
+
 class MainPage extends GetView<MainController> {
   const MainPage({super.key});
   static const route = '/main';
