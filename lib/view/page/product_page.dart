@@ -105,10 +105,8 @@ class ProductPage extends GetView<ProductController> {
                   child: SizedBox(
                     width: 280,
                     height: 64,
-                    child: AppElevatedButton(
-                        backgroundColor: AppColor.mainBlue,
-                        childText: '구매하기',
-                        onPressed: () {}),
+                    child:
+                        AppElevatedButton(childText: '구매하기', onPressed: () {}),
                   ),
                 ),
               ),
