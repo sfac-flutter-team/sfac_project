@@ -105,7 +105,7 @@ class MyTeamScreen extends GetView<MyTeamController> {
                   );
                 }
               }),
-            TextButton(onPressed: () => Get.toNamed(AppRoutes.comment), child: Text("응원하러가기"))
+            TextButton(onPressed: () => Get.toNamed(AppRoutes.comment, arguments: controller.teamInfo), child: Text("응원하러가기"))
           ],
         ),
     );

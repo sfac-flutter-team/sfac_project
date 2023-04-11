@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controller/comments_controller.dart';
+import '../../model/team.dart';
 
 class CommentsPage extends GetView<CommentsController> {
   const CommentsPage({super.key});
@@ -10,6 +11,7 @@ class CommentsPage extends GetView<CommentsController> {
 
   @override
   Widget build(BuildContext context) {
+  
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -20,26 +22,7 @@ class CommentsPage extends GetView<CommentsController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Obx(() {
-                  if(controller.teamInfo.value?.data().name == null){
-                    return Card(
-                      child: ListTile(
-                            leading: CircleAvatar(),
-                            title: Text('팀을선택해주세요'),
-                            
-                          ),
-                    );
-                  }
-                  else {
-                    return Card(
-                      child: ListTile(
-                          leading: CircleAvatar(backgroundImage: NetworkImage(controller.teamInfo.value!.data().logo),backgroundColor: Colors.white,),
-                          title: Text(controller.teamInfo.value!.data().name),
-                          
-                          ),
-                    );
-                  }
-                }),
+            Text(controller.teamInfo.value!.data().name)
           ],
         )
         )
