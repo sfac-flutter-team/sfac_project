@@ -49,9 +49,9 @@ class LoginPage extends GetView<LoginController> {
                         child: Checkbox(
                           activeColor: AppColor.mainBlue,
                           shape: const CircleBorder(),
-                          value: controller.isAutoLoginChecked.value,
+                          value: controller.isAutoSigningOn.value,
                           onChanged: (value) =>
-                              controller.handleAutoLoginCheck(value),
+                              controller.isAutoSigningOn(value),
                         ),
                       ),
                     ),
