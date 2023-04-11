@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/controller/my_team_controller.dart';
+import 'package:sfac_project/service/storage_service.dart';
 
 import '../model/team.dart';
 import '../service/db_service.dart';
@@ -15,10 +17,11 @@ import '../service/db_service.dart';
 class MyInfoController extends GetxController{
   
    Rx<User> get user => Get.find<AuthController>().user!.obs;
-  var db = FirebaseFirestore.instance;
+   var db = FirebaseFirestore.instance;
    Rxn<QueryDocumentSnapshot<Team>> teamInfo = Rxn<QueryDocumentSnapshot<Team>>();
    Rxn<String> profileUrl = Rxn<String>(Get.find<AuthController>().user!.photoURL);
    
+
   Future<int> getData() async{
     var result = await db.collection("userInfo").doc(user.value.uid).get();
     print(result.data()!['teamId']);
@@ -47,6 +50,9 @@ class MyInfoController extends GetxController{
     }
     Get.back();
   }
+  // gallery() {
+  //   profileUrl = StorageService().gallery();
+  // }
 
   camera() async{
     var picker = ImagePicker();
@@ -60,6 +66,9 @@ class MyInfoController extends GetxController{
     }
     Get.back();
   }
+  // camera() {
+  //   profileUrl = StorageService().camera();
+  // }
 
   void openBottomSheet(){
     Get.bottomSheet(
@@ -108,7 +117,7 @@ class MyInfoController extends GetxController{
               Get.back();
             }, child: Text("리버풀")),
             TextButton(onPressed: (){
-              db.collection("userInfo").doc(user.value.uid).set({"teamId":41});
+              db.collection("userInfo").doc(user.value.uid).set({"teamId":41}); 
               getData();
               Get.back();
             }, child: Text("사우스햄튼")),

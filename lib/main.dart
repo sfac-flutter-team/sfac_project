@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/controller/comments_controller.dart';
 import 'package:sfac_project/controller/find_password_controller.dart';
 import 'package:sfac_project/controller/fixture_controller.dart';
 import 'package:sfac_project/controller/lineup_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/controller/main_controller.dart';
+import 'package:sfac_project/controller/my_team_controller.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_pages.dart';
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => FixtureController(), fenix: true);
         Get.lazyPut(() => LineupController(), fenix: true);
         Get.lazyPut(() => RankingController(), fenix: true);
+        Get.lazyPut(() => MyTeamController(),fenix: true);
+        Get.lazyPut(() => CommentsController(),fenix: true);
       }),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

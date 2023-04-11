@@ -15,20 +15,11 @@ class MyInfoScreen extends GetView<MyInfoController> {
  
   @override
   Widget build(BuildContext context) {
-    var teamId = controller.getData();
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        //leading: IconButton(onPressed: Get.toNamed(), icon: icon),
-      ),
-      extendBodyBehindAppBar: true,
-      body: Column(
+    return  Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(controller.user.value.displayName!),
           Text(controller.user.value.email!),
-            
              GestureDetector(
                   onTap: controller.openBottomSheet,
                   child: Obx(()=>
@@ -136,18 +127,8 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   );
                 }
               })
-                // controller.teamInfo.value?.data().name == null?
-                //    Card(
-                     
-                //    )
-                //  :
-                //     Obx(()=>Card(
-                      
-                //     )
-                
           ]
-      ),
-    );
+      );
   }
  
 }

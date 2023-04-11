@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sfac_project/service/auth_service.dart';
 import 'package:sfac_project/util/app_routes.dart';
 
+
 class AuthController extends GetxController {
   final Rxn<User> _user = Rxn();
 

@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
 import 'package:sfac_project/util/app_routes.dart';
+import 'package:sfac_project/view/page/comments_page.dart';
 import 'package:sfac_project/view/page/find_password_page.dart';
 import 'package:sfac_project/view/page/lineup_page.dart';
 import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
 import 'package:sfac_project/view/screen/my_info_screen.dart';
+import 'package:sfac_project/view/screen/my_team_screen.dart';
 
 class AppPages {
   static final pages = [
