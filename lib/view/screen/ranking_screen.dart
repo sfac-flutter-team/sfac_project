@@ -155,7 +155,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .data()
                                           .rank
                                           .toString(),
-                                      style: AppTextStyle.hKorPreSemiBold20,
+                                      style: AppTextStyle.hKorPreSemiBold20(),
                                     ),
                                   ),
                                 ),
@@ -181,7 +181,7 @@ class RankingScreen extends GetView<RankingController> {
                                         .team
                                         .name
                                         .toString(),
-                                    style: AppTextStyle.hKorPreSemiBold20),
+                                    style: AppTextStyle.hKorPreSemiBold20()),
                               ],
                             ),
                             Padding(
@@ -194,7 +194,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .played
                                           .toString(),
                                       textAlign: TextAlign.center,
-                                      style: AppTextStyle.hKorPreSemiBold20),
+                                      style: AppTextStyle.hKorPreSemiBold20()),
                                   SizedBox(
                                     width: 40,
                                   ),
@@ -203,7 +203,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .data()
                                           .points
                                           .toString(),
-                                      style: AppTextStyle.hKorPreSemiBold20),
+                                      style: AppTextStyle.hKorPreSemiBold20()),
                                 ],
                               ),
                             ),
@@ -275,7 +275,7 @@ class RankingScreen extends GetView<RankingController> {
                                       child: SizedBox(
                                         child: Text(
                                           controller.standingInfo[index].data().rank.toString(),
-                                          style: AppTextStyle.hKorPreSemiBold20,
+                                          style: AppTextStyle.hKorPreSemiBold20(),
                                         ),
                                       ),
                                     ),
@@ -289,7 +289,7 @@ class RankingScreen extends GetView<RankingController> {
                                     const SizedBox(width: 20),
                                     Text(
                                         controller.playerInfo.value!.data()[index].name.toString(),
-                                        style: AppTextStyle.hKorPreSemiBold20),
+                                        style: AppTextStyle.hKorPreSemiBold20()),
                                   ],
                                 ),
                                 Padding(
@@ -302,7 +302,7 @@ class RankingScreen extends GetView<RankingController> {
                                           controller.playerInfo.value!.data()[index].total.toString(),
                                           textAlign: TextAlign.center,
                                           style:
-                                              AppTextStyle.hKorPreSemiBold20),
+                                              AppTextStyle.hKorPreSemiBold20()),
                                      const SizedBox(width: 50),
                                       Text(
                                           controller.playerInfo.value!
@@ -310,7 +310,7 @@ class RankingScreen extends GetView<RankingController> {
                                               .assists
                                               .toString(),
                                           style:
-                                              AppTextStyle.hKorPreSemiBold20),
+                                              AppTextStyle.hKorPreSemiBold20()),
                                     ],
                                   ),
                                 ),

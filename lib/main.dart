@@ -10,6 +10,9 @@ import 'package:sfac_project/controller/lineup_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/controller/main_controller.dart';
+import 'package:sfac_project/controller/market_controller.dart';
+import 'package:sfac_project/controller/product_controller.dart';
+import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/firebase_options.dart';
@@ -33,6 +36,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false, //우측 상단 DEBUG리본 없애기
       initialBinding: BindingsBuilder(() {
         Get.put(AuthController());
         Get.lazyPut(() => LoginController(), fenix: true);
@@ -40,6 +44,9 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => FindPasswordController(), fenix: true);
         Get.lazyPut(() => MyInfoController(), fenix: true);
         Get.lazyPut(() => MainController(), fenix: true);
+        Get.lazyPut(() => MarketController(), fenix: true);
+        Get.lazyPut(() => ProductController(), fenix: true);
+        Get.lazyPut(() => ShoppingBasketController(), fenix: true);
         Get.lazyPut(() => FixtureController(), fenix: true);
         Get.lazyPut(() => LineupController(), fenix: true);
         Get.lazyPut(() => RankingController(), fenix: true);

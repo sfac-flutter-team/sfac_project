@@ -9,16 +9,6 @@ class MainController extends GetxController {
   PageController pageController = PageController();
   RxInt selectedIndex = 0.obs;
 
-  RxList<QueryDocumentSnapshot<Product>> productList =
-      RxList<QueryDocumentSnapshot<Product>>();
-
-// 상품 가져오기
-  readProduct() async {
-    var url = productList(await DBService().readProduct());
-    // print(productList.forEach(() {}));
-    // productList.forEach((e) => print(e.data()));
-  }
-
   logout() => Get.find<AuthController>().logout();
 
   handleNavigationOnTap(int index) {
@@ -29,6 +19,6 @@ class MainController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    readProduct();
+    // readProduct();
   }
 }

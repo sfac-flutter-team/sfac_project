@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/login_controller.dart';
+import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
@@ -64,6 +65,7 @@ class LoginPage extends GetView<LoginController> {
                 const SizedBox(height: 40),
                 Obx(
                   () => AppElevatedButton(
+                    backgroundColor: AppColor.mainBlue,
                     onPressed: controller.isButtonActivate.value
                         ? controller.login
                         : null,
