@@ -1,18 +1,29 @@
+import 'dart:convert';
 
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class MyInfo {
-  MyInfo({this.teamId});
-  final String? teamId;
+  final String? teamId; //팀 아이디
+  final String name; //유저 이름
+  final String? photoUrl; //프로필 사진 URL
 
-  MyInfo.fromMap(Map<String,Object?> json) :
-  this(
-    teamId: json['teamId']! as String,
-  );
-  Map<String,Object?> toJson(){
-    return {
-      'teamId' : teamId,
+  MyInfo({
+    this.teamId,
+    required this.name,
+    this.photoUrl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'photoUrl': photoUrl,
     };
   }
-  
 
+  factory MyInfo.fromMap(Map<String, dynamic> map) {
+    return MyInfo(
+      teamId: map['teamId'] != null ? map['teamId'] as String : null,
+      name: map['name'] as String,
+      photoUrl: map['photoUrl'] != null ? map['photoUrl'] as String : null,
+    );
+  }
 }

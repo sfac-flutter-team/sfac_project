@@ -20,6 +20,7 @@ class SignupController extends GetxController {
   signup() async {
     if (await Get.find<AuthController>().signup(
         emailController.text, pwController.text, nickNameController.text)) {
+      Get.back();
       Get.dialog(
         AppDialog(
           content: '회원가입에 성공했습니다.',

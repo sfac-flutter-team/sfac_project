@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sfac_project/model/fixture.dart';
+import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/product.dart';
 import 'package:sfac_project/model/standing.dart';
@@ -8,6 +11,13 @@ import 'package:sfac_project/model/team.dart';
 import 'package:sfac_project/model/shoppingbasket.dart';
 
 class DBService {
+  //유저 정보 인스턴스
+  final userInfoRef = FirebaseFirestore.instance
+      .collection('userInfo')
+      .withConverter(
+          fromFirestore: (snapshot, _) => MyInfo.fromMap(snapshot.data()!),
+          toFirestore: (product, _) => product.toMap());
+
   //상품 인스턴스
   final productRef = FirebaseFirestore.instance
       .collection('product')
@@ -46,6 +56,15 @@ class DBService {
               .map((value) => Fixture.fromMap(value))
               .toList(),
           toFirestore: (fixture, _) => {});
+
+  //유저 정보 생성
+  createUserInfo(String uid, String nickName, String? photoURL) => userInfoRef
+      .doc(uid)
+      .set(MyInfo(name: nickName, photoUrl: photoURL), SetOptions(merge: true));
+
+  //유저 프로필 사진 URL 저장
+  updateUserInfoPhoto(String uid, String photoUrl) =>
+      userInfoRef.doc(uid).update({'photoUrl': photoUrl});
 
   //전체 팀 정보 가져오기
   readTeams() =>

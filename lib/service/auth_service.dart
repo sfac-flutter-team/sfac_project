@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sfac_project/firebase_options.dart';
+import 'package:sfac_project/service/db_service.dart';
 
 class AuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -18,9 +19,11 @@ class AuthService {
   signup(id, pw, nickName) => _firebaseAuth
           .createUserWithEmailAndPassword(email: id, password: pw)
           .then(
-        (_) {
+        (_) async {
           _firebaseAuth.currentUser!.updateDisplayName(nickName);
-          _firebaseAuth.signOut();
+          DBService()
+              .createUserInfo(_firebaseAuth.currentUser!.uid, nickName, null);
+          await _firebaseAuth.signOut();
           return true;
         },
       ).catchError(

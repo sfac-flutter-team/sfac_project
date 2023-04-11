@@ -4,20 +4,21 @@ import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/view/page/main_page.dart';
 import 'package:sfac_project/view/widget/app_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController {
   var emailController = TextEditingController();
   var pwController = TextEditingController();
 
-  RxBool isAutoLoginChecked =
-      Get.find<AuthController>().isPersisted.obs; //자동로그인 체크
+  RxBool isAutoSigningOn = false.obs; //자동로그인 체크
   RxBool isButtonActivate = false.obs; //로그인 버튼 비활성화
 
   //로그인 불러오고 값이 없으면 스낵바출력
   login() async {
     if (await Get.find<AuthController>().login(
-        emailController.text, pwController.text, isAutoLoginChecked.value)) {
-      Get.offAllNamed(MainPage.route);
+        emailController.text, pwController.text, isAutoSigningOn.value)) {
+      final prefs = await SharedPreferences.getInstance();
+      prefs.setBool('isAutoSigningOn', isAutoSigningOn.value);
     } else {
       Get.dialog(
         AppDialog(
@@ -40,10 +41,5 @@ class LoginController extends GetxController {
     } else {
       isButtonActivate.value = false;
     }
-  }
-
-  handleAutoLoginCheck(bool? value) {
-    isAutoLoginChecked(value);
-    Get.find<AuthController>().isPersisted = isAutoLoginChecked.value;
   }
 }
