@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/controller/comments_controller.dart';
 import 'package:sfac_project/controller/find_password_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => MyInfoController(), fenix: true);
         Get.lazyPut(() => MainController(), fenix: true);
         Get.lazyPut(() => MyTeamController(),fenix: true);
+        Get.lazyPut(() => CommentsController(),fenix: true);
       }),
       getPages: AppPages.pages,
       initialRoute: AppRoutes.login,

@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
+import 'package:sfac_project/service/storage_service.dart';
 
 import '../model/team.dart';
 import '../service/db_service.dart';
@@ -19,7 +20,7 @@ class MyInfoController extends GetxController{
    var db = FirebaseFirestore.instance;
    Rxn<QueryDocumentSnapshot<Team>> teamInfo = Rxn<QueryDocumentSnapshot<Team>>();
    Rxn<String> profileUrl = Rxn<String>(Get.find<AuthController>().user!.photoURL);
-
+   
 
   Future<int> getData() async{
     var result = await db.collection("userInfo").doc(user.value.uid).get();
@@ -49,6 +50,9 @@ class MyInfoController extends GetxController{
     }
     Get.back();
   }
+  // gallery() {
+  //   profileUrl = StorageService().gallery();
+  // }
 
   camera() async{
     var picker = ImagePicker();
@@ -62,6 +66,9 @@ class MyInfoController extends GetxController{
     }
     Get.back();
   }
+  // camera() {
+  //   profileUrl = StorageService().camera();
+  // }
 
   void openBottomSheet(){
     Get.bottomSheet(

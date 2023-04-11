@@ -10,6 +10,5 @@ class AppRoutes {
   static const main = MainPage.route; //메인 페이지
   static const signup = SignupPage.route; //회원가입
   static const findPassword = FindPasswordPage.route; //비밀번호 찾기
-  static const myInfo = MyInfoScreen.route;
-  static const myTeam = MyTeamScreen.route;
+  static const comment = MyTeamScreen.route;
 }
