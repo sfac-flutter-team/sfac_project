@@ -31,7 +31,7 @@ dependencies:
   badges: ^3.0.3
   cloud_firestore: ^4.5.0
   cupertino_icons: ^1.0.2
-  firebase_auth: ^4.4.0
+  firebase_auth: ^4.2.2
   firebase_core: ^2.8.0
   firebase_storage: ^11.0.15
   flutter:
@@ -42,7 +42,7 @@ dependencies:
   google_sign_in: ^6.0.2
   http: ^0.13.5
   image_picker: ^0.8.7
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
