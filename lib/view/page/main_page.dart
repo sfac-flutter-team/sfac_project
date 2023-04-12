@@ -7,6 +7,7 @@ import 'package:sfac_project/view/screen/market_screen.dart';
 import 'package:sfac_project/view/screen/my_info_screen.dart';
 import 'package:sfac_project/view/screen/my_team_screen.dart';
 import 'package:sfac_project/view/screen/ranking_screen.dart';
+import 'package:sfac_project/view/screen/my_team_screen.dart';
 import 'package:sfac_project/view/widget/app_navigation_bar.dart';
 
 
@@ -22,22 +23,7 @@ class MainPage extends GetView<MainController> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           MyTeamScreen(),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('페이지 2'),
-                const Text('여러분 페이지 이동은 했는데 각자 만드는 페이지 연결은 해주세요'),
-                TextButton(
-                  onPressed: controller.logout,
-                  child: const Text('로그아웃'),
-                ),
-              ],
-            ),
-          ),
-          RankingScreen( 
-            
-          ),
+          RankingScreen(),
           FixtureScreen(),
           MarketScreen(),
           MyInfoScreen(),

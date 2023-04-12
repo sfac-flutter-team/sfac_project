@@ -18,10 +18,7 @@ class RankingScreen extends GetView<RankingController> {
     
     return Scaffold(
       body: PageView(
-<<<<<<< HEAD
         physics: NeverScrollableScrollPhysics(),
-=======
->>>>>>> ba769d1 (랭킹 리스트)
                 controller: controller.pageController,
         children: [
         Column(
@@ -100,10 +97,7 @@ class RankingScreen extends GetView<RankingController> {
             const SizedBox(
               height: 8,
             ),
-<<<<<<< HEAD
             // 페이지 이동 버튼
-=======
->>>>>>> ba769d1 (랭킹 리스트)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -121,10 +115,7 @@ class RankingScreen extends GetView<RankingController> {
             const SizedBox(
               height: 15,
             ),
-<<<<<<< HEAD
             //경기수, 승점
-=======
->>>>>>> ba769d1 (랭킹 리스트)
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: SizedBox(
@@ -140,17 +131,11 @@ class RankingScreen extends GetView<RankingController> {
                 ),
               ),
             ),
-<<<<<<< HEAD
             //전체 순위표
             SizedBox(
               height: 500,
               child: ListView.builder(
                  padding: EdgeInsets.zero,
-=======
-            SizedBox(
-              height: 500,
-              child: ListView.builder(
->>>>>>> ba769d1 (랭킹 리스트)
                   physics: ScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: controller.standingInfo.length,
@@ -170,15 +155,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .data()
                                           .rank
                                           .toString(),
-<<<<<<< HEAD
-<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20(),
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20,
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20(),
->>>>>>> 4a0422b (랭킹 커밋)
                                     ),
                                   ),
                                 ),
@@ -204,15 +181,7 @@ class RankingScreen extends GetView<RankingController> {
                                         .team
                                         .name
                                         .toString(),
-<<<<<<< HEAD
-<<<<<<< HEAD
                                     style: AppTextStyle.hKorPreSemiBold20()),
-=======
-                                    style: AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                    style: AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                               ],
                             ),
                             Padding(
@@ -225,15 +194,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .played
                                           .toString(),
                                       textAlign: TextAlign.center,
-<<<<<<< HEAD
-<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20()),
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                                   SizedBox(
                                     width: 40,
                                   ),
@@ -242,15 +203,7 @@ class RankingScreen extends GetView<RankingController> {
                                           .data()
                                           .points
                                           .toString(),
-<<<<<<< HEAD
-<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20()),
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                      style: AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                                 ],
                               ),
                             ),
@@ -304,10 +257,7 @@ class RankingScreen extends GetView<RankingController> {
             Obx(() {
               return SizedBox(height: 500,
                 child: ListView.builder(
-<<<<<<< HEAD
                   padding: EdgeInsets.zero,
-=======
->>>>>>> ba769d1 (랭킹 리스트)
                     physics: const ScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: controller.playerInfo.value!.data().length,
@@ -325,15 +275,7 @@ class RankingScreen extends GetView<RankingController> {
                                       child: SizedBox(
                                         child: Text(
                                           controller.standingInfo[index].data().rank.toString(),
-<<<<<<< HEAD
-<<<<<<< HEAD
                                           style: AppTextStyle.hKorPreSemiBold20(),
-=======
-                                          style: AppTextStyle.hKorPreSemiBold20,
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                          style: AppTextStyle.hKorPreSemiBold20(),
->>>>>>> 4a0422b (랭킹 커밋)
                                         ),
                                       ),
                                     ),
@@ -347,15 +289,7 @@ class RankingScreen extends GetView<RankingController> {
                                     const SizedBox(width: 20),
                                     Text(
                                         controller.playerInfo.value!.data()[index].name.toString(),
-<<<<<<< HEAD
-<<<<<<< HEAD
                                         style: AppTextStyle.hKorPreSemiBold20()),
-=======
-                                        style: AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                        style: AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                                   ],
                                 ),
                                 Padding(
@@ -368,15 +302,7 @@ class RankingScreen extends GetView<RankingController> {
                                           controller.playerInfo.value!.data()[index].total.toString(),
                                           textAlign: TextAlign.center,
                                           style:
-<<<<<<< HEAD
-<<<<<<< HEAD
                                               AppTextStyle.hKorPreSemiBold20()),
-=======
-                                              AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                              AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                                      const SizedBox(width: 50),
                                       Text(
                                           controller.playerInfo.value!
@@ -384,15 +310,7 @@ class RankingScreen extends GetView<RankingController> {
                                               .assists
                                               .toString(),
                                           style:
-<<<<<<< HEAD
-<<<<<<< HEAD
                                               AppTextStyle.hKorPreSemiBold20()),
-=======
-                                              AppTextStyle.hKorPreSemiBold20),
->>>>>>> ba769d1 (랭킹 리스트)
-=======
-                                              AppTextStyle.hKorPreSemiBold20()),
->>>>>>> 4a0422b (랭킹 커밋)
                                     ],
                                   ),
                                 ),

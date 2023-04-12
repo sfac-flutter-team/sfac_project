@@ -48,7 +48,7 @@ class FindPasswordPage extends GetView<FindPasswordController> {
                     AppElevatedButton(
                       childText: '확인',
                       onPressed: () => controller
-                          .resetPassword(controller.pwFindController.text),
+                          .resetPassword(controller.pwFindController.text), 
                     ),
                   ],
                 ),

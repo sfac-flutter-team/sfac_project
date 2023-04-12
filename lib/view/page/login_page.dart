@@ -65,7 +65,6 @@ class LoginPage extends GetView<LoginController> {
                 const SizedBox(height: 40),
                 Obx(
                   () => AppElevatedButton(
-                    backgroundColor: AppColor.mainBlue,
                     onPressed: controller.isButtonActivate.value
                         ? controller.login
                         : null,

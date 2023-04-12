@@ -22,6 +22,7 @@ class AppPages {
     GetPage(
         name: AppRoutes.myInfo, page: () => const MyInfoScreen()), //내 정보 페이지
     GetPage(name: AppRoutes.lineup, page: () => const LineupPage()), //라인업 페이지
+    GetPage(name: AppRoutes.comment, page: () => const CommentsPage()),
     GetPage(name: AppRoutes.product, page: () => const ProductPage()), // 상품 디테일
     GetPage(
         name: AppRoutes.shoppingbasket,
