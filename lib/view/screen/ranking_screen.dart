@@ -171,10 +171,14 @@ class RankingScreen extends GetView<RankingController> {
                                           .rank
                                           .toString(),
 <<<<<<< HEAD
+<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20(),
 =======
                                       style: AppTextStyle.hKorPreSemiBold20,
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                      style: AppTextStyle.hKorPreSemiBold20(),
+>>>>>>> 4a0422b (랭킹 커밋)
                                     ),
                                   ),
                                 ),
@@ -201,10 +205,14 @@ class RankingScreen extends GetView<RankingController> {
                                         .name
                                         .toString(),
 <<<<<<< HEAD
+<<<<<<< HEAD
                                     style: AppTextStyle.hKorPreSemiBold20()),
 =======
                                     style: AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                    style: AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                               ],
                             ),
                             Padding(
@@ -218,10 +226,14 @@ class RankingScreen extends GetView<RankingController> {
                                           .toString(),
                                       textAlign: TextAlign.center,
 <<<<<<< HEAD
+<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20()),
 =======
                                       style: AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                      style: AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                                   SizedBox(
                                     width: 40,
                                   ),
@@ -231,10 +243,14 @@ class RankingScreen extends GetView<RankingController> {
                                           .points
                                           .toString(),
 <<<<<<< HEAD
+<<<<<<< HEAD
                                       style: AppTextStyle.hKorPreSemiBold20()),
 =======
                                       style: AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                      style: AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                                 ],
                               ),
                             ),
@@ -310,10 +326,14 @@ class RankingScreen extends GetView<RankingController> {
                                         child: Text(
                                           controller.standingInfo[index].data().rank.toString(),
 <<<<<<< HEAD
+<<<<<<< HEAD
                                           style: AppTextStyle.hKorPreSemiBold20(),
 =======
                                           style: AppTextStyle.hKorPreSemiBold20,
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                          style: AppTextStyle.hKorPreSemiBold20(),
+>>>>>>> 4a0422b (랭킹 커밋)
                                         ),
                                       ),
                                     ),
@@ -328,10 +348,14 @@ class RankingScreen extends GetView<RankingController> {
                                     Text(
                                         controller.playerInfo.value!.data()[index].name.toString(),
 <<<<<<< HEAD
+<<<<<<< HEAD
                                         style: AppTextStyle.hKorPreSemiBold20()),
 =======
                                         style: AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                        style: AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                                   ],
                                 ),
                                 Padding(
@@ -345,10 +369,14 @@ class RankingScreen extends GetView<RankingController> {
                                           textAlign: TextAlign.center,
                                           style:
 <<<<<<< HEAD
+<<<<<<< HEAD
                                               AppTextStyle.hKorPreSemiBold20()),
 =======
                                               AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                              AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                                      const SizedBox(width: 50),
                                       Text(
                                           controller.playerInfo.value!
@@ -357,10 +385,14 @@ class RankingScreen extends GetView<RankingController> {
                                               .toString(),
                                           style:
 <<<<<<< HEAD
+<<<<<<< HEAD
                                               AppTextStyle.hKorPreSemiBold20()),
 =======
                                               AppTextStyle.hKorPreSemiBold20),
 >>>>>>> ba769d1 (랭킹 리스트)
+=======
+                                              AppTextStyle.hKorPreSemiBold20()),
+>>>>>>> 4a0422b (랭킹 커밋)
                                     ],
                                   ),
                                 ),
