@@ -22,14 +22,13 @@ class Fixture {
 
   factory Fixture.fromMap(Map<String, dynamic> map) {
     return Fixture(
-      id: map['fixture']['id'],
-      date:
-          DateTime.parse(map['fixture']['date']).add(const Duration(hours: 9)),
-      status: map['fixture']['status']['long'],
-      home: Team.fromMap(map['teams']['home']),
-      away: Team.fromMap(map['teams']['away']),
-      homeGoals: map['goals']['home'],
-      awayGoals: map['goals']['away'],
+      id: map['id'],
+      date: DateTime.parse(map['date']).add(const Duration(hours: 9)),
+      status: map['status'],
+      home: Team.fromMap(map['home']),
+      away: Team.fromMap(map['away']),
+      homeGoals: map['homeGoals'],
+      awayGoals: map['awayGoals'],
     );
   }
 }
