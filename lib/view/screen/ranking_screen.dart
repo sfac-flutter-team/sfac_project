@@ -135,6 +135,7 @@ class RankingScreen extends GetView<RankingController> {
             SizedBox(
               height: 500,
               child: ListView.builder(
+                 padding: EdgeInsets.zero,
                   physics: ScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: controller.standingInfo.length,
@@ -256,6 +257,7 @@ class RankingScreen extends GetView<RankingController> {
             Obx(() {
               return SizedBox(height: 500,
                 child: ListView.builder(
+                  padding: EdgeInsets.zero,
                     physics: const ScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: controller.playerInfo.value!.data().length,
