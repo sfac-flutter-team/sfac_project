@@ -18,6 +18,7 @@ class RankingScreen extends GetView<RankingController> {
     
     return Scaffold(
       body: PageView(
+        physics: NeverScrollableScrollPhysics(),
                 controller: controller.pageController,
         children: [
         Column(
@@ -96,6 +97,7 @@ class RankingScreen extends GetView<RankingController> {
             const SizedBox(
               height: 8,
             ),
+            // 페이지 이동 버튼
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -113,6 +115,7 @@ class RankingScreen extends GetView<RankingController> {
             const SizedBox(
               height: 15,
             ),
+            //경기수, 승점
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: SizedBox(
@@ -128,6 +131,7 @@ class RankingScreen extends GetView<RankingController> {
                 ),
               ),
             ),
+            //전체 순위표
             SizedBox(
               height: 500,
               child: ListView.builder(
