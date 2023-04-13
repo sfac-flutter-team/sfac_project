@@ -99,7 +99,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                               radius: 15,
                               backgroundColor: Colors.white,
                               child: Image.asset('assets/icons/message.png',
-                                  color: AppColor.mainDarkBlue, width: 11, height: 11,),
+                                  color: AppColor.mainDarkBlue, width: 20, height: 20),
                             ),
                           )
                         ],
@@ -125,7 +125,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                               radius: 15,
                               backgroundColor: Colors.white,
                               child: Image.asset('assets/icons/bag.png',
-                                  color: AppColor.mainDarkBlue),
+                                  color: AppColor.mainDarkBlue, width: 20, height: 20),
                             ),
                           )
                         ],
@@ -151,7 +151,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                               radius: 15,
                               backgroundColor: Colors.white,
                               child: Image.asset('assets/icons/logout.png',
-                                  color: AppColor.mainDarkBlue),
+                                  color: AppColor.mainDarkBlue, width: 20, height: 20),
                             ),
                           )
                         ],
@@ -183,9 +183,11 @@ class MyInfoScreen extends GetView<MyInfoController> {
                     )]
                     ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8,16,0,16),
+                  padding: const EdgeInsets.fromLTRB(8,24,0,16),
                   child: ListTile(
-                    leading: CircleAvatar(),
+                    leading: CircleAvatar(
+                      radius: 40,
+                    ),
                     title: Text('팀을선택해주세요', style: AppTextStyle.bKorPreRegular20),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam, child: const Text("선택", style: AppTextStyle.bKorPreRegular20)),
@@ -206,7 +208,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                     )]
                     ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8,16,0,16),
+                  padding: const EdgeInsets.fromLTRB(8,24,0,16),
                   child: ListTile(
                     leading: ClipRRect(
                       child: Image.network(controller.teamInfo.value!.data().logo),
