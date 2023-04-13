@@ -18,6 +18,7 @@ class MainPage extends GetView<MainController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: PageView(
         controller: controller.pageController,
         physics: const NeverScrollableScrollPhysics(),
