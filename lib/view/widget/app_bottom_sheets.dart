@@ -10,8 +10,7 @@ class AppBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return ListView(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -20,8 +19,8 @@ class AppBottomSheet extends StatelessWidget {
             ),
           ),
         ],
-      )
+      );
       
-    );
+    
   }
 }

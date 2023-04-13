@@ -132,84 +132,85 @@ class RankingScreen extends GetView<RankingController> {
               ),
             ),
             //전체 순위표
-            SizedBox(
-              height: 500,
-              child: ListView.builder(
-                 padding: EdgeInsets.zero,
-                  physics: ScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: controller.standingInfo.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: SizedBox(
-                                    child: Text(
-                                      controller.standingInfo[index]
-                                          .data()
-                                          .rank
-                                          .toString(),
-                                      style: AppTextStyle.hKorPreSemiBold20(),
+            Expanded(
+              child: Obx(
+                () => ListView.builder(
+                   padding: EdgeInsets.zero,
+                    physics: ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.standingInfo.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      child: Text(
+                                        controller.standingInfo[index]
+                                            .data()
+                                            .rank
+                                            .toString(),
+                                        style: AppTextStyle.hKorPreSemiBold20(),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                ClipRRect(
-                                  child: Container(
-                                      height: 40,
-                                      width: 40,
-                                      child: Image.network(controller
-                                          .standingInfo[index]
-                                          .data()
-                                          .team
-                                          .logo)),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                    controller.standingInfo[index]
-                                        .data()
-                                        .team
-                                        .name
-                                        .toString(),
-                                    style: AppTextStyle.hKorPreSemiBold20()),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                children: [
-                                  Text(
-                                      controller.standingInfo[index]
-                                          .data()
-                                          .played
-                                          .toString(),
-                                      textAlign: TextAlign.center,
-                                      style: AppTextStyle.hKorPreSemiBold20()),
-                                  SizedBox(
-                                    width: 40,
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  ClipRRect(
+                                    child: Container(
+                                        height: 40,
+                                        width: 40,
+                                        child: Image.network(controller
+                                            .standingInfo[index]
+                                            .data()
+                                            .team
+                                            .logo)),
+                                  ),
+                                  const SizedBox(
+                                    width: 20,
                                   ),
                                   Text(
                                       controller.standingInfo[index]
                                           .data()
-                                          .points
+                                          .team
+                                          .name
                                           .toString(),
                                       style: AppTextStyle.hKorPreSemiBold20()),
                                 ],
                               ),
-                            ),
-                          ],
-                        ));
-                  }),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                        controller.standingInfo[index]
+                                            .data()
+                                            .played
+                                            .toString(),
+                                        textAlign: TextAlign.center,
+                                        style: AppTextStyle.hKorPreSemiBold20()),
+                                    SizedBox(
+                                      width: 40,
+                                    ),
+                                    Text(
+                                        controller.standingInfo[index]
+                                            .data()
+                                            .points
+                                            .toString(),
+                                        style: AppTextStyle.hKorPreSemiBold20()),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ));
+                    }),
+              ),
             ),
             //개인 순위표
           ],
@@ -255,7 +256,7 @@ class RankingScreen extends GetView<RankingController> {
               ),
             ),
             Obx(() {
-              return SizedBox(height: 500,
+              return Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.zero,
                     physics: const ScrollPhysics(),
