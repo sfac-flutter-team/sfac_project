@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/market_controller.dart';
-import 'package:sfac_project/model/product.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
@@ -31,14 +29,18 @@ class MarketScreen extends GetView<MarketController> {
                   onTap: () => Get.toNamed(AppRoutes.shoppingbasket),
                   child: Stack(clipBehavior: Clip.none, children: [
                     Image.asset('assets/icons/cart-shopping.png'),
-                    const Positioned(
+                    Positioned(
                       top: -10,
                       right: 3,
                       child: CircleAvatar(
                         radius: 8,
                         backgroundColor: AppColor.mainBlue,
-                        child:
-                            Text('controller.shoppingList.length.toString()'),
+                        child: Obx(
+                          () => Text(
+                            controller.shoppingList.length.toString(),
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(
@@ -60,8 +62,10 @@ class MarketScreen extends GetView<MarketController> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.toNamed(AppRoutes.product,
-                          arguments: controller.productList[index].data());
+                      Get.toNamed(
+                        AppRoutes.product,
+                        arguments: controller.productList[index].data(),
+                      );
                     }, //상품 페이지
                     child: Card(
                       child: Column(

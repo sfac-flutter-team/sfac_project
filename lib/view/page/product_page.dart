@@ -1,21 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sfac_project/controller/product_controller.dart';
+import 'package:sfac_project/controller/shopping_basket_controller.dart';
+import 'package:sfac_project/model/product.dart';
+import 'package:sfac_project/model/shoppingbasket.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 import 'package:sfac_project/view/widget/app_elevated_button.dart';
 
-class ProductPage extends GetView<ProductController> {
-  const ProductPage({super.key});
+class ProductPage extends StatefulWidget {
+  const ProductPage({super.key, required this.product});
   static const route = '/product';
+  final Product product;
+
+  @override
+  State<ProductPage> createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  int amount = 1;
+  int selectedOptionIdx = 0;
+  String? selectedOption;
+  var shoppingBasketController = Get.find<ShoppingBasketController>();
+
+  handleOnPurchase() {
+    // print('상품을 주문합니다')
+    shoppingBasketController.addShoppingBasket(ShoppingBasket(
+        quantity: amount,
+        selectedOption: selectedOption,
+        product: widget.product));
+  }
+
+  handleSelectOption(index) {
+    setState(() {
+      selectedOptionIdx = index;
+      selectedOption = widget.product.option?[selectedOptionIdx];
+    });
+  }
+
+  handleAmountUp() {
+    setState(() {
+      amount += 1;
+    });
+  }
+
+  handleAmountDown() {
+    if (amount > 1) {
+      setState(() {
+        amount -= 1;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    var detailList = controller.product.productDetail;
-    var optionList = controller.product.option;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -25,15 +64,21 @@ class ProductPage extends GetView<ProductController> {
           GestureDetector(
               onTap: () => Get.toNamed(AppRoutes.shoppingbasket),
               child: Image.asset('assets/icons/cart-shopping.png')),
-          Stack(clipBehavior: Clip.none, children: const [
-            SizedBox(),
+          Stack(clipBehavior: Clip.none, children: [
+            const SizedBox(),
             Positioned(
               top: 3,
               right: 10,
               child: CircleAvatar(
                 radius: 8,
                 backgroundColor: AppColor.mainBlue,
-                child: Text('controller.shoppingList.length.toString()'),
+                child: Obx(
+                  () => Text(
+                    shoppingBasketController.shoppingBasket.value.length
+                        .toString(),
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ),
               ),
             ),
           ])
@@ -45,16 +90,16 @@ class ProductPage extends GetView<ProductController> {
             Expanded(
               child:
                   ListView(physics: const BouncingScrollPhysics(), children: [
-                Image.network(controller.product.imageUrl),
+                Image.network(widget.product.imageUrl),
                 Text(
-                  controller.product.productName,
+                  widget.product.productName,
                   style: AppTextStyle.bEngPretendard20,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Text(
-                  '${controller.product.price} 원',
+                  '${widget.product.price} 원',
                   style: AppTextStyle.hKorPreSemiBold20(),
                 ),
                 const SizedBox(
@@ -68,7 +113,7 @@ class ProductPage extends GetView<ProductController> {
                   height: 20,
                 ),
                 Text(
-                  controller.product.productInfo,
+                  widget.product.productInfo,
                   style: AppTextStyle.bKorPreRegular14(),
                 ),
                 const SizedBox(
@@ -81,7 +126,7 @@ class ProductPage extends GetView<ProductController> {
                 const SizedBox(
                   height: 20,
                 ),
-                Text(controller.product.delivery,
+                Text(widget.product.delivery,
                     style: AppTextStyle.bKorPreRegular14()),
                 const SizedBox(
                   height: 20,
@@ -93,7 +138,7 @@ class ProductPage extends GetView<ProductController> {
                 const SizedBox(
                   height: 20,
                 ),
-                for (var data in detailList) Text('- ${data}')
+                for (var data in widget.product.productDetail) Text('- ${data}')
               ]),
             ),
             Align(
@@ -105,12 +150,107 @@ class ProductPage extends GetView<ProductController> {
                   child: SizedBox(
                     width: 280,
                     height: 64,
-                    child:
-                        AppElevatedButton(childText: '구매하기', onPressed: () {}),
+                    child: AppElevatedButton(
+                      childText: '구매하기',
+                      onPressed: () {
+                        Get.bottomSheet(
+                          StatefulBuilder(
+                            builder: (BuildContext context,
+                                    StateSetter bottomState) =>
+                                AppBottomSheet(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: Text('옵션 선택'),
+                                  ),
+                                  if (widget.product.option == null)
+                                    const Text('선택할 옵션이 없습니다.'),
+                                  Expanded(
+                                    child: ListView.builder(
+                                      itemCount:
+                                          widget.product.option?.length ?? 0,
+                                      itemBuilder: (context, index) => Material(
+                                        child: ListTile(
+                                          onTap: () {
+                                            bottomState(() {
+                                              handleSelectOption(index);
+                                            });
+                                          },
+                                          selectedTileColor: AppColor.mainBlue,
+                                          selected: selectedOptionIdx == index,
+                                          title: Text(
+                                              widget.product.option![index]),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: AppElevatedButton(
+                                      childText: '선택 완료',
+                                      onPressed: () {
+                                        Get.back();
+                                        Get.bottomSheet(
+                                          StatefulBuilder(
+                                            builder: (BuildContext context,
+                                                    StateSetter bottomState) =>
+                                                AppBottomSheet(
+                                              child: Column(
+                                                children: [
+                                                  Text(
+                                                    selectedOption ??
+                                                        '선택된 옵션이 없습니다.',
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      IconButton(
+                                                          icon: const Icon(
+                                                              Icons.remove),
+                                                          onPressed: () =>
+                                                              bottomState(() {
+                                                                handleAmountDown();
+                                                              })),
+                                                      Text(amount.toString()),
+                                                      IconButton(
+                                                        icon: const Icon(
+                                                            Icons.add),
+                                                        onPressed: () =>
+                                                            bottomState(() {
+                                                          handleAmountUp();
+                                                        }),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Text(
+                                                      '총 ${widget.product.price * amount}'),
+                                                  AppElevatedButton(
+                                                    childText: '장바구니',
+                                                    onPressed: () {
+                                                      handleOnPurchase();
+                                                      Get.back();
+                                                    },
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

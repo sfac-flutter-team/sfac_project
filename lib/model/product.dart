@@ -24,7 +24,7 @@ class Product {
     return <String, dynamic>{
       'productId': productId,
       'productName': productName,
-      '${price}': price,
+      'price': price,
       'imageUrl': imageUrl,
       'productInfo': productInfo,
       'delivery': delivery,
