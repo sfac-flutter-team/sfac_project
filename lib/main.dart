@@ -10,6 +10,12 @@ import 'package:sfac_project/controller/lineup_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/controller/main_controller.dart';
+import 'package:sfac_project/controller/market_controller.dart';
+import 'package:sfac_project/controller/product_controller.dart';
+import 'package:sfac_project/controller/ranking_controller.dart';
+import 'package:sfac_project/controller/shopping_basket_controller.dart';
+import 'package:sfac_project/controller/my_team_controller.dart';
+import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
 import 'package:sfac_project/controller/market_controller.dart';
 import 'package:sfac_project/controller/product_controller.dart';
@@ -49,6 +55,7 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => CommentsController(), fenix: true);
         Get.lazyPut(() => MarketController(), fenix: true);
         Get.lazyPut(() => ProductController(), fenix: true);
+        Get.lazyPut(() => RankingController(), fenix: true);
         Get.lazyPut(() => ShoppingBasketController(), fenix: true);
       }),
       localizationsDelegates: const [
