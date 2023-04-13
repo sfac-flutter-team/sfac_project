@@ -4,23 +4,22 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sfac_project/util/app_color.dart';
 
 class AppBottomSheet extends StatelessWidget {
-  const AppBottomSheet({super.key, required this.listTile, this.teamImg});
-  final String listTile;
-  final String? teamImg;
+  const AppBottomSheet({super.key, required this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-              title: TextButton(onPressed: (){}, child: Text(listTile))
-            ),
-          ),
-        ],
-      );
-      
-    
+    return Container(
+      height: MediaQuery.of(context).size.height / 3,
+      clipBehavior: Clip.antiAlias,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
+      child: child,
+    );
   }
 }

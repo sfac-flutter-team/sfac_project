@@ -5,16 +5,19 @@ import 'package:sfac_project/model/product.dart';
 
 class ShoppingBasket {
   int quantity;
+  String? selectedOption;
   Product product;
 
   ShoppingBasket({
     required this.quantity,
+    this.selectedOption,
     required this.product,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'quantity': quantity,
+      'selectedOption': selectedOption,
       'product': product.toMap(),
     };
   }
@@ -22,6 +25,9 @@ class ShoppingBasket {
   factory ShoppingBasket.fromMap(Map<String, dynamic> map) {
     return ShoppingBasket(
       quantity: map['quantity'] as int,
+      selectedOption: map['selectedOption'] != null
+          ? map['selectedOption'] as String
+          : null,
       product: Product.fromMap(map['product'] as Map<String, dynamic>),
     );
   }
