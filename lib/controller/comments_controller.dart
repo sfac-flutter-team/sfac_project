@@ -76,39 +76,5 @@ class CommentsController extends GetxController {
     }
   }
 
-  Widget getInputWidget() {
-    return Container(
-      height: 60,
-      width: double.infinity,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(
-              child: TextField(
-                controller: textEditingController,
-                focusNode: focusNode,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(fontSize: 15),
-                  labelText: "내용을 입력하세요..",
-                  fillColor: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            RawMaterialButton(
-              onPressed: onPressedSendButton,
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(Icons.send),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
+  
 }
