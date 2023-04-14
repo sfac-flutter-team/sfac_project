@@ -16,28 +16,7 @@ class Message {
     required this.sendDate,
     required this.myInfo,
   });
-
-
-
-  // factory Message.fromMap({
-  //   required String id,
-  //   required Map<String,dynamic>map
-  // }){
-  //   return Message(
-  //     id: id,
-  //     content: map['content']??'',
-  //     sendDate: map['sendDate']??Timestamp(0, 0)
-  //   );
-  // }
-
-  // Map<String,dynamic> toMap(){
-  //   Map<String,dynamic> data = {};
-  //   data['content']=content;
-  //   data['sendDate']=sendDate;
-  //   return data;
-  // }
-
-
+  
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       

@@ -18,23 +18,15 @@ class MyInfoController extends GetxController {
   Rx<User> get user => Get.find<AuthController>().user!.obs;
   var db = FirebaseFirestore.instance;
   Rxn<QueryDocumentSnapshot<Team>> teamInfo =
-      Rxn<QueryDocumentSnapshot<Team>>();
+  Rxn<QueryDocumentSnapshot<Team>>();
   Rxn<String> profileUrl =
-      Rxn<String>(Get.find<AuthController>().user!.photoURL);
+  Rxn<String>(Get.find<AuthController>().user!.photoURL);
 
   Future<int> getData() async {
     var result = await db.collection("userInfo").doc(user.value.uid).get();
-    print(result.data()!['teamId']);
-    print(result.data());
     var team = result.data()!['teamId'];
-    teamInfo.value = await DBService().getTeamWithId(team) ?? "null";
+    teamInfo.value = await DBService().getTeamWithId(team);
     return team;
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    getData();
   }
 
   logout() => Get.find<AuthController>().logout();
@@ -52,10 +44,7 @@ class MyInfoController extends GetxController {
     }
     Get.back();
   }
-  // gallery() {
-  //   profileUrl = StorageService().gallery();
-  // }
-
+ 
   camera() async {
     var picker = ImagePicker();
     var res = await picker.pickImage(source: ImageSource.camera);
@@ -69,10 +58,6 @@ class MyInfoController extends GetxController {
     }
     Get.back();
   }
-  // camera() {
-  //   profileUrl = StorageService().camera();
-  // }
-
   void openBottomSheet() {
     Get.bottomSheet(Column(
       children: [
@@ -290,5 +275,11 @@ class MyInfoController extends GetxController {
         ],
       ),
     ));
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getData();
   }
 }

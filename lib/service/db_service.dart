@@ -57,6 +57,15 @@ class DBService {
               .toList(),
           toFirestore: (fixture, _) => {});
 
+  final shoppingBasketRef = FirebaseFirestore.instance
+      .collection('shoppingBasket')
+      .withConverter(
+          fromFirestore: (snapshot, _) => snapshot
+              .data()![FieldPath.documentId]
+              .map((value) => ShoppingBasket.fromMap(value))
+              .toList(),
+          toFirestore: (shoppingBasket, _) => {});
+
   //유저 정보 생성
   createUserInfo(String uid, String nickName, String? photoURL) => userInfoRef
       .doc(uid)
@@ -134,14 +143,6 @@ class DBService {
             .toList();
         return result.first;
       }).catchError((e) => print(e));
-  final shoppingBasketRef = FirebaseFirestore.instance
-      .collection('shoppingBasket')
-      .withConverter(
-          fromFirestore: (snapshot, _) => snapshot
-              .data()![FieldPath.documentId]
-              .map((value) => ShoppingBasket.fromMap(value))
-              .toList(),
-          toFirestore: (shoppingBasket, _) => {});
 
   Future<List<QueryDocumentSnapshot<Product>>> readProduct() async {
     var items = await productRef.get();

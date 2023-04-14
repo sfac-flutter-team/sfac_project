@@ -7,7 +7,6 @@ import 'package:sfac_project/view/screen/market_screen.dart';
 import 'package:sfac_project/view/screen/my_info_screen.dart';
 import 'package:sfac_project/view/screen/my_team_screen.dart';
 import 'package:sfac_project/view/screen/ranking_screen.dart';
-import 'package:sfac_project/view/screen/my_team_screen.dart';
 import 'package:sfac_project/view/widget/app_navigation_bar.dart';
 
 
