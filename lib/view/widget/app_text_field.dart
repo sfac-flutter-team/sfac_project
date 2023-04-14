@@ -22,24 +22,44 @@ class AppTextField extends StatelessWidget {
     return TextField(
       obscureText: obscure,
       controller: controller,
+      cursorColor: AppColor.subGrey,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(20),
         hintText: hintText,
         hintStyle: AppTextStyle.hKorPreSemiBold16(
-          color: AppColor.subLightGrey,
+          color: AppColor.subGrey,
         ),
         errorText: errorText,
         errorStyle: AppTextStyle.bKorPreRegular14(
-          color: AppColor.subDarkGrey,
+          color: AppColor.mainBlue,
         ),
-        filled: true,
-        fillColor: AppColor.tempGrey,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(5),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
           borderSide: const BorderSide(
-            width: 0,
-            style: BorderStyle.none,
+            color: AppColor.subLightGrey,
           ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(
+            color: AppColor.subLightGrey,
+          ),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(
+            color: AppColor.subLightGrey,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(
+            color: AppColor.subLightGrey,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(),
         ),
       ),
       onChanged: onChanged,

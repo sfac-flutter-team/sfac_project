@@ -17,7 +17,7 @@ class AppTextButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Text(
-        style: AppTextStyle.bKorPreRegular14(color: AppColor.subLightGrey),
+        style: AppTextStyle.bKorPreRegular14(),
         childText,
       ),
     );

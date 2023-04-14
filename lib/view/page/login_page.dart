@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/login_controller.dart';
-import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_elevated_button.dart';
 import 'package:sfac_project/view/widget/app_text_button.dart';
-import 'package:sfac_project/view/widget/login_text_field.dart';
+import 'package:sfac_project/view/widget/app_text_field.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
@@ -25,19 +24,19 @@ class LoginPage extends GetView<LoginController> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                    width: 140, height: 100, 'assets/images/app_logo.png'),
+                    width: 340, height: 80, 'assets/images/app_logo.png'),
                 const SizedBox(height: 30),
-                LoginTextField(
+                AppTextField(
                   controller: controller.emailController,
                   onChanged: (_) => controller.activateButton(),
                   hintText: '이메일',
                 ),
                 const SizedBox(height: 20),
-                LoginTextField(
+                AppTextField(
                   controller: controller.pwController,
                   onChanged: (_) => controller.activateButton(),
                   hintText: '비밀번호',
-                  obscureText: true,
+                  obscure: true,
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -75,6 +74,7 @@ class LoginPage extends GetView<LoginController> {
                 AppElevatedButton(
                   onPressed: controller.signInWithGoogle,
                   childText: '구글로 로그인',
+                  buttonType: ButtonType.white,
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -84,12 +84,7 @@ class LoginPage extends GetView<LoginController> {
                       childText: '회원가입',
                       onPressed: () => Get.toNamed(AppRoutes.signup),
                     ),
-                    Text(
-                      style: AppTextStyle.bKorPreRegular14(
-                        color: AppColor.subLightGrey,
-                      ),
-                      '|',
-                    ),
+                    const SizedBox(width: 8),
                     AppTextButton(
                       childText: '비밀번호 찾기',
                       onPressed: () => Get.toNamed(AppRoutes.findPassword),
