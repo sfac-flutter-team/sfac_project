@@ -10,6 +10,7 @@ class Team {
     required this.id,
     required this.logo,
     required this.name,
+
   });
 
   factory Team.fromMap(Map<String, dynamic> map) {
@@ -20,3 +21,4 @@ class Team {
     );
   }
 }
+//Get.toNamed('/event', arguments: {'teamInfo': 'teamInfo'})

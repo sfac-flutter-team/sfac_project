@@ -30,12 +30,15 @@ class MyTeamScreen extends GetView<MyTeamController> {
                     );
                   }
                   else {
-                    return Card(
-                      child: ListTile(
-                          leading: CircleAvatar(backgroundImage: NetworkImage(controller.teamInfo.value!.data().logo),backgroundColor: Colors.white,),
-                          title: Text(controller.teamInfo.value!.data().name),
-                          
-                          ),
+                    return Column(
+                      children: [
+                        Card(
+                          child: ListTile(
+                              leading: CircleAvatar(backgroundImage: NetworkImage(controller.teamInfo.value!.data().logo),backgroundColor: Colors.white,),
+                              title: Text(controller.teamInfo.value!.data().name),
+                              ),
+                        ),
+                      ],
                     );
                   }
                 }),
@@ -105,7 +108,7 @@ class MyTeamScreen extends GetView<MyTeamController> {
                   );
                 }
               }),
-            TextButton(onPressed: () => Get.toNamed(AppRoutes.comment), child: Text("응원하러가기"))
+            TextButton(onPressed: () => Get.toNamed(AppRoutes.comment, arguments: [controller.teamInfo,controller.myInfo]), child: Text("응원하러가기"))
           ],
         ),
     );

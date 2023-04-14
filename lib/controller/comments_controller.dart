@@ -1,27 +1,80 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sfac_project/controller/auth_controller.dart';
 
+import '../model/message.dart';
+import '../model/myInfo.dart';
 import '../model/team.dart';
-import '../service/db_service.dart';
-import 'auth_controller.dart';
 
-class CommentsController extends GetxController{
-   Rx<User> get user => Get.find<AuthController>().user!.obs;
-   var db = FirebaseFirestore.instance;
-   Rxn<QueryDocumentSnapshot<Team>> teamInfo = Rxn<QueryDocumentSnapshot<Team>>();
-   int? team;
-
-   getData() async{
-    var result = await db.collection("userInfo").doc(user.value.uid).get();
-    print(result.data()!['teamId']);
-      team = result.data()!['teamId'];
-     teamInfo.value = await DBService().getTeamWithId(team!)?? "null";
-  }
+class CommentsController extends GetxController {
+  Rxn<QueryDocumentSnapshot<Team>> teamInfo = Get.arguments[0];
+  TextEditingController textEditingController = TextEditingController();
+  MyInfo myInfo = Get.arguments[1];
+  FocusNode focusNode = FocusNode();
+  User user = Get.find<AuthController>().user!;
 
   @override
-   void onInit() async{
+  void onInit() async {
     super.onInit();
-    await getData();
-   }
+  }
+
+  Stream<List<Message>> streamMessages() {
+    try {
+      //찾고자 하는 컬렉션의 스냅샷(Stream)을 가져온다.
+      final FirebaseFirestore firestore = FirebaseFirestore.instance;
+      final CollectionReference myCollection = firestore
+          .collection('teams/${teamInfo.value!.data().id.toString()}/messages');
+      //final Stream<QuerySnapshot> snapshots = myCollection.snapshots();
+
+      return myCollection.snapshots().asyncMap((querySnapshot) async {
+        final docs = querySnapshot.docs;
+        final data = <Message>[];
+        for (final doc in docs) {
+          final docRef = doc.get('myInfo');
+          final String content = doc.get('content');
+          final int sendDate = doc.get('sendDate');
+          final DocumentSnapshot refDocSnapshot = await docRef.get();
+          final String name = refDocSnapshot.get('name') as String;
+          final String? photoUrl = refDocSnapshot.get('photoUrl') as String;
+          data.add(Message(
+              content: content,
+              sendDate: DateTime.fromMillisecondsSinceEpoch(sendDate),
+              myInfo: MyInfo(name: name, photoUrl: photoUrl)));
+        }
+        data.sort((a, b) => -a.sendDate.compareTo(b.sendDate));
+        return data;
+      });
+    } catch (ex) {
+      //오류 발생 처리
+
+      return Stream.error(ex.toString());
+    }
+  }
+
+  void onPressedSendButton() {
+    try {
+      final FirebaseFirestore firestore = FirebaseFirestore.instance;
+      final CollectionReference myCollection = firestore
+          .collection('teams/${teamInfo.value!.data().id.toString()}/messages');
+
+      final DocumentReference docRef =
+          firestore.collection('userInfo').doc(user.uid);
+
+      Map<String, dynamic> data = {
+        'content': textEditingController.text,
+        'sendDate': DateTime.now().millisecondsSinceEpoch,
+        'myInfo': docRef // Reference 추가
+      };
+      myCollection.add(data);
+      textEditingController.clear();
+      focusNode.unfocus();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  
 }

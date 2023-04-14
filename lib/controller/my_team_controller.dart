@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/model/fixture.dart';
 
+import '../model/myInfo.dart';
 import '../model/standing.dart';
 import '../model/team.dart';
 import '../service/db_service.dart';
@@ -14,7 +15,7 @@ class MyTeamController extends GetxController {
   var db = FirebaseFirestore.instance;
   Rxn<QueryDocumentSnapshot<Team>> teamInfo =
       Rxn<QueryDocumentSnapshot<Team>>();
-  int? team;
+  MyInfo? myInfo;
   Rxn<QueryDocumentSnapshot<Standing>> teamRank =
       Rxn<QueryDocumentSnapshot<Standing>>();
   Rxn<Fixture> teamResult = Rxn<Fixture>();
@@ -22,44 +23,42 @@ class MyTeamController extends GetxController {
 
   getData() async {
     var result = await db.collection("userInfo").doc(user.value.uid).get();
-    print(result.data()!['teamId']);
-    team = result.data()!['teamId'];
-    teamInfo.value = await DBService().getTeamWithId(team!) ?? "null";
+    myInfo = MyInfo.fromMap(result.data() as Map<String, dynamic>);
+    if (myInfo!.teamId != null) {
+      teamInfo.value = await DBService().getTeamWithId(myInfo!.teamId!);
+      getUpadateTeam();
+    }
   }
 
   getUpadateTeam() async {
     var docRef = db.collection('userInfo').doc(user.value.uid);
     docRef.snapshots().listen((event) async {
-      team = event.data()!['teamId'];
-      teamInfo.value = await DBService().getTeamWithId(team!) ?? 'null';
-      print(teamInfo.value!.data().name);
+      myInfo = MyInfo.fromMap(event.data()!);
+      teamInfo.value = await DBService().getTeamWithId(myInfo!.teamId!);
       getRank();
       getTeamResult();
       getNextSchedule();
     });
   }
 
-  @override
-  void onInit() async {
-    super.onInit();
-    await getData();
-    getUpadateTeam();
-  }
-
   getRank() async {
-    teamRank.value = await DBService().getStandingWithId(team!) ?? 'null';
-    print(teamRank.value!.data().rank);
+    teamRank.value = await DBService().getStandingWithId(myInfo!.teamId!);
   }
 
   getTeamResult() async {
     teamResult.value =
-        await DBService().getLastFixturesWithTeamId(team!) ?? 'null';
-    print(teamResult.value!.home.name + '상대정보');
+        await DBService().getLastFixturesWithTeamId(myInfo!.teamId!);
   }
 
   getNextSchedule() async {
     teamSchedule.value =
-        await DBService().getNextScheduleWithTeamId(team!) ?? 'null';
-    print(teamSchedule.value!.home.name + '다음스케줄');
+        await DBService().getNextScheduleWithTeamId(myInfo!.teamId!);
+  }
+
+  @override
+  void onInit() async {
+    super.onInit();
+    await getData();
+    
   }
 }
