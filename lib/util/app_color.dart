@@ -12,6 +12,7 @@ class AppColor {
   static const Color subGrey = Color(0xFFB4B4B4); //서브컬러 회색 (사용함)
   static const Color lightMint = Color(0xFFB1FFFA); //서브컬러 밝은민트색?
   static const Color deepMint = Color(0xFF9EFFC5); //서브컬러 민트색
+  static const Color lightskyBlue = Color(0x180538FF); //밝은 하늘색(select할때 타일 컬러)
 
   static const Color tempGrey = Color(0xFFEEEEF2);
 

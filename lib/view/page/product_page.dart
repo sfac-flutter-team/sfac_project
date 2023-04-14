@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/model/product.dart';
 import 'package:sfac_project/model/shoppingbasket.dart';
@@ -76,7 +77,7 @@ class _ProductPageState extends State<ProductPage> {
                   () => Text(
                     shoppingBasketController.shoppingBasket.value.length
                         .toString(),
-                    style: TextStyle(fontSize: 10),
+                    style: AppTextStyle.bEngPretendard14,
                   ),
                 ),
               ),
@@ -88,58 +89,62 @@ class _ProductPageState extends State<ProductPage> {
         child: Column(
           children: [
             Expanded(
-              child:
-                  ListView(physics: const BouncingScrollPhysics(), children: [
-                Image.network(widget.product.imageUrl),
-                Text(
-                  widget.product.productName,
-                  style: AppTextStyle.bEngPretendard20,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  '${widget.product.price} 원',
-                  style: AppTextStyle.hKorPreSemiBold20(),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                const Text(
-                  '상세설명',
-                  style: TextStyle(color: AppColor.mainBlue),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  widget.product.productInfo,
-                  style: AppTextStyle.bKorPreRegular14(),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  '배송',
-                  style: TextStyle(color: AppColor.mainBlue),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(widget.product.delivery,
-                    style: AppTextStyle.bKorPreRegular14()),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  '세부 사항',
-                  style: TextStyle(color: AppColor.mainBlue),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                for (var data in widget.product.productDetail) Text('- ${data}')
-              ]),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child:
+                    ListView(physics: const BouncingScrollPhysics(), children: [
+                  Image.network(widget.product.imageUrl),
+                  Text(
+                    widget.product.productName,
+                    style: AppTextStyle.bEngPretendard20,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    '${NumberFormat('###,###,###').format(widget.product.price)} 원',
+                    style: AppTextStyle.hKorPreSemiBold20(),
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Text(
+                    '상세설명',
+                    style: TextStyle(color: AppColor.mainBlue),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    widget.product.productInfo,
+                    style: AppTextStyle.bKorPreRegular14(),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    '배송',
+                    style: TextStyle(color: AppColor.mainBlue),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(widget.product.delivery,
+                      style: AppTextStyle.bKorPreRegular14()),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    '세부 사항',
+                    style: TextStyle(color: AppColor.mainBlue),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  for (var data in widget.product.productDetail)
+                    Text('- ${data}')
+                ]),
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
@@ -178,10 +183,14 @@ class _ProductPageState extends State<ProductPage> {
                                               handleSelectOption(index);
                                             });
                                           },
-                                          selectedTileColor: AppColor.mainBlue,
+                                          selectedTileColor:
+                                              AppColor.lightskyBlue,
                                           selected: selectedOptionIdx == index,
                                           title: Text(
-                                              widget.product.option![index]),
+                                            widget.product.option![index],
+                                            style: const TextStyle(
+                                                color: AppColor.black),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -224,7 +233,7 @@ class _ProductPageState extends State<ProductPage> {
                                                     ],
                                                   ),
                                                   Text(
-                                                      '총 ${widget.product.price * amount}'),
+                                                      '총 ${NumberFormat('###,###,###').format(widget.product.price * amount)}원'),
                                                   AppElevatedButton(
                                                     childText: '장바구니',
                                                     onPressed: () {
