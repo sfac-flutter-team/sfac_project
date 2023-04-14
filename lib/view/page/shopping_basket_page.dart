@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_color.dart';
@@ -98,7 +99,7 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                               icon: const Icon(Icons.close),
                             ),
                             Text(
-                                '${controller.shoppingBasket[index].product.price * amount.value} 원')
+                                '${NumberFormat('###,###,###').format(controller.shoppingBasket[index].product.price * amount.value)} 원')
                           ],
                         ),
                       ],
@@ -108,7 +109,8 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
               },
             ),
           ),
-          Text('총 ${controller.totalPrice.value}원')
+          Text(
+              '총 ${NumberFormat('###,###,###,###').format(controller.totalPrice.value)}원')
         ]),
       ),
     );

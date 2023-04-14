@@ -29,18 +29,20 @@ class ShoppingBasketController extends GetxController {
         List<String>.from(shoppingBasket.value.map((e) => e.toJson()).toList());
     var prefs = await SharedPreferences.getInstance();
     prefs.setStringList('shoppingBasket', data);
+    carculateTotalPrice();
   }
 
   // RxList
   addShoppingBasket(ShoppingBasket basket) => shoppingBasket.add(basket);
 
-  removeShoppingBasket(index) => shoppingBasket.removeAt(index);
+  removeShoppingBasket(index) {
+    shoppingBasket.removeAt(index);
+  }
 
   handleAmountUp(amount, index) {
     amount.value += 1;
     shoppingBasket[index].quantity += 1;
     saveShoppingBasket(shoppingBasket);
-    carculateTotalPrice();
   }
 
   handleAmountDown(amount, index) {
@@ -48,7 +50,6 @@ class ShoppingBasketController extends GetxController {
       amount.value -= 1;
       shoppingBasket[index].quantity -= 1;
       saveShoppingBasket(shoppingBasket);
-      carculateTotalPrice();
     }
   }
 
