@@ -68,9 +68,14 @@ class CommentsPage extends GetView<CommentsController> {
                                     return ListTile(
                                       title: Text(messages[index].content),
                                       leading: CircleAvatar(
-                                        backgroundImage: messages[index].myInfo.photoUrl != null ?
-                                        NetworkImage(controller.myInfo.photoUrl.toString()):null
-                                      ),
+                                          backgroundImage:
+                                              messages[index].myInfo.photoUrl !=
+                                                      null
+                                                  ? NetworkImage(messages[index]
+                                                      .myInfo
+                                                      .photoUrl
+                                                      .toString())
+                                                  : null),
                                       subtitle: Text(
                                           '${messages[index].myInfo.name}  ${DateFormat("yyyy년 MM월 dd일 hh시 mm분").format(messages[index].sendDate)}'),
                                     );

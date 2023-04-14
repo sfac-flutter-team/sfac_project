@@ -38,17 +38,26 @@ class FindPasswordPage extends GetView<FindPasswordController> {
               Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AppTextField(
                       hintText: '이메일을 입력하세요',
-                      errorText: '비밀번호 재설정 메일을 보냅니다.',
                       controller: controller.pwFindController,
                     ),
-                    const SizedBox(height: 44),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10.0),
+                      child: Text(
+                        style: AppTextStyle.bKorPreRegular14(
+                            color: AppColor.subDarkGrey),
+                        '비밀번호 재설정 메일을 보냅니다.',
+                      ),
+                    ),
+                    const SizedBox(height: 47),
                     AppElevatedButton(
                       childText: '확인',
                       onPressed: () => controller
-                          .resetPassword(controller.pwFindController.text), 
+                          .resetPassword(controller.pwFindController.text),
                     ),
                   ],
                 ),

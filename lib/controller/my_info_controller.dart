@@ -18,9 +18,9 @@ class MyInfoController extends GetxController {
   Rx<User> get user => Get.find<AuthController>().user!.obs;
   var db = FirebaseFirestore.instance;
   Rxn<QueryDocumentSnapshot<Team>> teamInfo =
-  Rxn<QueryDocumentSnapshot<Team>>();
+      Rxn<QueryDocumentSnapshot<Team>>();
   Rxn<String> profileUrl =
-  Rxn<String>(Get.find<AuthController>().user!.photoURL);
+      Rxn<String>(Get.find<AuthController>().user!.photoURL);
 
   Future<int> getData() async {
     var result = await db.collection("userInfo").doc(user.value.uid).get();
@@ -44,7 +44,7 @@ class MyInfoController extends GetxController {
     }
     Get.back();
   }
- 
+
   camera() async {
     var picker = ImagePicker();
     var res = await picker.pickImage(source: ImageSource.camera);
@@ -58,6 +58,7 @@ class MyInfoController extends GetxController {
     }
     Get.back();
   }
+
   void openBottomSheet() {
     Get.bottomSheet(Column(
       children: [
@@ -72,19 +73,19 @@ class MyInfoController extends GetxController {
       child: Column(
         children: [
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
-                    .update({"teamId": 33})
-                  ..onError((e, _) => print("Error writing document: $e"));
+                    .update({"teamId": 33}).onError(
+                        (e, _) => print("Error writing document: $e"));
                 getData();
                 Get.back();
               },
               child: Text("맨체스터 유나이티드")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 34});
@@ -93,8 +94,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("뉴캐슬")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 35});
@@ -103,8 +104,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("본머스")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 36});
@@ -113,8 +114,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("풀럼")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 39});
@@ -123,8 +124,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("울버햄튼")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 40});
@@ -133,8 +134,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("리버풀")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 41});
@@ -143,8 +144,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("사우스햄튼")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 42});
@@ -153,8 +154,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("아스널")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 45});
@@ -163,8 +164,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("에버튼")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 46});
@@ -173,8 +174,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("레스터시티")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 47});
@@ -183,8 +184,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("토트넘")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 48});
@@ -193,8 +194,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("웨스트햄")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 49});
@@ -203,8 +204,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("첼시")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 50});
@@ -213,8 +214,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("맨체스터 시티")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 51});
@@ -223,8 +224,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("브라이튼")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 52});
@@ -233,8 +234,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("크리스탈 팰리스")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 55});
@@ -243,8 +244,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("브렌트포드")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 63});
@@ -253,8 +254,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("리즈")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 65});
@@ -263,8 +264,8 @@ class MyInfoController extends GetxController {
               },
               child: Text("노팅엄 포레스트")),
           TextButton(
-              onPressed: () {
-                db
+              onPressed: () async {
+                await db
                     .collection("userInfo")
                     .doc(user.value.uid)
                     .update({"teamId": 66});

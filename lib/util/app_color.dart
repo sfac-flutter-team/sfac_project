@@ -7,9 +7,10 @@ class AppColor {
   static const Color darkWhite = Color(0xFFF8F8F8); //어두운 흰색
   static const Color mainBlue = Color(0xFF124DDD); //메인블루 (사용함)
   static const Color mainDarkBlue = Color(0xFF0030AC); //어두운블루
-  static const Color subDarkGrey = Color(0xFF767676); //서브컬러 어두운회색
-  static const Color subLightGrey = Color(0xFFB1B1B1); //서브컬러 밝은회색 (사용함)
-  static const Color subGrey = Color(0xFFB4B4B4); //서브컬러 회색 (사용함)
+  static const Color subDarkGrey = Color(0xFF767676); //서브컬러 어두운회색 (사용함)
+  static const Color subLightGrey =
+      Color(0xFFDADADA); //서브컬러 밝은회색 (사용함) -> 색 변경 필요
+  static const Color subGrey = Color(0xFF8E8E8E); //서브컬러 회색 (사용함)
   static const Color lightMint = Color(0xFFB1FFFA); //서브컬러 밝은민트색?
   static const Color deepMint = Color(0xFF9EFFC5); //서브컬러 민트색
   static const Color lightskyBlue = Color(0x180538FF); //밝은 하늘색(select할때 타일 컬러)
