@@ -60,7 +60,7 @@ class AppDialog extends StatelessWidget {
             child: Text(
               content,
               textAlign: TextAlign.center,
-              style: AppTextStyle.bKorPreRegular20,
+              style: AppTextStyle.bKorPreRegular20(),
             ),
           ),
           const Divider(

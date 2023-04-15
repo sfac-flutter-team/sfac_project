@@ -8,6 +8,8 @@ class FixtureController extends GetxController {
   Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now()); // 선택된 날짜
   QueryDocumentSnapshot<dynamic>? fixtures; //전체 경기 결과 및 일정
   RxList currentFixtures = [].obs; //선택된 날짜의 경기 및 일정
+  RxBool isLoading = false.obs; //데이터 로딩 중 체크
+  DateTime? tempTime;
 
   selectDate(BuildContext context) async {
     selectedDate.value = await showDatePicker(
@@ -24,8 +26,10 @@ class FixtureController extends GetxController {
 
   //전체 결과 및 일정 가져오기
   readFixtures() async {
+    isLoading(true);
     fixtures = await DBService().readFixtures();
     filteringFixtures(selectedDate.value);
+    isLoading(false);
   }
 
   //날짜에 맞는 결과 및 일정만 필터링

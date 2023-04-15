@@ -21,14 +21,14 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
         backgroundColor: AppColor.mainBlue,
         foregroundColor: AppColor.white,
         title: const Text('장바구니'),
-        actions: [
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                '상품 삭제',
-                style: TextStyle(color: AppColor.white),
-              ))
-        ],
+        // actions: [
+        //   TextButton(
+        //       onPressed: () {},
+        //       child: const Text(
+        //         '상품 삭제',
+        //         style: TextStyle(color: AppColor.white),
+        //       ))
+        // ],
       ),
       body: Obx(
         () => Column(children: [

@@ -201,12 +201,12 @@ class MyInfoScreen extends GetView<MyInfoController> {
                     leading: CircleAvatar(
                       radius: 40,
                     ),
-                    title:
-                        Text('팀을선택해주세요', style: AppTextStyle.bKorPreRegular20),
+                    title: Text('팀을선택해주세요',
+                        style: AppTextStyle.bKorPreRegular20()),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam,
-                        child: const Text("선택",
-                            style: AppTextStyle.bKorPreRegular20)),
+                        child:
+                            Text("선택", style: AppTextStyle.bKorPreRegular20())),
                   ),
                 ),
               );
@@ -232,12 +232,12 @@ class MyInfoScreen extends GetView<MyInfoController> {
                           Image.network(controller.teamInfo.value!.data().logo),
                     ),
                     title: Text(controller.teamInfo.value!.data().name,
-                        style: AppTextStyle.bKorPreRegular20),
+                        style: AppTextStyle.bKorPreRegular20()),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam,
-                        child: const Text(
+                        child: Text(
                           "선택",
-                          style: AppTextStyle.bKorPreRegular20,
+                          style: AppTextStyle.bKorPreRegular20(),
                         )),
                   ),
                 ),
