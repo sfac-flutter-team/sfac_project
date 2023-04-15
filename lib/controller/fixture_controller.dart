@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sfac_project/service/db_service.dart';
+import 'package:sfac_project/util/app_color.dart';
 
 class FixtureController extends GetxController {
   Rx<DateTime> selectedDate = Rx<DateTime>(DateTime.now()); // 선택된 날짜
@@ -14,10 +15,21 @@ class FixtureController extends GetxController {
   selectDate(BuildContext context) async {
     selectedDate.value = await showDatePicker(
           context: context,
-          initialDate: DateTime.now(),
+          initialDate: selectedDate.value,
           firstDate: DateTime(DateTime.now().year - 1),
           lastDate: DateTime(DateTime.now().year + 1),
           currentDate: selectedDate.value,
+          builder: (context, child) {
+            return Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: const ColorScheme.light(
+                  primary: AppColor.mainBlue, // <-- SEE HERE
+                  onSurface: AppColor.mainDarkBlue, // <-- SEE HERE
+                ),
+              ),
+              child: child!,
+            );
+          },
         ) ??
         selectedDate.value;
 

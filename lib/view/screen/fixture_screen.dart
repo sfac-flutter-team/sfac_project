@@ -5,6 +5,7 @@ import 'package:sfac_project/controller/fixture_controller.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/app_progress_indicator.dart';
 import 'package:sfac_project/view/widget/fixture_card.dart';
 import 'package:sfac_project/view/widget/schedule_card.dart';
 
@@ -58,14 +59,7 @@ class FixtureScreen extends GetView<FixtureController> {
         ),
         Obx(() {
           if (controller.isLoading.value) {
-            return const Expanded(
-              child: Align(
-                alignment: Alignment.center,
-                child: CircularProgressIndicator(
-                  color: AppColor.mainBlue,
-                ),
-              ),
-            );
+            return const AppProgressIndicator();
           } else {
             if (controller.currentFixtures.isNotEmpty) {
               return Expanded(
