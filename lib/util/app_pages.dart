@@ -30,17 +30,13 @@ class AppPages {
         page: () => const FindPasswordPage(),
         transition: Transition.fadeIn), //비밀번호 찾기
     GetPage(
-        name: AppRoutes.myInfo,
-        page: () => const MyInfoScreen(),
-        transition: Transition.fadeIn), //내 정보 페이지
-    GetPage(
         name: AppRoutes.lineup,
         page: () => const LineupPage(),
         transition: Transition.fadeIn), //라인업 페이지
     GetPage(
         name: AppRoutes.comment,
         page: () => const CommentsPage(),
-        transition: Transition.fadeIn),
+        transition: Transition.fadeIn), // 응원 댓글 페이지
     GetPage(
         name: AppRoutes.product,
         page: () => ProductPage(product: Get.arguments),

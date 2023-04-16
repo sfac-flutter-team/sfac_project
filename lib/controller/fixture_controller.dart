@@ -23,8 +23,8 @@ class FixtureController extends GetxController {
             return Theme(
               data: Theme.of(context).copyWith(
                 colorScheme: const ColorScheme.light(
-                  primary: AppColor.mainBlue, // <-- SEE HERE
-                  onSurface: AppColor.mainDarkBlue, // <-- SEE HERE
+                  primary: AppColor.mainBlue,
+                  onSurface: AppColor.mainDarkBlue,
                 ),
               ),
               child: child!,
