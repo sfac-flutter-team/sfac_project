@@ -116,4 +116,8 @@ class AppTextStyle {
   //본문(body) 한글 프리텐다드 레귤러폰트 14사이즈 (사용함)
   static TextStyle bKorPreRegular14({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 14, color: color);
+
+  //본문(body) 한글 프리텐다드 레귤러폰트 12사이즈 (사용함)
+  static TextStyle bKorPreRegular12({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 12, color: color);
 }
