@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:sfac_project/controller/buyer_info_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/model/product.dart';
 import 'package:sfac_project/model/shoppingbasket.dart';
@@ -174,6 +175,7 @@ class _ProductPageState extends State<ProductPage> {
                           builder:
                               (BuildContext context, StateSetter bottomState) =>
                                   AppBottomSheet(
+                            height: MediaQuery.of(context).size.height / 2,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -234,6 +236,10 @@ class _ProductPageState extends State<ProductPage> {
                                                       StateSetter
                                                           bottomState) =>
                                                   AppBottomSheet(
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    2,
                                                 child: Column(
                                                   children: [
                                                     Expanded(
@@ -306,17 +312,23 @@ class _ProductPageState extends State<ProductPage> {
                                                             child:
                                                                 AppElevatedButton(
                                                               childText: '바로구매',
-                                                              onPressed: () => Get.toNamed(
-                                                                  AppRoutes
-                                                                      .buyerinfo,
-                                                                  arguments: ShoppingBasket(
-                                                                      quantity:
-                                                                          amount,
-                                                                      product:
-                                                                          widget
+                                                              onPressed: () {
+                                                                Get.toNamed(
+                                                                    AppRoutes
+                                                                        .buyerinfo,
+                                                                    arguments: {
+                                                                      'shoppingBasket': ShoppingBasket(
+                                                                          quantity:
+                                                                              amount,
+                                                                          product: widget
                                                                               .product,
-                                                                      selectedOption:
-                                                                          selectedOption)),
+                                                                          selectedOption:
+                                                                              selectedOption),
+                                                                      'buyType':
+                                                                          BuyType
+                                                                              .fromProductPage,
+                                                                    });
+                                                              },
                                                               buttonType:
                                                                   ButtonType
                                                                       .white,
