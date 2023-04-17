@@ -7,6 +7,7 @@ import 'package:sfac_project/view/page/find_password_page.dart';
 import 'package:sfac_project/view/page/lineup_page.dart';
 import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
+import 'package:sfac_project/view/page/my_comments_page.dart';
 import 'package:sfac_project/view/page/product_page.dart';
 import 'package:sfac_project/view/page/purchase_history_page.dart';
 import 'package:sfac_project/view/page/shopping_basket_page.dart';
@@ -38,6 +39,7 @@ class AppPages {
     GetPage(name: AppRoutes.calculate, page: () => const CalculatePage()), //계산
     GetPage(
         name: AppRoutes.purchasehistory,
-        page: () => const PurchaseHistoryPage())
+        page: () => const PurchaseHistoryPage()),
+    GetPage(name: AppRoutes.myComments, page: () => const MyCommentsPage()),    
   ];
 }

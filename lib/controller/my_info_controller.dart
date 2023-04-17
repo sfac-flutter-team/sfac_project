@@ -31,31 +31,18 @@ class MyInfoController extends GetxController {
 
   logout() => Get.find<AuthController>().logout();
 
-  gallery() async {
-    var picker = ImagePicker();
-    var res = await picker.pickImage(source: ImageSource.gallery);
-    if (res != null) {
-      var ref = FirebaseStorage.instance.ref('profile/${user.value.uid}');
-      await ref.putFile(File(res.path));
-      var downloadUrl = await ref.getDownloadURL();
-      user.value.updatePhotoURL(downloadUrl);
-      profileUrl(downloadUrl);
-      DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
-    }
+  
+  gallery() async{
+    var storageService = StorageService();
+    var url = await storageService.gallery();
+    profileUrl.value = url.value;
     Get.back();
   }
 
-  camera() async {
-    var picker = ImagePicker();
-    var res = await picker.pickImage(source: ImageSource.camera);
-    if (res != null) {
-      var ref = FirebaseStorage.instance.ref('profile/${user.value.uid}');
-      await ref.putFile(File(res.path));
-      var downloadUrl = await ref.getDownloadURL();
-      user.value.updatePhotoURL(downloadUrl);
-      profileUrl(downloadUrl);
-      DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
-    }
+  camera() async{
+    var storageService = StorageService();
+    var url = await storageService.camera();
+    profileUrl.value = url.value;
     Get.back();
   }
 
@@ -68,211 +55,99 @@ class MyInfoController extends GetxController {
     ));
   }
 
+  Future<void> updateTeamId(int teamId) async {
+  await db
+      .collection("userInfo")
+      .doc(user.value.uid)
+      .update({"teamId": teamId});
+  getData();
+  Get.back();
+}
+
   void choiceTeam() {
     Get.bottomSheet(SingleChildScrollView(
       child: Column(
         children: [
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 33}).onError(
-                        (e, _) => print("Error writing document: $e"));
-                getData();
-                Get.back();
-              },
-              child: Text("맨체스터 유나이티드")),
+              onPressed: () => updateTeamId(33),
+              child: Text("맨체스터 유나이티드"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 34});
-                getData();
-                Get.back();
-              },
-              child: Text("뉴캐슬")),
+              onPressed: () => updateTeamId(34),
+              child: Text("뉴캐슬"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 35});
-                getData();
-                Get.back();
-              },
-              child: Text("본머스")),
+              onPressed: () => updateTeamId(35),
+              child: Text("본머스"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 36});
-                getData();
-                Get.back();
-              },
-              child: Text("풀럼")),
+              onPressed: () => updateTeamId(36),
+              child: Text("풀럼"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 39});
-                getData();
-                Get.back();
-              },
-              child: Text("울버햄튼")),
+              onPressed: () => updateTeamId(39),
+              child: Text("울버햄튼"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 40});
-                getData();
-                Get.back();
-              },
-              child: Text("리버풀")),
+              onPressed: () => updateTeamId(40),
+              child: Text("리버풀"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 41});
-                getData();
-                Get.back();
-              },
-              child: Text("사우스햄튼")),
+              onPressed: () => updateTeamId(41),
+              child: Text("사우스햄튼"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 42});
-                getData();
-                Get.back();
-              },
-              child: Text("아스널")),
+              onPressed: () => updateTeamId(42),
+              child: Text("아스널"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 45});
-                getData();
-                Get.back();
-              },
-              child: Text("에버튼")),
+              onPressed: () => updateTeamId(45),
+              child: Text("에버튼"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 46});
-                getData();
-                Get.back();
-              },
-              child: Text("레스터시티")),
+              onPressed: () => updateTeamId(46),
+              child: Text("레스터시티"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 47});
-                getData();
-                Get.back();
-              },
-              child: Text("토트넘")),
+              onPressed: () => updateTeamId(47),
+              child: Text("토트넘"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 48});
-                getData();
-                Get.back();
-              },
-              child: Text("웨스트햄")),
+              onPressed: () => updateTeamId(48),
+              child: Text("웨스트햄"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 49});
-                getData();
-                Get.back();
-              },
-              child: Text("첼시")),
+              onPressed: () => updateTeamId(49),
+              child: Text("첼시"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 50});
-                getData();
-                Get.back();
-              },
-              child: Text("맨체스터 시티")),
+              onPressed: () => updateTeamId(50),
+              child: Text("맨체스터시티"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 51});
-                getData();
-                Get.back();
-              },
-              child: Text("브라이튼")),
+              onPressed: () => updateTeamId(51),
+              child: Text("브라이튼"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 52});
-                getData();
-                Get.back();
-              },
-              child: Text("크리스탈 팰리스")),
+              onPressed: () => updateTeamId(52),
+              child: Text("크리스탈 팰리스"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 55});
-                getData();
-                Get.back();
-              },
-              child: Text("브렌트포드")),
+              onPressed: () => updateTeamId(55),
+              child: Text("브렌트포드"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 63});
-                getData();
-                Get.back();
-              },
-              child: Text("리즈")),
+              onPressed: () => updateTeamId(63),
+              child: Text("리즈"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 65});
-                getData();
-                Get.back();
-              },
-              child: Text("노팅엄 포레스트")),
+              onPressed: () => updateTeamId(65),
+              child: Text("노팅엄 포레스트"),
+              ),
           TextButton(
-              onPressed: () async {
-                await db
-                    .collection("userInfo")
-                    .doc(user.value.uid)
-                    .update({"teamId": 66});
-                getData();
-                Get.back();
-              },
-              child: Text("아스톤빌라")),
+              onPressed: () => updateTeamId(66),
+              child: Text("아스톤빌라"),
+              ),
         ],
       ),
     ));

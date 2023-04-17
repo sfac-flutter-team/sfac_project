@@ -80,32 +80,35 @@ class MyInfoScreen extends GetView<MyInfoController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          width: 115,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13),
-                              color: AppColor.white.withOpacity(0.3)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text("내 댓글",
-                                    style: AppTextStyle.hKorPreSemiBold18(
-                                        color: AppColor.darkWhite)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
-                                child: CircleAvatar(
-                                  radius: 15,
-                                  backgroundColor: Colors.white,
-                                  child: Image.asset('assets/icons/message.png',
-                                      color: AppColor.mainDarkBlue,
-                                      width: 20,
-                                      height: 20),
+                        InkWell(
+                          onTap: () => Get.toNamed(AppRoutes.myComments,arguments: [controller.teamInfo]),
+                          child: Container(
+                            width: 115,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(13),
+                                color: AppColor.white.withOpacity(0.3)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text("내 댓글",
+                                      style: AppTextStyle.hKorPreSemiBold18(
+                                          color: AppColor.darkWhite)),
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                                  child: CircleAvatar(
+                                    radius: 15,
+                                    backgroundColor: Colors.white,
+                                    child: Image.asset('assets/icons/message.png',
+                                        color: AppColor.mainDarkBlue,
+                                        width: 20,
+                                        height: 20),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         InkWell(
