@@ -5,6 +5,7 @@ import 'package:sfac_project/view/page/find_password_page.dart';
 import 'package:sfac_project/view/page/lineup_page.dart';
 import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
+import 'package:sfac_project/view/page/my_comments_page.dart';
 import 'package:sfac_project/view/page/product_page.dart';
 import 'package:sfac_project/view/page/shopping_basket_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
@@ -29,5 +30,6 @@ class AppPages {
     GetPage(
         name: AppRoutes.shoppingbasket,
         page: () => const ShoppingBasketPage()), //장바구니
+    GetPage(name: AppRoutes.myComments, page: () => const MyCommentsPage()),    
   ];
 }

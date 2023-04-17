@@ -2,6 +2,7 @@ import 'package:sfac_project/view/page/find_password_page.dart';
 import 'package:sfac_project/view/page/lineup_page.dart';
 import 'package:sfac_project/view/page/login_page.dart';
 import 'package:sfac_project/view/page/main_page.dart';
+import 'package:sfac_project/view/page/my_comments_page.dart';
 import 'package:sfac_project/view/page/product_page.dart';
 import 'package:sfac_project/view/page/shopping_basket_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
@@ -18,4 +19,5 @@ class AppRoutes {
   static const comment = MyTeamScreen.route;
   static const product = ProductPage.route; // 상품 디테일
   static const shoppingbasket = ShoppingBasketPage.route; //장바구니
+  static const myComments = MyCommentsPage.route;
 }

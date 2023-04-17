@@ -8,6 +8,7 @@ import 'package:sfac_project/controller/find_password_controller.dart';
 import 'package:sfac_project/controller/fixture_controller.dart';
 import 'package:sfac_project/controller/lineup_controller.dart';
 import 'package:sfac_project/controller/login_controller.dart';
+import 'package:sfac_project/controller/my_comments_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/controller/main_controller.dart';
 import 'package:sfac_project/controller/market_controller.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => MarketController(), fenix: true);
         Get.lazyPut(() => RankingController(), fenix: true);
         Get.put(ShoppingBasketController());
+        Get.lazyPut(() => MyCommentsController(), fenix: true);
       }),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
