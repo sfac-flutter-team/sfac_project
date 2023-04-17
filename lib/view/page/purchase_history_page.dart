@@ -20,65 +20,78 @@ class PurchaseHistoryPage extends GetView<PurchaseHistoryController> {
         backgroundColor: AppColor.mainBlue,
         foregroundColor: AppColor.white,
       ),
-      body: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            Expanded(
-              child: Obx(
-                () => ListView.builder(
-                    itemCount: controller.purchaseList.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 350,
-                        height: 153,
-                        margin: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            color: AppColor.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 0,
-                                blurRadius: 7,
-                                offset: const Offset(
-                                    0, 3), // changes position of shadow
-                              ),
-                            ]),
-                        child: Row(
-                          children: [
-                            ClipRRect(
+      body: Column(
+        children: [
+          Expanded(
+            child: Obx(
+              () => ListView.builder(
+                  itemCount: controller.purchaseList.length,
+                  itemBuilder: (context, parentIdx) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: controller.purchaseList[parentIdx]
+                          .data()
+                          .shoppingBasket
+                          .length,
+                      itemBuilder: (context, index) {
+                        var currentProduct = controller.purchaseList[parentIdx]
+                            .data()
+                            .shoppingBasket[index];
+                        return Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 46, vertical: 16),
+                          decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(24),
-                              child: Image.network(
-                                controller.purchaseList[index]
-                                    .data()
-                                    .shoppingBasket[index]
-                                    .product
-                                    .imageUrl,
-                                width: 86,
-                                height: 120,
+                              color: AppColor.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 0,
+                                  blurRadius: 9,
+                                  offset: const Offset(
+                                      0, 6), // changes position of shadow
+                                ),
+                              ]),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(24),
+                                child: Image.network(
+                                  controller.purchaseList[parentIdx]
+                                      .data()
+                                      .shoppingBasket[index]
+                                      .product
+                                      .imageUrl,
+                                  width: 86,
+                                  height: 120,
+                                ),
                               ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(controller.purchaseList[index]
-                                    .data()
-                                    .shoppingBasket[index]
-                                    .product
-                                    .productName),
-                                Text(
-                                    '${NumberFormat('###,###').format(controller.purchaseList[index].data().shoppingBasket[index].product.price)} 원')
-                              ],
-                            )
-                          ],
-                        ),
-                      );
-                    }),
-              ),
-            )
-          ],
-        ),
+                              const SizedBox(width: 16),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      currentProduct.product.productName,
+                                    ),
+                                    Text(
+                                        '${NumberFormat('###,###').format(currentProduct.product.price * currentProduct.quantity)} 원'),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }),
+            ),
+          )
+        ],
       ),
     );
   }

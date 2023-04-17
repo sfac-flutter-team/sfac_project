@@ -3,11 +3,20 @@ import 'package:intl/intl.dart';
 import 'package:sfac_project/model/message.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/app_text_button.dart';
+
+enum CommentType { defaultComment, myComment }
 
 class CommentCard extends StatelessWidget {
-  const CommentCard({super.key, required this.message});
+  const CommentCard(
+      {super.key,
+      required this.message,
+      this.commentType = CommentType.defaultComment,
+      this.onDeleted});
 
   final Message message;
+  final CommentType commentType;
+  final Function()? onDeleted;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +42,13 @@ class CommentCard extends StatelessWidget {
                   style: AppTextStyle.hKorPreSemiBold16(),
                   message.myInfo.name,
                 ),
+                const Expanded(child: SizedBox()),
+                if (commentType == CommentType.myComment)
+                  AppTextButton(
+                    childText: '삭제',
+                    buttonColor: AppColor.mainBlue,
+                    onPressed: onDeleted ?? () {},
+                  ),
               ],
             ),
             Padding(

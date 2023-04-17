@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sfac_project/util/app_color.dart';
@@ -23,28 +22,6 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return CupertinoAlertDialog(
-    //   content: Padding(
-    //     padding: const EdgeInsets.all(16.0),
-    //     child: Text(content, style: AppTextStyle.bKorPreRegular20),
-    //   ),
-    //   actions: [
-    //     CupertinoDialogAction(
-    //       onPressed: onCancel,
-    //       child: Text(
-    //         cancelText,
-    //         style: AppTextStyle.hKorPreSemiBold20(),
-    //       ),
-    //     ),
-    //     CupertinoDialogAction(
-    //       onPressed: onConfirm,
-    //       child: Text(
-    //         confirmText,
-    //         style: AppTextStyle.hKorPreSemiBold20(color: AppColor.mainBlue),
-    //       ),
-    //     ),
-    //   ],
-    // );
     return Dialog(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(

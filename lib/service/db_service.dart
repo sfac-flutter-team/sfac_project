@@ -69,8 +69,11 @@ class DBService {
   createPurchase(Purchase purchase) => purchaseRef.add(purchase);
 
   //구매내역 정보 가져오기
-  Future<List<QueryDocumentSnapshot<Purchase>>> readPurchase() async {
-    var items = await purchaseRef.get();
+  getPurchaseWithId(String uid) async {
+    var items = await purchaseRef
+        .orderBy('orderDate', descending: true)
+        .where('uid', isEqualTo: uid)
+        .get();
     return items.docs;
   }
 
