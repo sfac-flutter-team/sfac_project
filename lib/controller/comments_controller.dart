@@ -4,10 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
-
-import '../model/message.dart';
-import '../model/myInfo.dart';
-import '../model/team.dart';
+import 'package:sfac_project/model/message.dart';
+import 'package:sfac_project/model/myInfo.dart';
+import 'package:sfac_project/model/team.dart';
 
 class CommentsController extends GetxController {
   Rxn<QueryDocumentSnapshot<Team>> teamInfo = Get.arguments[0];

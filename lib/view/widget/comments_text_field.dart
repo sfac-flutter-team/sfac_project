@@ -4,8 +4,12 @@ import 'package:sfac_project/controller/comments_controller.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 
-class CommentsSend extends GetView<CommentsController> {
-  const CommentsSend({super.key});
+class CommentsTextField extends StatelessWidget {
+  const CommentsTextField(
+      {super.key, required this.controller, required this.onPressed});
+
+  final TextEditingController controller;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,7 @@ class CommentsSend extends GetView<CommentsController> {
           children: [
             Expanded(
               child: TextField(
-                controller: controller.textEditingController,
+                controller: controller,
                 focusNode: FocusNode(),
                 cursorColor: AppColor.subGrey,
                 keyboardType: TextInputType.multiline,
@@ -39,7 +43,7 @@ class CommentsSend extends GetView<CommentsController> {
               width: 10,
             ),
             IconButton(
-              onPressed: controller.onPressedSendButton,
+              onPressed: onPressed,
               color: AppColor.mainBlue,
               icon: const Icon(Icons.send),
             )

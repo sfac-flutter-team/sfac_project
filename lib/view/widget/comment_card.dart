@@ -48,7 +48,7 @@ class CommentCard extends StatelessWidget {
               children: [
                 Text(
                   style: AppTextStyle.bKorPreRegular12(color: AppColor.subGrey),
-                  DateFormat("yyyy.MM.dd hh시 mm분").format(message.sendDate),
+                  DateFormat("yyyy.MM.dd HH시 mm분").format(message.sendDate),
                 ),
               ],
             ),

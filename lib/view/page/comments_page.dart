@@ -6,7 +6,7 @@ import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_progress_indicator.dart';
 import 'package:sfac_project/view/widget/comment_card.dart';
-import 'package:sfac_project/view/widget/comments_send.dart';
+import 'package:sfac_project/view/widget/comments_text_field.dart';
 
 class CommentsPage extends GetView<CommentsController> {
   const CommentsPage({super.key});
@@ -78,6 +78,7 @@ class CommentsPage extends GetView<CommentsController> {
                               primary: false,
                               reverse: true,
                               physics: const BouncingScrollPhysics(),
+                              padding: EdgeInsets.zero,
                               itemCount: messages.length,
                               itemBuilder: (context, index) {
                                 return Padding(
@@ -90,7 +91,10 @@ class CommentsPage extends GetView<CommentsController> {
                         }
                       },
                     ),
-                    const CommentsSend(),
+                    CommentsTextField(
+                      controller: controller.textEditingController,
+                      onPressed: controller.onPressedSendButton,
+                    ),
                     const SizedBox(height: 16),
                   ],
                 ),
