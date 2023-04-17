@@ -8,6 +8,7 @@ import 'package:sfac_project/util/app_text_style.dart';
 
 class MarketScreen extends GetView<MarketController> {
   const MarketScreen({super.key});
+  static const route = '/market_screen';
 
   @override
   Widget build(BuildContext context) {

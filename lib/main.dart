@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
+import 'package:sfac_project/controller/buyer_info_controller.dart';
 import 'package:sfac_project/controller/comments_controller.dart';
 import 'package:sfac_project/controller/find_password_controller.dart';
 import 'package:sfac_project/controller/fixture_controller.dart';
@@ -11,6 +12,7 @@ import 'package:sfac_project/controller/login_controller.dart';
 import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/controller/main_controller.dart';
 import 'package:sfac_project/controller/market_controller.dart';
+import 'package:sfac_project/controller/purchase_history_controller.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
@@ -53,6 +55,8 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => CommentsController(), fenix: true);
         Get.lazyPut(() => MarketController(), fenix: true);
         Get.lazyPut(() => RankingController(), fenix: true);
+        Get.lazyPut(() => BuyerInfoController(), fenix: true);
+        Get.lazyPut(() => PurchaseHistoryController(), fenix: true);
         Get.put(ShoppingBasketController());
       }),
       localizationsDelegates: const [

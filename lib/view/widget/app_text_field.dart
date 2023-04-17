@@ -9,18 +9,21 @@ class AppTextField extends StatelessWidget {
       required this.controller,
       this.onChanged,
       this.errorText,
-      this.obscure = false});
+      this.obscure = false,
+      this.readOnly = false});
 
   final String hintText;
   final TextEditingController controller;
   final Function(String)? onChanged;
   final String? errorText;
   final bool obscure;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       obscureText: obscure,
+      readOnly: readOnly,
       controller: controller,
       cursorColor: AppColor.subGrey,
       decoration: InputDecoration(

@@ -108,9 +108,10 @@ class _ProductPageState extends State<ProductPage> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const Text(
+                  Text(
                     '상세설명',
-                    style: TextStyle(color: AppColor.mainBlue),
+                    style: AppTextStyle.hKorPreSemiBold18(
+                        color: AppColor.mainBlue),
                   ),
                   const SizedBox(
                     height: 20,
@@ -122,9 +123,10 @@ class _ProductPageState extends State<ProductPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
+                  Text(
                     '배송',
-                    style: TextStyle(color: AppColor.mainBlue),
+                    style: AppTextStyle.hKorPreSemiBold18(
+                        color: AppColor.mainBlue),
                   ),
                   const SizedBox(
                     height: 20,
@@ -134,9 +136,10 @@ class _ProductPageState extends State<ProductPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
+                  Text(
                     '세부 사항',
-                    style: TextStyle(color: AppColor.mainBlue),
+                    style: AppTextStyle.hKorPreSemiBold18(
+                        color: AppColor.mainBlue),
                   ),
                   const SizedBox(
                     height: 20,
@@ -146,116 +149,209 @@ class _ProductPageState extends State<ProductPage> {
                 ]),
               ),
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: SizedBox(
-                height: 100,
-                width: double.infinity,
-                child: Center(
-                  child: SizedBox(
-                    width: 280,
-                    height: 64,
-                    child: AppElevatedButton(
-                      childText: '구매하기',
-                      onPressed: () {
-                        Get.bottomSheet(
-                          StatefulBuilder(
-                            builder: (BuildContext context,
-                                    StateSetter bottomState) =>
-                                AppBottomSheet(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text('옵션 선택'),
-                                  ),
-                                  if (widget.product.option == null)
-                                    const Text('선택할 옵션이 없습니다.'),
-                                  Expanded(
-                                    child: ListView.builder(
-                                      itemCount:
-                                          widget.product.option?.length ?? 0,
-                                      itemBuilder: (context, index) => Material(
-                                        child: ListTile(
-                                          onTap: () {
-                                            bottomState(() {
-                                              handleSelectOption(index);
-                                            });
-                                          },
-                                          selectedTileColor:
-                                              AppColor.lightskyBlue,
-                                          selected: selectedOptionIdx == index,
-                                          title: Text(
-                                            widget.product.option![index],
-                                            style: const TextStyle(
-                                                color: AppColor.black),
-                                          ),
+            Container(
+              height: 99,
+              decoration: BoxDecoration(
+                color: AppColor.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Center(
+                child: SizedBox(
+                  width: 280,
+                  height: 64,
+                  child: AppElevatedButton(
+                    childText: '구매하기',
+                    onPressed: () {
+                      Get.bottomSheet(
+                        StatefulBuilder(
+                          builder:
+                              (BuildContext context, StateSetter bottomState) =>
+                                  AppBottomSheet(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text('옵션 선택'),
+                                ),
+                                if (widget.product.option == null)
+                                  const Text('선택할 옵션이 없습니다.'),
+                                Expanded(
+                                  child: ListView.builder(
+                                    itemCount:
+                                        widget.product.option?.length ?? 0,
+                                    itemBuilder: (context, index) => Material(
+                                      child: ListTile(
+                                        onTap: () {
+                                          bottomState(() {
+                                            handleSelectOption(index);
+                                          });
+                                        },
+                                        selectedTileColor:
+                                            AppColor.lightskyBlue,
+                                        selected: selectedOptionIdx == index,
+                                        title: Text(
+                                          widget.product.option![index],
+                                          style: const TextStyle(
+                                              color: AppColor.black),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: AppElevatedButton(
-                                      childText: '선택 완료',
-                                      onPressed: () {
-                                        Get.back();
-                                        Get.bottomSheet(
-                                          StatefulBuilder(
-                                            builder: (BuildContext context,
-                                                    StateSetter bottomState) =>
-                                                AppBottomSheet(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    selectedOption ??
-                                                        '선택된 옵션이 없습니다.',
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      IconButton(
-                                                          icon: const Icon(
-                                                              Icons.remove),
-                                                          onPressed: () =>
-                                                              bottomState(() {
-                                                                handleAmountDown();
-                                                              })),
-                                                      Text(amount.toString()),
-                                                      IconButton(
-                                                        icon: const Icon(
-                                                            Icons.add),
-                                                        onPressed: () =>
-                                                            bottomState(() {
-                                                          handleAmountUp();
-                                                        }),
+                                ),
+                                Container(
+                                  height: 99,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.5),
+                                        spreadRadius: 5,
+                                        blurRadius: 7,
+                                        offset: const Offset(
+                                            0, 3), // changes position of shadow
+                                      ),
+                                    ],
+                                  ),
+                                  child: Center(
+                                    child: SizedBox(
+                                      width: 280,
+                                      height: 64,
+                                      child: AppElevatedButton(
+                                        childText: '선택 완료',
+                                        onPressed: () {
+                                          Get.back();
+                                          Get.bottomSheet(
+                                            StatefulBuilder(
+                                              builder: (BuildContext context,
+                                                      StateSetter
+                                                          bottomState) =>
+                                                  AppBottomSheet(
+                                                child: Column(
+                                                  children: [
+                                                    Expanded(
+                                                      child:
+                                                          SingleChildScrollView(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              selectedOption ??
+                                                                  '선택된 옵션이 없습니다.',
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                IconButton(
+                                                                    icon: const Icon(
+                                                                        Icons
+                                                                            .remove),
+                                                                    onPressed: () =>
+                                                                        bottomState(
+                                                                            () {
+                                                                          handleAmountDown();
+                                                                        })),
+                                                                Text(amount
+                                                                    .toString()),
+                                                                IconButton(
+                                                                  icon: const Icon(
+                                                                      Icons
+                                                                          .add),
+                                                                  onPressed: () =>
+                                                                      bottomState(
+                                                                          () {
+                                                                    handleAmountUp();
+                                                                  }),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Text(
+                                                                '총 ${NumberFormat('###,###,###').format(widget.product.price * amount)}원'),
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ],
-                                                  ),
-                                                  Text(
-                                                      '총 ${NumberFormat('###,###,###').format(widget.product.price * amount)}원'),
-                                                  AppElevatedButton(
-                                                    childText: '장바구니',
-                                                    onPressed: () {
-                                                      handleOnPurchase();
-                                                      Get.back();
-                                                    },
-                                                  ),
-                                                ],
+                                                    ),
+                                                    Container(
+                                                      height: 99,
+                                                      decoration: BoxDecoration(
+                                                        color: AppColor.white,
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey
+                                                                .withOpacity(
+                                                                    0.5),
+                                                            spreadRadius: 5,
+                                                            blurRadius: 7,
+                                                            offset: const Offset(
+                                                                0,
+                                                                3), // changes position of shadow
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          SizedBox(
+                                                            width: 163,
+                                                            child:
+                                                                AppElevatedButton(
+                                                              childText: '바로구매',
+                                                              onPressed: () => Get.toNamed(
+                                                                  AppRoutes
+                                                                      .buyerinfo,
+                                                                  arguments: ShoppingBasket(
+                                                                      quantity:
+                                                                          amount,
+                                                                      product:
+                                                                          widget
+                                                                              .product,
+                                                                      selectedOption:
+                                                                          selectedOption)),
+                                                              buttonType:
+                                                                  ButtonType
+                                                                      .white,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            width: 163,
+                                                            child:
+                                                                AppElevatedButton(
+                                                              childText: '장바구니',
+                                                              onPressed: () {
+                                                                handleOnPurchase();
+                                                                Get.back();
+                                                              },
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

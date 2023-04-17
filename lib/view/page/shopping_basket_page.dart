@@ -6,7 +6,9 @@ import 'package:intl/intl.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/app_elevated_button.dart';
 
 class ShoppingBasketPage extends GetView<ShoppingBasketController> {
   const ShoppingBasketPage({super.key});
@@ -21,14 +23,6 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
         backgroundColor: AppColor.mainBlue,
         foregroundColor: AppColor.white,
         title: const Text('장바구니'),
-        actions: [
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                '상품 삭제',
-                style: TextStyle(color: AppColor.white),
-              ))
-        ],
       ),
       body: Obx(
         () => Column(children: [
@@ -109,8 +103,38 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
               },
             ),
           ),
-          Text(
-              '총 ${NumberFormat('###,###,###,###').format(controller.totalPrice.value)}원')
+          Container(
+            height: 99,
+            decoration: BoxDecoration(
+              color: AppColor.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: const Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text.rich(TextSpan(text: '총 ', children: [
+                  TextSpan(
+                      text:
+                          '${NumberFormat('###,###,###,###').format(controller.totalPrice.value)} 원',
+                      style: AppTextStyle.hKorPreSemiBold18(
+                          color: AppColor.mainBlue))
+                ])),
+                SizedBox(
+                  width: 184,
+                  child: AppElevatedButton(
+                      childText: '구매하기',
+                      onPressed: () => Get.toNamed(AppRoutes.buyerinfo)),
+                )
+              ],
+            ),
+          ),
         ]),
       ),
     );

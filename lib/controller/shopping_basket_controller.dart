@@ -53,6 +53,10 @@ class ShoppingBasketController extends GetxController {
     }
   }
 
+  clearShoppingBasket() {
+    shoppingBasket.clear();
+  }
+
   carculateTotalPrice() {
     totalPrice.value = 0;
     shoppingBasket.forEach((element) {

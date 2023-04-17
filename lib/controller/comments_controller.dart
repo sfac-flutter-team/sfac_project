@@ -38,7 +38,7 @@ class CommentsController extends GetxController {
           final int sendDate = doc.get('sendDate');
           final DocumentSnapshot refDocSnapshot = await docRef.get();
           final String name = refDocSnapshot.get('name') as String;
-          final String? photoUrl = refDocSnapshot.get('photoUrl') as String;
+          final String? photoUrl = refDocSnapshot.get('photoUrl');
           data.add(Message(
               content: content,
               sendDate: DateTime.fromMillisecondsSinceEpoch(sendDate),
@@ -75,6 +75,4 @@ class CommentsController extends GetxController {
       print(e);
     }
   }
-
-  
 }

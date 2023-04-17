@@ -6,6 +6,7 @@ import 'package:sfac_project/model/fixture.dart';
 import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/product.dart';
+import 'package:sfac_project/model/purchase.dart';
 import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/model/team.dart';
 import 'package:sfac_project/model/shoppingbasket.dart';
@@ -57,14 +58,21 @@ class DBService {
               .toList(),
           toFirestore: (fixture, _) => {});
 
-  final shoppingBasketRef = FirebaseFirestore.instance
-      .collection('shoppingBasket')
+  //구매내역 인스턴스
+  final purchaseRef = FirebaseFirestore.instance
+      .collection('purchase')
       .withConverter(
-          fromFirestore: (snapshot, _) => snapshot
-              .data()![FieldPath.documentId]
-              .map((value) => ShoppingBasket.fromMap(value))
-              .toList(),
-          toFirestore: (shoppingBasket, _) => {});
+          fromFirestore: (snapshot, _) => Purchase.fromMap(snapshot.data()!),
+          toFirestore: (purchase, _) => purchase.toMap());
+
+  //구매내역 저장
+  createPurchase(Purchase purchase) => purchaseRef.add(purchase);
+
+  //구매내역 정보 가져오기
+  Future<List<QueryDocumentSnapshot<Purchase>>> readPurchase() async {
+    var items = await purchaseRef.get();
+    return items.docs;
+  }
 
   //유저 정보 생성
   createUserInfo(String uid, String nickName, String? photoURL) => userInfoRef
@@ -154,18 +162,4 @@ class DBService {
     var data = await productRef.where('productID', isEqualTo: productId).get();
     return data.docs;
   }
-
-  
-  // createShoppingBasket(String productId, ShoppingBasket shoppingbasket) {
-  //   shoppingBasketRef.doc(productId).set(shoppingbasket);
-  // }
-
-  // deleteShoppingBasket(String productId) {
-  //   shoppingBasketRef.doc(productId).delete();
-  // }
-
-  // quantityUp(String id) =>
-  //     shoppingBasketRef.doc(id).update({'quantity': FieldValue.increment(1)});
-  // quantityDown(String id) =>
-  //     shoppingBasketRef.doc(id).update({'quantity': FieldValue.increment(-1)});
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 
@@ -107,32 +108,36 @@ class MyInfoScreen extends GetView<MyInfoController> {
                             ],
                           ),
                         ),
-                        Container(
-                          width: 115,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13),
-                              color: AppColor.white.withOpacity(0.3)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text("구매내역",
-                                    style: AppTextStyle.hKorPreSemiBold18(
-                                        color: AppColor.darkWhite)),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
-                                child: CircleAvatar(
-                                  radius: 15,
-                                  backgroundColor: Colors.white,
-                                  child: Image.asset('assets/icons/bag.png',
-                                      color: AppColor.mainDarkBlue,
-                                      width: 20,
-                                      height: 20),
+                        InkWell(
+                          onTap: () => Get.toNamed(AppRoutes.purchasehistory),
+                          child: Container(
+                            width: 115,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(13),
+                                color: AppColor.white.withOpacity(0.3)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text("구매내역",
+                                      style: AppTextStyle.hKorPreSemiBold18(
+                                          color: AppColor.darkWhite)),
                                 ),
-                              )
-                            ],
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                                  child: CircleAvatar(
+                                    radius: 15,
+                                    backgroundColor: Colors.white,
+                                    child: Image.asset('assets/icons/bag.png',
+                                        color: AppColor.mainDarkBlue,
+                                        width: 20,
+                                        height: 20),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         InkWell(
