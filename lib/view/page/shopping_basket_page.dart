@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:sfac_project/controller/buyer_info_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_color.dart';
@@ -39,7 +40,7 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                     margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(24),
-                        color: AppColor.subLightGrey),
+                        color: AppColor.white),
                     child: Row(
                       children: [
                         const SizedBox(
@@ -129,8 +130,10 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                 SizedBox(
                   width: 184,
                   child: AppElevatedButton(
-                      childText: '구매하기',
-                      onPressed: () => Get.toNamed(AppRoutes.buyerinfo)),
+                    childText: '구매하기',
+                    onPressed: () => Get.toNamed(AppRoutes.buyerinfo,
+                        arguments: {'buyType': BuyType.fromShppingBasketPage}),
+                  ),
                 )
               ],
             ),

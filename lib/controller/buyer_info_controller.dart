@@ -10,10 +10,12 @@ import 'package:sfac_project/model/shoppingbasket.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_routes.dart';
 
+enum BuyType { fromShppingBasketPage, fromProductPage }
+
 class BuyerInfoController extends GetxController {
   User user = Get.find<AuthController>().user!;
   var shoppingBasketController = Get.find<ShoppingBasketController>();
-  var arg = Get.arguments;
+  var arg = Get.arguments['shoppingBasket'];
 
   var nameController = TextEditingController();
   var phonenumController = TextEditingController();
@@ -22,6 +24,8 @@ class BuyerInfoController extends GetxController {
   var addressDetailController = TextEditingController();
 
   RxBool isButtonActivate = false.obs; //구매하기 버튼 비활성화
+
+  BuyType buyType = Get.arguments['buyType'];
 
   /// Form State
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -72,7 +76,8 @@ class BuyerInfoController extends GetxController {
   handlePurchaseButton() {
     var purchase = Purchase(
         uid: user.uid,
-        shoppingBasket: shoppingBasketController.shoppingBasket,
+        shoppingBasket:
+            arg == null ? shoppingBasketController.shoppingBasket : [arg],
         state: '입금 전',
         orderDate: DateTime.now(),
         name: nameController.text,
@@ -84,7 +89,9 @@ class BuyerInfoController extends GetxController {
             ? shoppingBasketController.totalPrice.value
             : arg.quantity * arg.product.price);
     DBService().createPurchase(purchase);
-    shoppingBasketController.clearShoppingBasket();
+    if (buyType == BuyType.fromShppingBasketPage) {
+      shoppingBasketController.clearShoppingBasket();
+    }
     Get.toNamed(AppRoutes.calculate, arguments: purchase);
   }
 }
