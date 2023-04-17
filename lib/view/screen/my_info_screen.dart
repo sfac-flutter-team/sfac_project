@@ -25,35 +25,32 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40))),
-              height: 450,
+              height: 400,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 80, 8, 24),
+                padding: const EdgeInsets.fromLTRB(16, 88, 24, 56),
                 child: Column(
                   children: [
-                    SizedBox(
-                      height: 30,
-                    ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(controller.user.value.displayName!,
-                                style: AppTextStyle.hKorPreSemiBold28(
-                                    color: AppColor.white)),
-                            const SizedBox(
-                              height: 20,
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Text(controller.user.value.displayName!,
+                                  style: AppTextStyle.hKorPreSemiBold28(
+                                      color: AppColor.white)),
                             ),
                             Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: AppColor.white.withOpacity(0.3)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.fromLTRB(24,8,24,8),
                                   child: Text(
                                     controller.user.value.email!,
-                                    style: AppTextStyle.bKorPreRegular14(
+                                    style: AppTextStyle.hEngMontSemiBold14(
                                         color: AppColor.darkWhite),
                                   ),
                                 )),
@@ -74,7 +71,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                       ],
                     ),
                     const SizedBox(
-                      height: 80,
+                      height: 60,
                     ),
                     //내 댓글, 구매내역, 로그아웃
                     Row(
@@ -156,8 +153,8 @@ class MyInfoScreen extends GetView<MyInfoController> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text("로그아웃",
-                                      style: AppTextStyle.hKorPreSemiBold18(
-                                          color: AppColor.darkWhite)),
+                                      style: AppTextStyle.hKorPreSemiBold15(
+                                          color: AppColor.white)),
                                 ),
                                 Padding(
                                   padding:
@@ -204,10 +201,13 @@ class MyInfoScreen extends GetView<MyInfoController> {
                       )
                     ]),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 24, 0, 16),
+                  padding: const EdgeInsets.only(top: 24, bottom : 16),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 40,
+                    leading: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50)
+                      ),
+                      child: Image.asset('assets/images/app_logo.png'),
                     ),
                     title: Text('팀을선택해주세요',
                         style: AppTextStyle.bKorPreRegular20()),
@@ -245,7 +245,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                         onPressed: controller.choiceTeam,
                         child: Text(
                           "선택",
-                          style: AppTextStyle.bKorPreRegular20(),
+                          style: AppTextStyle.bKorPreRegular16,
                         )),
                   ),
                 ),
