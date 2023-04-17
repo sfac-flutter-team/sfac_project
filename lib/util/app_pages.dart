@@ -17,19 +17,34 @@ import 'package:sfac_project/view/screen/my_team_screen.dart';
 
 class AppPages {
   static final pages = [
-    GetPage(name: AppRoutes.login, page: () => const LoginPage()), //로그인
-    GetPage(name: AppRoutes.main, page: () => const MainPage()), //메인
-    GetPage(name: AppRoutes.signup, page: () => const SignupPage()), //회원가입
+    GetPage(
+        name: AppRoutes.login,
+        page: () => const LoginPage(),
+        transition: Transition.fadeIn), //로그인
+    GetPage(
+        name: AppRoutes.main,
+        page: () => const MainPage(),
+        transition: Transition.fadeIn), //메인
+    GetPage(
+        name: AppRoutes.signup,
+        page: () => const SignupPage(),
+        transition: Transition.fadeIn), //회원가입
     GetPage(
         name: AppRoutes.findPassword,
-        page: () => const FindPasswordPage()), //비밀번호 찾기
+        page: () => const FindPasswordPage(),
+        transition: Transition.fadeIn), //비밀번호 찾기
     GetPage(
-        name: AppRoutes.myInfo, page: () => const MyInfoScreen()), //내 정보 페이지
-    GetPage(name: AppRoutes.lineup, page: () => const LineupPage()), //라인업 페이지
-    GetPage(name: AppRoutes.comment, page: () => const CommentsPage()),
+        name: AppRoutes.lineup,
+        page: () => const LineupPage(),
+        transition: Transition.fadeIn), //라인업 페이지
+    GetPage(
+        name: AppRoutes.comment,
+        page: () => const CommentsPage(),
+        transition: Transition.fadeIn), // 응원 댓글 페이지
     GetPage(
         name: AppRoutes.product,
-        page: () => ProductPage(product: Get.arguments)), // 상품 디테일
+        page: () => ProductPage(product: Get.arguments),
+        transition: Transition.fadeIn), // 상품 디테일
     GetPage(
         name: AppRoutes.shoppingbasket,
         page: () => const ShoppingBasketPage()), //장바구니
@@ -40,6 +55,6 @@ class AppPages {
     GetPage(
         name: AppRoutes.purchasehistory,
         page: () => const PurchaseHistoryPage()),
-    GetPage(name: AppRoutes.myComments, page: () => const MyCommentsPage()),    
+    GetPage(name: AppRoutes.myComments, page: () => const MyCommentsPage()),
   ];
 }

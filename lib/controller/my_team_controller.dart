@@ -20,26 +20,38 @@ class MyTeamController extends GetxController {
       Rxn<QueryDocumentSnapshot<Standing>>();
   Rxn<Fixture> teamResult = Rxn<Fixture>();
   Rxn<Fixture> teamSchedule = Rxn<Fixture>();
+  RxBool isLoading = false.obs;
 
   getData() async {
-    var result = await db.collection("userInfo").doc(user.value.uid).get();
+    isLoading(true);
+    var docRef = db.collection("userInfo").doc(user.value.uid);
+    var result = await docRef.get();
     myInfo = MyInfo.fromMap(result.data() as Map<String, dynamic>);
     if (myInfo!.teamId != null) {
       teamInfo.value = await DBService().getTeamWithId(myInfo!.teamId!);
-      getUpadateTeam();
+      await getUpadateTeam();
     }
+    onTeamIdChanged(docRef);
+    isLoading(false);
+  }
+
+  onTeamIdChanged(docRef) async {
+    docRef.snapshots().listen((event) async {
+      myInfo = MyInfo.fromMap(event.data()!);
+      if (myInfo!.teamId != null) {
+        teamInfo.value = await getTeamWithId(myInfo!.teamId!);
+        getUpadateTeam();
+      }
+    });
   }
 
   getUpadateTeam() async {
-    var docRef = db.collection('userInfo').doc(user.value.uid);
-    docRef.snapshots().listen((event) async {
-      myInfo = MyInfo.fromMap(event.data()!);
-      teamInfo.value = await DBService().getTeamWithId(myInfo!.teamId!);
-      getRank();
-      getTeamResult();
-      getNextSchedule();
-    });
+    await getRank();
+    await getTeamResult();
+    await getNextSchedule();
   }
+
+  getTeamWithId(teamId) async => await DBService().getTeamWithId(teamId);
 
   getRank() async {
     teamRank.value = await DBService().getStandingWithId(myInfo!.teamId!);
@@ -56,9 +68,8 @@ class MyTeamController extends GetxController {
   }
 
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
-    await getData();
-    
+    getData();
   }
 }

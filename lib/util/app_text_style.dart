@@ -58,7 +58,11 @@ class AppTextStyle {
   static const bEngPretendard14 = TextStyle(
       letterSpacing: -2, fontFamily: 'PretendardRegular', fontSize: 14);
 
-  //헤더 한글 프리텐다드 볼드폰트 26사이즈
+  //헤더 한글 프리텐다드 볼드폰트 43사이즈
+  static const hKorPreBold43 =
+      TextStyle(fontFamily: 'PretendardBold', fontSize: 43);
+
+  //헤더 한글 프리텐다드 볼드폰트 36사이즈
   static const hKorPreBold36 =
       TextStyle(fontFamily: 'PretendardBold', fontSize: 36);
 
@@ -75,12 +79,12 @@ class AppTextStyle {
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 36);
 
   //헤더 한글 프리텐다드 세미볼드폰트 28사이즈
-  static TextStyle hKorPreSemiBold28({Color color = AppColor.black})  =>
+  static TextStyle hKorPreSemiBold28({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 28, color: color);
 
   //헤더 한글 프리텐다드 세미볼드폰트 24사이즈
-  static const hKorPreSemiBold24 =
-      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 24);
+  static TextStyle hKorPreSemiBold24({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 24, color: color);
 
   //헤더 한글 프리텐다드 세미볼드폰트 20사이즈 (사용함)
   static TextStyle hKorPreSemiBold20({Color color = AppColor.black}) =>
@@ -94,9 +98,13 @@ class AppTextStyle {
   static TextStyle hKorPreSemiBold16({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 16, color: color);
 
+  //헤더 한글 프리텐다드 세미볼드폰트 14사이즈 (사용함)
+  static TextStyle hKorPreSemiBold14({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 14, color: color);
+
   //본문(body) 한글 프리텐다드 레귤러폰트 20사이즈
-  static const bKorPreRegular20 =
-      TextStyle(fontFamily: 'PretendardRegular', fontSize: 20);
+  static TextStyle bKorPreRegular20({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 20, color: color);
   //본문(body) 한글 프리텐다드 레귤러폰트 18사이즈
   static const bKorPreRegular18 =
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 18);
@@ -108,4 +116,8 @@ class AppTextStyle {
   //본문(body) 한글 프리텐다드 레귤러폰트 14사이즈 (사용함)
   static TextStyle bKorPreRegular14({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 14, color: color);
+
+  //본문(body) 한글 프리텐다드 레귤러폰트 12사이즈 (사용함)
+  static TextStyle bKorPreRegular12({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 12, color: color);
 }
