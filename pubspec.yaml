@@ -37,16 +37,18 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
-  flutter_localization: ^0.1.10
+
   flutter_native_splash: ^2.2.19
   get: ^4.6.5
   google_sign_in: ^6.0.2
   http: ^0.13.5
   image_picker: ^0.8.7
-  intl: ^0.17.0
   kpostal: ^0.5.1
   remedi_kopo: ^0.0.2
   shared_preferences: ^2.1.0
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.0
