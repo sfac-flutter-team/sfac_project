@@ -23,12 +23,33 @@ class MyInfoController extends GetxController {
   Rxn<String> profileUrl =
       Rxn<String>(Get.find<AuthController>().user!.photoURL);
 
+  // Future<int> getData() async {
+  //   var result = await db.collection("userInfo").doc(user.value.uid).get();
+  //   var team = result.data()!['teamId'];
+  //   teamInfo.value = await DBService().getTeamWithId(team);
+  //   return team;
+  // }
+
+  // Future<void> updateTeamId(int teamId) async {
+  //   await db
+  //       .collection("userInfo")
+  //       .doc(user.value.uid)
+  //       .update({"teamId": teamId});
+  //   getData();
+  //   Get.back();
+  // }
   Future<int> getData() async {
-    var result = await db.collection("userInfo").doc(user.value.uid).get();
-    var team = result.data()!['teamId'];
-    teamInfo.value = await DBService().getTeamWithId(team);
-    return team;
-  }
+  var userInfo = await DBService().getUserInfo(user.value.uid);
+  var teamId = userInfo['teamId'];
+  teamInfo.value = await DBService().getTeamWithId(teamId);
+  return teamId;
+}
+
+Future<void> updateTeamId(int teamId) async {
+  await DBService().updateUserInfoTeamId(user.value.uid, teamId);
+  await getData();
+  Get.back();
+}
 
   logout() => Get.find<AuthController>().logout();
 
@@ -53,15 +74,6 @@ class MyInfoController extends GetxController {
         TextButton(onPressed: camera, child: Text("사진찍기")),
       ],
     ));
-  }
-
-  Future<void> updateTeamId(int teamId) async {
-    await db
-        .collection("userInfo")
-        .doc(user.value.uid)
-        .update({"teamId": teamId});
-    getData();
-    Get.back();
   }
 
   void choiceTeam() {

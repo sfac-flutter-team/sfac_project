@@ -165,4 +165,31 @@ class DBService {
     var data = await productRef.where('productID', isEqualTo: productId).get();
     return data.docs;
   }
+  //잠시 예시
+  final FirebaseFirestore db = FirebaseFirestore.instance;
+  Future<void> deleteComment(String commentId, String teamId) async {
+    var messageRef = db.collection('teams/$teamId/messages').doc(commentId);
+    await messageRef.delete();
+  }
+
+  // 댓글 리스트 가져오기
+  Stream<QuerySnapshot> getCommentList(String userId, String teamId) {
+    var currentUserRef = db.collection("userInfo").doc(userId);
+    return db
+        .collection('teams/$teamId/messages')
+        .where('myInfo', isEqualTo: currentUserRef)
+        .orderBy('sendDate')
+        .snapshots();
+  }
+  Future<Map<String, dynamic>> getUserInfo(String userId) async {
+    var result = await db.collection("userInfo").doc(userId).get();
+    return result.data()!;
+  }
+
+  Future<void> updateUserInfoTeamId(String userId, int teamId) async {
+    await db
+        .collection("userInfo")
+        .doc(userId)
+        .update({"teamId": teamId});
+  }
 }
