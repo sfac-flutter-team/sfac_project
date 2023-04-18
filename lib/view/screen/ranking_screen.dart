@@ -239,10 +239,13 @@ class RankingScreen extends GetView<RankingController> {
                                   Text('선수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
-                                    width: 220,
+                                    width: 200,
                                   ),
                                   Text('득점',
                                       style: AppTextStyle.hKorPreSemiBold14()),
+                                  const SizedBox(
+                                    width: 6,
+                                  ),
                                   Text('도움',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                 ],

@@ -195,7 +195,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
         ),
         Positioned(
           bottom: 0,
-          right: MediaQuery.of(context).size.width / 14,
+          left: 25, right: 25,
           child: Obx(() {
             if (controller.teamInfo.value?.data().name == null) {
               return Container(
