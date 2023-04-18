@@ -1,12 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
+import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/rank_list.dart';
 
 class RankingScreen extends GetView<RankingController> {
   const RankingScreen({super.key});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +24,11 @@ class RankingScreen extends GetView<RankingController> {
               children: [
                 TextButton(
                     onPressed: () => controller.handleRankingOnPressed(0),
-                    
-                    
-                    child: Text('팀 순위',
-                        style: AppTextStyle.hKorPreSemiBold17(
-                             ))),
+                    child:
+                        Text('팀 순위', style: AppTextStyle.hKorPreSemiBold17())),
                 TextButton(
                     onPressed: () => controller.handleRankingOnPressed(1),
+                    
                     child:
                         Text('개인순위', style: AppTextStyle.hKorPreSemiBold17())),
               ],
@@ -213,7 +213,7 @@ class RankingScreen extends GetView<RankingController> {
                                                   width: 20,
                                                 ),
                                                 ClipRRect(
-                                                  child: Container(
+                                                  child: SizedBox(
                                                       height: 40,
                                                       width: 40,
                                                       child: Image.network(
@@ -285,7 +285,7 @@ class RankingScreen extends GetView<RankingController> {
                           alignment: Alignment.centerRight,
                           color: AppColor.subDarkGrey,
                           child: Container(
-                            color: AppColor.mainDarkBlue,
+                            color: AppColor.mainBlue,
                             width: 220,
                             alignment: Alignment.centerRight,
                           ),
@@ -366,85 +366,86 @@ class RankingScreen extends GetView<RankingController> {
                                   },
                                   itemBuilder: (context, index) {
                                     if (controller.playerInfo.value != null) {
-                                      return Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: SizedBox(
-                                                      child: Text(
-                                                        controller
-                                                            .standingInfo[index]
-                                                            .data()
-                                                            .rank
-                                                            .toString(),
-                                                        style: AppTextStyle
-                                                            .hKorPreSemiBold14(),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(width: 20),
-                                                  ClipRRect(
-                                                    child: SizedBox(
-                                                        height: 40,
-                                                        width: 40,
-                                                        child: Image.network(
-                                                            controller
-                                                                .playerInfo
-                                                                .value!
-                                                                .data()[index]
-                                                                .photo)),
-                                                  ),
-                                                  const SizedBox(width: 20),
-                                                  Text(
-                                                      controller
-                                                          .playerInfo.value!
-                                                          .data()[index]
-                                                          .name
-                                                          .toString(),
-                                                      style: AppTextStyle
-                                                          .hKorPreSemiBold14()),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Text(
-                                                        controller
-                                                            .playerInfo.value!
-                                                            .data()[index]
-                                                            .total
-                                                            .toString(),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: AppTextStyle
-                                                            .hKorPreSemiBold14()),
-                                                    const SizedBox(width: 50),
-                                                    Text(
-                                                        controller
-                                                            .playerInfo.value!
-                                                            .data()[index]
-                                                            .assists
-                                                            .toString(),
-                                                        style: AppTextStyle
-                                                            .hKorPreSemiBold14()),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ));
+                                      // RankList(player: controller.);
+                                      // return Padding(
+                                      //     padding: const EdgeInsets.all(8.0),
+                                      //     child: Row(
+                                      //       mainAxisAlignment:
+                                      //           MainAxisAlignment.spaceBetween,
+                                      //       children: [
+                                      //         Row(
+                                      //           children: [
+                                      //             Padding(
+                                      //               padding:
+                                      //                   const EdgeInsets.all(
+                                      //                       8.0),
+                                      //               child: SizedBox(
+                                      //                 child: Text(
+                                      //                   controller
+                                      //                       .standingInfo[index]
+                                      //                       .data()
+                                      //                       .rank
+                                      //                       .toString(),
+                                      //                   style: AppTextStyle
+                                      //                       .hKorPreSemiBold14(),
+                                      //                 ),
+                                      //               ),
+                                      //             ),
+                                      //             const SizedBox(width: 20),
+                                      //             ClipRRect(
+                                      //               child: SizedBox(
+                                      //                   height: 40,
+                                      //                   width: 40,
+                                      //                   child: Image.network(
+                                      //                       controller
+                                      //                           .playerInfo
+                                      //                           .value!
+                                      //                           .data()[index]
+                                      //                           .photo)),
+                                      //             ),
+                                      //             const SizedBox(width: 20),
+                                      //             Text(
+                                      //                 controller
+                                      //                     .playerInfo.value!
+                                      //                     .data()[index]
+                                      //                     .name
+                                      //                     .toString(),
+                                      //                 style: AppTextStyle
+                                      //                     .hKorPreSemiBold14()),
+                                      //           ],
+                                      //         ),
+                                      //         Padding(
+                                      //           padding:
+                                      //               const EdgeInsets.all(8.0),
+                                      //           child: Row(
+                                      //             mainAxisAlignment:
+                                      //                 MainAxisAlignment
+                                      //                     .spaceBetween,
+                                      //             children: [
+                                      //               Text(
+                                      //                   controller
+                                      //                       .playerInfo.value!
+                                      //                       .data()[index]
+                                      //                       .total
+                                      //                       .toString(),
+                                      //                   textAlign:
+                                      //                       TextAlign.center,
+                                      //                   style: AppTextStyle
+                                      //                       .hKorPreSemiBold14()),
+                                      //               const SizedBox(width: 50),
+                                      //               Text(
+                                      //                   controller
+                                      //                       .playerInfo.value!
+                                      //                       .data()[index]
+                                      //                       .assists
+                                      //                       .toString(),
+                                      //                   style: AppTextStyle
+                                      //                       .hKorPreSemiBold14()),
+                                      //             ],
+                                      //           ),
+                                      //         ),
+                                      //       ],
+                                      //     ));
                                     }
                                     return const Text('로딩중');
                                   }),
