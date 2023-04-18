@@ -276,7 +276,7 @@ class RankingScreen extends GetView<RankingController> {
                                   },
                                   itemBuilder: (context, index) {
                                     if (controller.playerInfo.value != null) {
-                                      PlayerRankList(
+                                     return PlayerRankList(
                                           player: controller.playerInfo.value!
                                               .data()[index],
                                           standing: controller
