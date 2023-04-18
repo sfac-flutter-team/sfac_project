@@ -25,10 +25,11 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40))),
-              height: 400,
+              height: MediaQuery.of(context).size.height /5*2,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 88, 24, 56),
+                padding: const EdgeInsets.all(16),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,9 +70,6 @@ class MyInfoScreen extends GetView<MyInfoController> {
                           ),
                         ),
                       ],
-                    ),
-                    const SizedBox(
-                      height: 60,
                     ),
                     //내 댓글, 구매내역, 로그아웃
                     Row(
@@ -188,7 +186,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
           child: Obx(() {
             if (controller.teamInfo.value?.data().name == null) {
               return Container(
-                height: 100,
+                height: 110,
                 width: 370,
                 decoration: BoxDecoration(
                     color: AppColor.white,
@@ -220,7 +218,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
               );
             } else {
               return Container(
-                height: 100,
+                height: 110,
                 width: 370,
                 decoration: BoxDecoration(
                     color: AppColor.white,

@@ -26,6 +26,13 @@ class FixtureController extends GetxController {
                   primary: AppColor.mainBlue,
                   onSurface: AppColor.mainDarkBlue,
                 ),
+                dialogTheme: DialogTheme(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      10.0,
+                    ), // this is the border radius of the picker
+                  ),
+                ),
               ),
               child: child!,
             );

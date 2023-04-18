@@ -42,7 +42,7 @@ class AppTextStyle {
     fontSize: 20,
   );
 
-  //헤더영문 몬세라트 세미볼드폰트 20사이즈
+  //헤더영문 몬세라트 세미볼드폰트 14사이즈
   static TextStyle hEngMontSemiBold14({Color color = AppColor.black}) =>
       TextStyle(
           fontFamily: 'MontserratBold',

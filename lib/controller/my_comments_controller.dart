@@ -25,9 +25,11 @@ class MyCommentsController extends GetxController {
         onConfirm:() {
           deleteComment(commentId);
               Get.back();
-        },
-      ),
-    );
+            },
+           
+          ),);
+          
+        
   }
 
   // void deleteComment(String commentId) async {

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//import 'package:remedi_kopo/remedi_kopo.dart';
+import 'package:remedi_kopo/remedi_kopo.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/model/purchase.dart';
@@ -31,34 +31,34 @@ class BuyerInfoController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   Map<String, String> formData = {};
 
-  // void searchAddress(BuildContext context) async {
-  //   KopoModel? model = await Navigator.push(
-  //     context,
-  //     CupertinoPageRoute(
-  //       builder: (context) => RemediKopo(),
-  //     ),
-  //   );
+  void searchAddress(BuildContext context) async {
+    KopoModel? model = await Navigator.push(
+      context,
+      CupertinoPageRoute(
+        builder: (context) => RemediKopo(),
+      ),
+    );
 
-  //   if (model != null) {
-  //     final postcode = model.zonecode ?? '';
-  //     postcodeController.value = TextEditingValue(
-  //       text: postcode,
-  //     );
-  //     formData['postcode'] = postcode;
+    if (model != null) {
+      final postcode = model.zonecode ?? '';
+      postcodeController.value = TextEditingValue(
+        text: postcode,
+      );
+      formData['postcode'] = postcode;
 
-  //     final address = model.address ?? '';
-  //     addressController.value = TextEditingValue(
-  //       text: address,
-  //     );
-  //     formData['address'] = address;
+      final address = model.address ?? '';
+      addressController.value = TextEditingValue(
+        text: address,
+      );
+      formData['address'] = address;
 
-  //     final buildingName = model.buildingName ?? '';
-  //     addressDetailController.value = TextEditingValue(
-  //       text: buildingName,
-  //     );
-  //     formData['address_detail'] = buildingName;
-  //   }
-  // }
+      final buildingName = model.buildingName ?? '';
+      addressDetailController.value = TextEditingValue(
+        text: buildingName,
+      );
+      formData['address_detail'] = buildingName;
+    }
+  }
 
   //구매하기버튼 활성화하는 함수
   activateButton() {
