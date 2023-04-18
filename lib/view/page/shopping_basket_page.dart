@@ -24,6 +24,10 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
         backgroundColor: AppColor.mainBlue,
         foregroundColor: AppColor.white,
         title: const Text('장바구니'),
+        leading: IconButton(
+          icon: const Icon(Icons.navigate_before),
+          onPressed: () => Get.back(),
+        ),
       ),
       body: Obx(
         () => Column(children: [
@@ -37,64 +41,93 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                     width: 350,
                     height: 182,
                     clipBehavior: Clip.none,
-                    margin: const EdgeInsets.all(20),
+                    margin: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(24),
+                        borderRadius: BorderRadius.circular(27),
                         color: AppColor.white),
-                    child: Row(
+                    child: Column(
                       children: [
-                        const SizedBox(
-                          width: 44,
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            controller.shoppingBasket[index].product.imageUrl,
-                            width: 86,
-                            height: 120,
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  controller.shoppingBasket[index].product
-                                      .productName,
-                                  style: AppTextStyle.bKorPreRegular16,
-                                ),
-                                Text(controller.shoppingBasket[index]
-                                            .selectedOption !=
-                                        null
-                                    ? controller
-                                        .shoppingBasket[index].selectedOption
-                                        .toString()
-                                    : ''),
-                                Row(children: [
-                                  IconButton(
-                                      icon: const Icon(Icons.remove),
-                                      onPressed: () => controller
-                                          .handleAmountDown(amount, index)),
-                                  Text(amount.toString()),
-                                  IconButton(
-                                      icon: const Icon(Icons.add),
-                                      onPressed: () => controller
-                                          .handleAmountUp(amount, index)),
-                                ])
-                              ]),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
+                        SizedBox(
+                          width: double.infinity,
+                          child: IconButton(
+                              alignment: Alignment.topRight,
                               onPressed: () =>
                                   controller.removeShoppingBasket(index),
-                              icon: const Icon(Icons.close),
+                              icon: const Icon(Icons.close)),
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(width: 44),
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                controller
+                                    .shoppingBasket[index].product.imageUrl,
+                                width: 86,
+                                height: 120,
+                              ),
                             ),
-                            Text(
-                                '${NumberFormat('###,###,###').format(controller.shoppingBasket[index].product.price * amount.value)} 원')
+                            const SizedBox(width: 15),
+                            Expanded(
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        controller.shoppingBasket[index].product
+                                            .productName,
+                                        style: AppTextStyle.bKorPreRegular15),
+                                    const SizedBox(height: 10),
+                                    Text(
+                                        controller.shoppingBasket[index]
+                                                    .selectedOption !=
+                                                null
+                                            ? controller.shoppingBasket[index]
+                                                .selectedOption
+                                                .toString()
+                                            : '',
+                                        style: AppTextStyle.bKorPreRegular14(
+                                            color: AppColor.subDarkGrey)),
+                                    const SizedBox(height: 10),
+                                    Row(children: [
+                                      InkWell(
+                                          onTap: () => controller
+                                              .handleAmountDown(amount, index),
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: amount == 1
+                                                      ? AppColor.subGreyd9
+                                                      : AppColor.white,
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                      color: amount == 1
+                                                          ? AppColor.subGreyd9
+                                                          : AppColor.subGrey)),
+                                              child: const Icon(Icons.remove))),
+                                      const SizedBox(width: 8),
+                                      Text(amount.toString(),
+                                          style:
+                                              AppTextStyle.hKorPreSemiBold15()),
+                                      const SizedBox(width: 8),
+                                      InkWell(
+                                          onTap: () => controller
+                                              .handleAmountUp(amount, index),
+                                          child: Container(
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
+                                                      color: AppColor.subGrey)),
+                                              child: const Icon(Icons.add))),
+                                    ]),
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: Text(
+                                        textAlign: TextAlign.end,
+                                        '${NumberFormat('###,###,###').format(controller.shoppingBasket[index].product.price * amount.value)} 원',
+                                        style: AppTextStyle.hKorPreSemiBold16(),
+                                      ),
+                                    ),
+                                  ]),
+                            ),
                           ],
                         ),
                       ],
@@ -110,11 +143,10 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
               color: AppColor.white,
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: const Offset(0, 3), // changes position of shadow
-                ),
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: const Offset(0, 3)),
               ],
             ),
             child: Row(
@@ -131,10 +163,13 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                   width: 184,
                   child: AppElevatedButton(
                     childText: '구매하기',
-                    onPressed: () => Get.toNamed(AppRoutes.buyerinfo,
-                        arguments: {'buyType': BuyType.fromShppingBasketPage}),
+                    onPressed: controller.isButtonActivated.value
+                        ? () => Get.toNamed(AppRoutes.buyerinfo, arguments: {
+                              'buyType': BuyType.fromShppingBasketPage
+                            })
+                        : null,
                   ),
-                )
+                ),
               ],
             ),
           ),

@@ -43,7 +43,7 @@ class MarketScreen extends GetView<MarketController> {
                           child: Obx(
                             () => Text(
                               controller.shoppingList.length.toString(),
-                              style: TextStyle(fontSize: 10),
+                              style: const TextStyle(fontSize: 10),
                             ),
                           ),
                         ),
@@ -72,8 +72,10 @@ class MarketScreen extends GetView<MarketController> {
                           arguments: controller.productList[index].data(),
                         );
                       }, //상품 페이지
-                      child: Card(
-                        elevation: 4,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(24)),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -84,11 +86,12 @@ class MarketScreen extends GetView<MarketController> {
                                     .imageUrl)),
                             Text(
                               controller.productList[index].data().productName,
-                              style: AppTextStyle.bKorPreRegular14(),
+                              style: AppTextStyle.bKorPreRegular15,
                             ),
+                            const SizedBox(height: 13),
                             Text(
                               '${NumberFormat('###,###,###').format(controller.productList[index].data().price)} 원',
-                              style: AppTextStyle.bKorPreRegular18,
+                              style: AppTextStyle.hKorPreSemiBold18(),
                             )
                           ],
                         ),
