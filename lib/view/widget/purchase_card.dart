@@ -66,9 +66,15 @@ class PurchaseCard extends StatelessWidget {
                         purchase.shoppingBasket[productIndex].selectedOption ??
                             '',
                       ),
+                      const SizedBox(width: 6),
+                      Text(
+                        style: AppTextStyle.bKorPreRegular12(
+                            color: AppColor.subDarkGrey),
+                        '${purchase.shoppingBasket[productIndex].quantity}개',
+                      ),
                     ],
                   ),
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
                   Text(
                     style: AppTextStyle.hKorPreSemiBold18(
                         color: AppColor.mainBlue),
