@@ -30,4 +30,14 @@ class RankingController extends GetxController {
     selectedIndex(index);
     pageController.jumpToPage(selectedIndex.value);
   }
+
+  Color getRankingColor(int rank) {
+    if (rank <= 4) {
+      return AppColor.mainBlue;
+    } else if (rank >= 17) {
+      return Colors.red;
+    } else {
+      return Colors.black;
+    }
+  }
 }

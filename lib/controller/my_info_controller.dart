@@ -7,6 +7,7 @@ import 'package:sfac_project/service/storage_service.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
+import 'package:sfac_project/view/widget/app_text_button.dart';
 
 import '../model/team.dart';
 import '../service/db_service.dart';
@@ -86,28 +87,48 @@ class MyInfoController extends GetxController {
     ));
   }
 
-Future<QuerySnapshot<Map<String, dynamic>>> readTeams() {
-  final teamRef = FirebaseFirestore.instance.collection('teams');
-  return teamRef.get();
-}
+  Future<QuerySnapshot<Map<String, dynamic>>> readTeams() {
+    final teamRef = FirebaseFirestore.instance.collection('teams');
+    return teamRef.get();
+  }
 
-void choiceTeam() async {
-  final snapshot = await readTeams();
-  final teamList = snapshot.docs.map((doc) => doc.data()).toList();
-  Get.bottomSheet(
-    SingleChildScrollView(
-      child: Column(
-        children: teamList.map((data) {
-          final team = Team.fromMap(data['team']);
-          return TextButton(
-            onPressed: () => updateTeamId(team.id),
-            child: Text(team.name),
-          );
-        }).toList(),
+  void choiceTeam() async {
+    final snapshot = await readTeams();
+    final teamList = snapshot.docs.map((doc) => doc.data()).toList();
+    Get.bottomSheet(
+      AppBottomSheet(
+        height: 300,
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: teamList.map((data) {
+                final team = Team.fromMap(data['team']);
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: InkWell(
+                    onTap: () => updateTeamId(team.id),
+                    child: Row(
+                      children: [
+                        Image.network(width: 35, height: 35, team.logo),
+                        const SizedBox(width: 15),
+                        Text(
+                          style: AppTextStyle.bKorPreRegular16,
+                          team.name,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   @override
   void onInit() {

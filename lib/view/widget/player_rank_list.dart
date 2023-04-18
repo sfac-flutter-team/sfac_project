@@ -4,10 +4,13 @@ import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 
 class PlayerRankList extends StatelessWidget {
-  const PlayerRankList(
-      {super.key, required this.player, required this.standing});
+  const PlayerRankList({
+    super.key,
+    required this.player,
+    required this.rank,
+  });
   final Player player;
-  final Standing standing;
+  final int rank;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class PlayerRankList extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(
-                      standing.rank.toString(),
+                      rank.toString(),
                       style: AppTextStyle.hKorPreSemiBold14(),
                     ),
                   ),
