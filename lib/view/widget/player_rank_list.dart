@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/standing.dart';
-import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 
-class RankList extends StatelessWidget {
-  const RankList({super.key, required this.player, this.standing});
+class PlayerRankList extends StatelessWidget {
+  const PlayerRankList(
+      {super.key, required this.player, required this.standing});
   final Player player;
-  final Standing? standing;
+  final Standing standing;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class RankList extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     child: Text(
-                      standing!.rank.toString(),
+                      standing.rank.toString(),
                       style: AppTextStyle.hKorPreSemiBold14(),
                     ),
                   ),

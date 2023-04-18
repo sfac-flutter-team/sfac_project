@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/service/storage_service.dart';
 import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 
 import '../model/team.dart';
@@ -19,17 +20,17 @@ class MyInfoController extends GetxController {
       Rxn<String>(Get.find<AuthController>().user!.photoURL);
 
   Future<int> getData() async {
-  var userInfo = await DBService().getUserInfo(user.value.uid);
-  var teamId = userInfo['teamId'];
-  teamInfo.value = await DBService().getTeamWithId(teamId);
-  return teamId;
-}
+    var userInfo = await DBService().getUserInfo(user.value.uid);
+    var teamId = userInfo['teamId'];
+    teamInfo.value = await DBService().getTeamWithId(teamId);
+    return teamId;
+  }
 
-Future<void> updateTeamId(int teamId) async {
-  await DBService().updateUserInfoTeamId(user.value.uid, teamId);
-  await getData();
-  Get.back();
-}
+  Future<void> updateTeamId(int teamId) async {
+    await DBService().updateUserInfoTeamId(user.value.uid, teamId);
+    await getData();
+    Get.back();
+  }
 
   logout() => Get.find<AuthController>().logout();
 
@@ -48,11 +49,40 @@ Future<void> updateTeamId(int teamId) async {
   }
 
   void openBottomSheet() {
-    Get.bottomSheet(Column(
-      children: [
-        TextButton(onPressed: gallery, child: Text("갤러리에서 선택")),
-        TextButton(onPressed: camera, child: Text("사진찍기")),
-      ],
+    Get.bottomSheet(Container(
+      height: 230,
+      decoration: BoxDecoration(
+          color: AppColor.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          TextButton(
+              onPressed: gallery,
+              child: Text(
+                "갤러리에서 선택",
+                style: AppTextStyle.bKorPreRegular18,
+              )),
+          TextButton(
+              onPressed: camera,
+              child: Text(
+                "사진찍기",
+                style: AppTextStyle.bKorPreRegular18,
+              )),
+          SizedBox(
+            width: 300,
+            height: 50,
+            child: ElevatedButton(
+                onPressed: () => Get.back(),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColor.mainBlue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                child: Text('취소하기')),
+          )
+        ],
+      ),
     ));
   }
 
