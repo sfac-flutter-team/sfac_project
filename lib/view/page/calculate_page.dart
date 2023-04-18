@@ -81,9 +81,12 @@ class _CalculatePageState extends State<CalculatePage> {
                           color: AppColor.darkWhite,
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
-                        child: Text(
-                          '은행 이름 666666-66-666666',
-                          style: AppTextStyle.hKorPreSemiBold20(),
+                        child: Container(
+                          alignment: Alignment(-1, 0),
+                          child: Text(
+                            '은행 이름 666666-66-666666',
+                            style: AppTextStyle.hKorPreSemiBold20(),
+                          ),
                         ),
                       ),
                     ),
@@ -117,7 +120,7 @@ class _CalculatePageState extends State<CalculatePage> {
                 child: AppElevatedButton(
                   childText: '확인',
                   onPressed: () => Get.dialog(AppDialog(
-                      content: '대충 입금확인한다는 텍스트',
+                      content: '구매내역에서 배송조회를 해주세요.',
                       onCancel: () => Get.back(),
                       onConfirm: () => Get.until(
                           (route) => route.settings.name == AppRoutes.main),
