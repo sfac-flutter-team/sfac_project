@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sfac_project/controller/purchase_history_controller.dart';
 import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_text_style.dart';
+import 'package:sfac_project/view/widget/app_progress_indicator.dart';
+import 'package:sfac_project/view/widget/purchase_card.dart';
 
 class PurchaseHistoryPage extends GetView<PurchaseHistoryController> {
   const PurchaseHistoryPage({super.key});
@@ -16,83 +17,71 @@ class PurchaseHistoryPage extends GetView<PurchaseHistoryController> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: const Text('구매내역'),
         backgroundColor: AppColor.mainBlue,
         foregroundColor: AppColor.white,
+        title: Text(
+          style: AppTextStyle.hKorPreSemiBold20(color: AppColor.white),
+          '구매내역',
+        ),
+        leading: IconButton(
+          icon: const Icon(Icons.navigate_before),
+          onPressed: () => Get.back(),
+        ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Obx(
-              () => ListView.builder(
-                  itemCount: controller.purchaseList.length,
-                  itemBuilder: (context, parentIdx) {
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: controller.purchaseList[parentIdx]
-                          .data()
-                          .shoppingBasket
-                          .length,
-                      itemBuilder: (context, index) {
-                        var currentProduct = controller.purchaseList[parentIdx]
-                            .data()
-                            .shoppingBasket[index];
-                        return Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 46, vertical: 16),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(24),
-                              color: AppColor.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 0,
-                                  blurRadius: 9,
-                                  offset: const Offset(
-                                      0, 6), // changes position of shadow
-                                ),
-                              ]),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(24),
-                                child: Image.network(
-                                  controller.purchaseList[parentIdx]
-                                      .data()
-                                      .shoppingBasket[index]
-                                      .product
-                                      .imageUrl,
-                                  width: 86,
-                                  height: 120,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      currentProduct.product.productName,
-                                    ),
-                                    Text(
-                                        '${NumberFormat('###,###').format(currentProduct.product.price * currentProduct.quantity)} 원'),
-                                  ],
-                                ),
-                              )
-                            ],
+      body: Obx(() {
+        if (controller.isLoading.value) {
+          return const Center(child: AppProgressIndicator());
+        } else {
+          if (controller.purchaseList.isNotEmpty) {
+            return ListView.builder(
+                padding: const EdgeInsets.all(20),
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.purchaseList.length,
+                itemBuilder: (context, parentIdx) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 13.0),
+                        child: Text(
+                          style: AppTextStyle.hKorPreSemiBold16(),
+                          DateFormat('yy.MM.dd').format(
+                            controller.purchaseList[parentIdx].data().orderDate,
                           ),
-                        );
-                      },
-                    );
-                  }),
-            ),
-          )
-        ],
-      ),
+                        ),
+                      ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: controller.purchaseList[parentIdx]
+                            .data()
+                            .shoppingBasket
+                            .length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: PurchaseCard(
+                              purchase:
+                                  controller.purchaseList[parentIdx].data(),
+                              productIndex: index,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                });
+          } else {
+            return Center(
+              child: Text(
+                textAlign: TextAlign.center,
+                style: AppTextStyle.bKorPreRegular20(color: AppColor.mainBlue),
+                '구매 내역이 없습니다.',
+              ),
+            );
+          }
+        }
+      }),
     );
   }
 }

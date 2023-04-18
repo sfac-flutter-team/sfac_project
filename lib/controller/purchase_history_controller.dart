@@ -13,9 +13,13 @@ class PurchaseHistoryController extends GetxController {
 
   String uid = Get.find<AuthController>().user!.uid;
 
+  RxBool isLoading = false.obs;
+
   //구매내역 가져오기
   readPurchase() async {
+    isLoading(true);
     purchaseList(await DBService().getPurchaseWithId(uid));
+    isLoading(false);
   }
 
   @override

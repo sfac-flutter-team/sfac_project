@@ -38,19 +38,29 @@ dependencies:
     sdk: flutter
   flutter_dotenv: ^5.0.2
   flutter_localization: ^0.1.10
+  flutter_native_splash: ^2.2.19
   get: ^4.6.5
   google_sign_in: ^6.0.2
   http: ^0.13.5
   image_picker: ^0.8.7
   intl: ^0.17.0
-  shared_preferences: ^2.1.0  
   kpostal: ^0.5.1
   remedi_kopo: ^0.0.2
+  shared_preferences: ^2.1.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  adaptive_icon_background: "#124DDD"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
