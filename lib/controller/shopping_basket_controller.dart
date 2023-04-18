@@ -12,6 +12,9 @@ class ShoppingBasketController extends GetxController {
   //총 금액
   RxInt totalPrice = 0.obs;
 
+  //구매하기버튼 비활성화
+  RxBool isButtonActivated = false.obs; //회원가입 버튼 활성화 여부
+
   readShopingBasket() async {
     // Shpping Baskets을 SharedPreferences에서 불러오기
     var prefs = await SharedPreferences.getInstance();
@@ -59,9 +62,19 @@ class ShoppingBasketController extends GetxController {
 
   carculateTotalPrice() {
     totalPrice.value = 0;
+    activatePurchaseButton();
     shoppingBasket.forEach((element) {
       totalPrice.value += (element.quantity * element.product.price);
     });
+  }
+
+  //구매하기 버튼 활성화
+  activatePurchaseButton() {
+    if (shoppingBasket.isNotEmpty) {
+      isButtonActivated.value = true;
+    } else {
+      isButtonActivated.value = false;
+    }
   }
 
   // 컨트롤러가 생성되면 readShopingBasket()함수 실행

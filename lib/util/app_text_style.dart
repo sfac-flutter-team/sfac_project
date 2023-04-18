@@ -44,9 +44,11 @@ class AppTextStyle {
 
   //헤더영문 몬세라트 세미볼드폰트 20사이즈
   static TextStyle hEngMontSemiBold14({Color color = AppColor.black}) =>
-    TextStyle(fontFamily: 'MontserratBold',
-    fontSize: 14, letterSpacing: -2, color: color
-  );
+      TextStyle(
+          fontFamily: 'MontserratBold',
+          fontSize: 14,
+          letterSpacing: -2,
+          color: color);
 
   //본문(body) 영문 프리텐다드 레귤러폰트 20사이즈 -2자간
   static const bEngPretendard20 = TextStyle(
@@ -69,8 +71,8 @@ class AppTextStyle {
       TextStyle(fontFamily: 'PretendardBold', fontSize: 43);
 
   //헤더 한글 프리텐다드 볼드폰트 36사이즈
-  static const hKorPreBold36 =
-      TextStyle(fontFamily: 'PretendardBold', fontSize: 36);
+  static TextStyle hKorPreBold36({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardBold', fontSize: 36, color: color);
 
   //헤더 한글 프리텐다드 볼드폰트 30사이즈
   static const hKorPreBold30 =
@@ -104,7 +106,6 @@ class AppTextStyle {
   static TextStyle hKorPreSemiBold17({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 17, color: color);
 
-
   //헤더 한글 프리텐다드 세미볼드폰트 16사이즈 (사용함)
   static TextStyle hKorPreSemiBold16({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 16, color: color);
@@ -128,6 +129,10 @@ class AppTextStyle {
   static const bKorPreRegular16 =
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 16);
 
+  //본문(body) 한글 프리텐다드 레귤러폰트 15사이즈
+  static const bKorPreRegular15 =
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 15);
+
   //본문(body) 한글 프리텐다드 레귤러폰트 14사이즈 (사용함)
   static TextStyle bKorPreRegular14({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 14, color: color);
@@ -136,4 +141,3 @@ class AppTextStyle {
   static TextStyle bKorPreRegular12({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 12, color: color);
 }
-
