@@ -21,24 +21,24 @@ class MyCommentsController extends GetxController {
         cancelText: '닫기',
         confirmText: '확인',
         onCancel: () => Get.back(),
-        onConfirm:() {
+        onConfirm: () {
           deleteComment(commentId);
           Get.back();
-           AppSnackBar.showSnackBar(context, '댓글 삭제가 완료되었습니다');
+          AppSnackBar.showSnackBar(context, '댓글 삭제가 완료되었습니다');
         },
       ),
     );
   }
 
   Stream<QuerySnapshot> getData() {
-  return DBService().getData(user.uid, teamInfo.value!.data().id.toString());
-}
+    return DBService().getData(user.uid, teamInfo.value!.data().id.toString());
+  }
 
   void deleteComment(String commentId) async {
-  await DBService().deleteComment(commentId, teamInfo.value!.data().id.toString());
-  // 삭제된 댓글을 리스트에서 제거
-  result!.removeWhere((element) => element.id == commentId);
-  update(); // 리스트 갱신
-}
-
+    await DBService()
+        .deleteComment(commentId, teamInfo.value!.data().id.toString());
+    // 삭제된 댓글을 리스트에서 제거
+    result!.removeWhere((element) => element.id == commentId);
+    update(); // 리스트 갱신
+  }
 }
