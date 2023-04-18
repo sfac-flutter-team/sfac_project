@@ -47,10 +47,9 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                         color: AppColor.white),
                     child: Column(
                       children: [
-                        SizedBox(
-                          width: double.infinity,
+                        Container(
+                          alignment: Alignment(0.93, 0),
                           child: IconButton(
-                              alignment: Alignment.topRight,
                               onPressed: () =>
                                   controller.removeShoppingBasket(index),
                               icon: const Icon(Icons.close)),
@@ -118,10 +117,9 @@ class ShoppingBasketPage extends GetView<ShoppingBasketController> {
                                                       color: AppColor.subGrey)),
                                               child: const Icon(Icons.add))),
                                     ]),
-                                    SizedBox(
-                                      width: double.infinity,
+                                    Container(
+                                      alignment: Alignment(0.7, 0),
                                       child: Text(
-                                        textAlign: TextAlign.end,
                                         '${NumberFormat('###,###,###').format(controller.shoppingBasket[index].product.price * amount.value)} 원',
                                         style: AppTextStyle.hKorPreSemiBold16(),
                                       ),

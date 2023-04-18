@@ -10,7 +10,9 @@ class AppTextField extends StatelessWidget {
       this.onChanged,
       this.errorText,
       this.obscure = false,
-      this.readOnly = false});
+      this.readOnly = false,
+      this.filled,
+      this.filledColor});
 
   final String hintText;
   final TextEditingController controller;
@@ -18,6 +20,8 @@ class AppTextField extends StatelessWidget {
   final String? errorText;
   final bool obscure;
   final bool readOnly;
+  final bool? filled;
+  final Color? filledColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,8 @@ class AppTextField extends StatelessWidget {
       controller: controller,
       cursorColor: AppColor.subGrey,
       decoration: InputDecoration(
+        filled: filled,
+        fillColor: filledColor,
         contentPadding: const EdgeInsets.all(20),
         hintText: hintText,
         hintStyle: AppTextStyle.hKorPreSemiBold16(

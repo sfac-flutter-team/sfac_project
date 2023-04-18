@@ -19,9 +19,7 @@ class MarketScreen extends GetView<MarketController> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -36,7 +34,7 @@ class MarketScreen extends GetView<MarketController> {
                       Image.asset('assets/icons/cart-shopping.png'),
                       Positioned(
                         top: -10,
-                        right: 3,
+                        right: -10,
                         child: CircleAvatar(
                           radius: 8,
                           backgroundColor: AppColor.mainBlue,
@@ -47,57 +45,74 @@ class MarketScreen extends GetView<MarketController> {
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 35,
                       )
                     ]))
               ],
             ),
+            const SizedBox(height: 38),
             Expanded(
-                child: Obx(
-              () => GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 1 / 2,
-                      mainAxisSpacing: 20,
-                      crossAxisSpacing: 20),
-                  itemCount: controller.productList.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Get.toNamed(
-                          AppRoutes.product,
-                          arguments: controller.productList[index].data(),
-                        );
-                      }, //상품 페이지
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: AppColor.white,
-                            borderRadius: BorderRadius.circular(24)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                                child: Image.network(controller
-                                    .productList[index]
-                                    .data()
-                                    .imageUrl)),
-                            Text(
-                              controller.productList[index].data().productName,
-                              style: AppTextStyle.bKorPreRegular15,
-                            ),
-                            const SizedBox(height: 13),
-                            Text(
-                              '${NumberFormat('###,###,###').format(controller.productList[index].data().price)} 원',
-                              style: AppTextStyle.hKorPreSemiBold18(),
-                            )
-                          ],
+                child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              child: Obx(
+                () => GridView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 1 / 2,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20),
+                    itemCount: controller.productList.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.toNamed(
+                            AppRoutes.product,
+                            arguments: controller.productList[index].data(),
+                          );
+                        }, //상품 페이지
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.transparent,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: AppColor.white,
+                                    borderRadius: BorderRadius.circular(13)),
+                                width: 146,
+                                height: 202,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(controller
+                                              .productList[index]
+                                              .data()
+                                              .imageUrl))),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              Expanded(
+                                child: Text(
+                                  controller.productList[index]
+                                      .data()
+                                      .productName,
+                                  style: AppTextStyle.bKorPreRegular15,
+                                ),
+                              ),
+                              const SizedBox(height: 13),
+                              Text(
+                                '${NumberFormat('###,###,###').format(controller.productList[index].data().price)} 원',
+                                style: AppTextStyle.hKorPreSemiBold18(),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+              ),
             ))
           ],
         ),

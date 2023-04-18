@@ -62,15 +62,22 @@ class BuyerInfoPage extends GetView<BuyerInfoController> {
                   children: [
                     Flexible(
                       child: AppTextField(
+                        filled: true,
                         hintText: '우편번호',
                         controller: controller.postcodeController,
                         onChanged: (_) => controller.activateButton(),
                         readOnly: true,
                       ),
                     ),
-                    // CupertinoButton(
-                    //     child: const Text('주소 검색'),
-                    //     onPressed: () => controller.searchAddress(context)),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppColor.darkWhite,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: CupertinoButton(
+                          child: Text('우편번호 검색',
+                              style: AppTextStyle.hKorPreSemiBold16()),
+                          onPressed: () => controller.searchAddress(context)),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -79,6 +86,7 @@ class BuyerInfoPage extends GetView<BuyerInfoController> {
                   height: 10,
                 ),
                 AppTextField(
+                  filled: true,
                   hintText: '주소',
                   controller: controller.addressController,
                   onChanged: (_) => controller.activateButton(),
@@ -96,6 +104,7 @@ class BuyerInfoPage extends GetView<BuyerInfoController> {
                 const SizedBox(height: 40),
                 SizedBox(
                     width: double.infinity,
+                    height: 49,
                     child: Text('현재 결제는 무통장 입금만 가능합니다.',
                         style: AppTextStyle.bKorPreRegular14(
                             color: AppColor.subDarkGrey),

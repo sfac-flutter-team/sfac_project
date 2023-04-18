@@ -10,7 +10,6 @@ import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 import 'package:sfac_project/view/widget/app_elevated_button.dart';
-import 'package:sfac_project/view/widget/outlinecircle_button.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({super.key, required this.product});
@@ -99,7 +98,10 @@ class _ProductPageState extends State<ProductPage> {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 child:
                     ListView(physics: const BouncingScrollPhysics(), children: [
-                  Image.network(widget.product.imageUrl),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(widget.product.imageUrl)),
+                  const SizedBox(height: 60),
                   Text(widget.product.productName,
                       style: AppTextStyle.bKorPreRegular20()),
                   const SizedBox(height: 20),
@@ -161,7 +163,7 @@ class _ProductPageState extends State<ProductPage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(24),
-                                  child: Text('[옵션 선택]',
+                                  child: Text('옵션 선택',
                                       style: AppTextStyle.hKorPreSemiBold20(
                                           color: AppColor.subDarkGrey)),
                                 ),
@@ -207,12 +209,10 @@ class _ProductPageState extends State<ProductPage> {
                                     color: AppColor.white,
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 5,
-                                        blurRadius: 7,
-                                        offset: const Offset(
-                                            0, 3), // changes position of shadow
-                                      ),
+                                          color: Colors.grey.withOpacity(0.5),
+                                          spreadRadius: 5,
+                                          blurRadius: 7,
+                                          offset: const Offset(0, 3)),
                                     ],
                                   ),
                                   child: Center(
@@ -239,7 +239,9 @@ class _ProductPageState extends State<ProductPage> {
                                                       child: Padding(
                                                         padding:
                                                             const EdgeInsets
-                                                                .all(20),
+                                                                    .only(
+                                                                left: 37,
+                                                                top: 55),
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
@@ -251,10 +253,10 @@ class _ProductPageState extends State<ProductPage> {
                                                               style: AppTextStyle
                                                                   .hKorPreSemiBold20(
                                                                       color: AppColor
-                                                                          .subDarkGrey),
+                                                                          .black),
                                                             ),
                                                             const SizedBox(
-                                                                height: 5),
+                                                                height: 9),
                                                             Row(
                                                               children: [
                                                                 InkWell(
