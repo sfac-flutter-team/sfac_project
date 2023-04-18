@@ -95,7 +95,7 @@ class RankingScreen extends GetView<RankingController> {
                                           height: 15,
                                           width: 15,
                                           decoration: const BoxDecoration(
-                                              color: Colors.orange),
+                                              color: Colors.black),
                                         ),
                                         const SizedBox(
                                           width: 10,
@@ -143,13 +143,17 @@ class RankingScreen extends GetView<RankingController> {
                                 children: [
                                   Text('순위',
                                       style: AppTextStyle.hKorPreSemiBold14()),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
                                   Text('팀',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 200,
-                                  ),
+                                  const Expanded(child: SizedBox()),
                                   Text('경기 수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
                                   Text('승점',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                 ],
@@ -170,7 +174,7 @@ class RankingScreen extends GetView<RankingController> {
                                   const EdgeInsets.only(left: 16, right: 16),
                               child: ListView.separated(
                                   padding: EdgeInsets.zero,
-                                  physics: const ScrollPhysics(),
+                                  physics: const BouncingScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: controller.standingInfo.length,
                                   separatorBuilder: (context, index) {
@@ -182,8 +186,13 @@ class RankingScreen extends GetView<RankingController> {
                                   },
                                   itemBuilder: (context, index) {
                                     return TeamRankList(
-                                        standing: controller.standingInfo[index]
-                                            .data());
+                                      standing:
+                                          controller.standingInfo[index].data(),
+                                      rankColor: controller.getRankingColor(
+                                          controller.standingInfo[index]
+                                              .data()
+                                              .rank),
+                                    );
                                   }),
                             ),
                           ),
@@ -236,15 +245,14 @@ class RankingScreen extends GetView<RankingController> {
                                 children: [
                                   Text('순위',
                                       style: AppTextStyle.hKorPreSemiBold14()),
+                                  const SizedBox(width: 20),
                                   Text('선수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 200,
-                                  ),
+                                  const Expanded(child: SizedBox()),
                                   Text('득점',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
-                                    width: 6,
+                                    width: 30,
                                   ),
                                   Text('도움',
                                       style: AppTextStyle.hKorPreSemiBold14()),
@@ -265,7 +273,7 @@ class RankingScreen extends GetView<RankingController> {
                                   const EdgeInsets.only(left: 16, right: 16),
                               child: ListView.separated(
                                   padding: EdgeInsets.zero,
-                                  physics: const ScrollPhysics(),
+                                  physics: const BouncingScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: controller.playerInfo.value!
                                       .data()
@@ -279,12 +287,10 @@ class RankingScreen extends GetView<RankingController> {
                                   },
                                   itemBuilder: (context, index) {
                                     if (controller.playerInfo.value != null) {
-                                     return PlayerRankList(
+                                      return PlayerRankList(
                                           player: controller.playerInfo.value!
                                               .data()[index],
-                                          standing: controller
-                                              .standingInfo[index]
-                                              .data());
+                                          rank: index + 1);
                                     }
                                     return const Text('로딩중');
                                   }),

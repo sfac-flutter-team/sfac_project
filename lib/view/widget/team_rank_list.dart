@@ -3,8 +3,10 @@ import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 
 class TeamRankList extends StatelessWidget {
-  const TeamRankList({super.key, required this.standing});
+  const TeamRankList(
+      {super.key, required this.standing, required this.rankColor});
   final Standing standing;
+  final Color rankColor;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class TeamRankList extends StatelessWidget {
                   child: SizedBox(
                     child: Text(
                       standing.rank.toString(),
-                      style: AppTextStyle.hKorPreSemiBold14(),
+                      style: AppTextStyle.hKorPreSemiBold14(color: rankColor),
                     ),
                   ),
                 ),
