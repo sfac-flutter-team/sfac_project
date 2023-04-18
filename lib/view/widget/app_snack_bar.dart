@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class AppSnackBar extends StatelessWidget {
-  const AppSnackBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SnackBar(content: Text('댓글 삭제가 완료되었습니다'));
+class AppSnackBar {
+  static void showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Center(child: Text(message)),
+        duration: Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        margin: EdgeInsets.symmetric(
+          vertical: 10,
+        ),
+      ),
+    );
   }
 }
