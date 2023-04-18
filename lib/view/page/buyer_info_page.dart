@@ -68,9 +68,9 @@ class BuyerInfoPage extends GetView<BuyerInfoController> {
                         readOnly: true,
                       ),
                     ),
-                    // CupertinoButton(
-                    //     child: const Text('주소 검색'),
-                    //     onPressed: () => controller.searchAddress(context)),
+                    CupertinoButton(
+                        child: const Text('주소 검색'),
+                        onPressed: () => controller.searchAddress(context)),
                   ],
                 ),
                 const SizedBox(height: 20),
