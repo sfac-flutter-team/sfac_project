@@ -11,6 +11,7 @@ import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
 import 'package:sfac_project/service/storage_service.dart';
 import 'package:sfac_project/util/app_color.dart';
+import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 
 import '../model/team.dart';
@@ -40,17 +41,17 @@ class MyInfoController extends GetxController {
   //   Get.back();
   // }
   Future<int> getData() async {
-  var userInfo = await DBService().getUserInfo(user.value.uid);
-  var teamId = userInfo['teamId'];
-  teamInfo.value = await DBService().getTeamWithId(teamId);
-  return teamId;
-}
+    var userInfo = await DBService().getUserInfo(user.value.uid);
+    var teamId = userInfo['teamId'];
+    teamInfo.value = await DBService().getTeamWithId(teamId);
+    return teamId;
+  }
 
-Future<void> updateTeamId(int teamId) async {
-  await DBService().updateUserInfoTeamId(user.value.uid, teamId);
-  await getData();
-  Get.back();
-}
+  Future<void> updateTeamId(int teamId) async {
+    await DBService().updateUserInfoTeamId(user.value.uid, teamId);
+    await getData();
+    Get.back();
+  }
 
   logout() => Get.find<AuthController>().logout();
 
@@ -69,22 +70,50 @@ Future<void> updateTeamId(int teamId) async {
   }
 
   void openBottomSheet() {
-    Get.bottomSheet(Column(
-      children: [
-        TextButton(onPressed: gallery, child: Text("갤러리에서 선택")),
-        TextButton(onPressed: camera, child: Text("사진찍기")),
-      ],
+    Get.bottomSheet(Container(
+      height: 230,
+      decoration: BoxDecoration(
+          color: AppColor.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          TextButton(
+              onPressed: gallery,
+              child: Text(
+                "갤러리에서 선택",
+                style: AppTextStyle.bKorPreRegular18,
+              )),
+          TextButton(
+              onPressed: camera,
+              child: Text(
+                "사진찍기",
+                style: AppTextStyle.bKorPreRegular18,
+              )),
+          SizedBox(
+            width: 300,
+            height: 50,
+            child: ElevatedButton(
+                onPressed: () => Get.back(),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColor.mainBlue,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                child: Text('취소하기')),
+          )
+        ],
+      ),
     ));
   }
 
   void choiceTeam() {
-    Get.bottomSheet(
-      SingleChildScrollView(
+    Get.bottomSheet(SingleChildScrollView(
       child: Container(
         decoration: BoxDecoration(
-          color: AppColor.white,
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-        ),
+            color: AppColor.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20))),
         child: Column(
           children: [
             Column(
@@ -92,104 +121,84 @@ Future<void> updateTeamId(int teamId) async {
                 TextButton(
                   onPressed: () => updateTeamId(33),
                   child: ListTile(
-                    // leading: ,
-                    title: Text("맨체스터 유나이티드")),
+                      // leading: ,
+                      title: Text("맨체스터 유나이티드")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(34),
-                  child: ListTile
-                  (title: Text("뉴캐슬")),
+                  child: ListTile(title: Text("뉴캐슬")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(35),
-                  child: ListTile(
-                    title: Text("본머스")),
+                  child: ListTile(title: Text("본머스")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(36),
-                  child: ListTile(
-                    title: Text("풀럼")),
+                  child: ListTile(title: Text("풀럼")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(39),
-                  child: ListTile(
-                    title: Text("울버햄튼")),
+                  child: ListTile(title: Text("울버햄튼")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(40),
-                  child: ListTile(
-                    title: Text("리버풀")),
+                  child: ListTile(title: Text("리버풀")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(41),
-                  child: ListTile(
-                    title: Text("사우스햄튼")),
+                  child: ListTile(title: Text("사우스햄튼")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(42),
-                  child: ListTile(
-                    title: ListTile(
-                      title: Text("아스널"))),
+                  child: ListTile(title: ListTile(title: Text("아스널"))),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(45),
-                  child: ListTile(
-                    title: Text("에버튼")),
+                  child: ListTile(title: Text("에버튼")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(46),
-                  child: ListTile(
-                    title: Text("레스터시티")),
+                  child: ListTile(title: Text("레스터시티")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(47),
-                  child: ListTile
-                  (title: Text("토트넘")),
+                  child: ListTile(title: Text("토트넘")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(48),
-                  child: ListTile(
-                    title: Text("웨스트햄")),
+                  child: ListTile(title: Text("웨스트햄")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(49),
-                  child: ListTile(
-                    title: Text("첼시")),
+                  child: ListTile(title: Text("첼시")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(50),
-                  child: ListTile(
-                    title: Text("맨체스터시티")),
+                  child: ListTile(title: Text("맨체스터시티")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(51),
-                  child: ListTile(
-                    title: Text("브라이튼")),
+                  child: ListTile(title: Text("브라이튼")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(52),
-                  child: ListTile(
-                    title: Text("크리스탈 팰리스")),
+                  child: ListTile(title: Text("크리스탈 팰리스")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(55),
-                  child: ListTile(
-                    title: Text("브렌트포드")),
+                  child: ListTile(title: Text("브렌트포드")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(63),
-                  child: ListTile(
-                    title: Text("리즈")),
+                  child: ListTile(title: Text("리즈")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(65),
-                  child: ListTile(
-                    title: Text("노팅엄 포레스트")),
+                  child: ListTile(title: Text("노팅엄 포레스트")),
                 ),
                 TextButton(
                   onPressed: () => updateTeamId(66),
-                  child: ListTile(
-                    title: Text("아스톤빌라")),
+                  child: ListTile(title: Text("아스톤빌라")),
                 ),
               ],
             ),

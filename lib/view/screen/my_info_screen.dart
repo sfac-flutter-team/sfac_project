@@ -25,58 +25,69 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(40),
                       bottomRight: Radius.circular(40))),
-              height: MediaQuery.of(context).size.height /5*2,
+              height: MediaQuery.of(context).size.height / 7 * 3,
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 16),
-                              child: Text(controller.user.value.displayName!,
-                                  style: AppTextStyle.hKorPreSemiBold28(
-                                      color: AppColor.white)),
-                            ),
-                            Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: AppColor.white.withOpacity(0.3)),
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(24,8,24,8),
-                                  child: Text(
-                                    controller.user.value.email!,
-                                    style: AppTextStyle.hEngMontSemiBold14(
-                                        color: AppColor.darkWhite),
-                                  ),
-                                )),
-                          ],
-                        ),
-                        GestureDetector(
-                          onTap: controller.openBottomSheet,
-                          child: Obx(
-                            () => CircleAvatar(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 16),
+                                child: Text(controller.user.value.displayName!,
+                                    style: AppTextStyle.hKorPreSemiBold28(
+                                        color: AppColor.white)),
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColor.white.withOpacity(0.3)),
+                                  child: Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(24, 8, 24, 8),
+                                    child: Text(
+                                      controller.user.value.email!,
+                                      style: AppTextStyle.hEngMontSemiBold14(
+                                          color: AppColor.darkWhite),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                          Stack(children: [
+                            CircleAvatar(
                               radius: 55,
                               backgroundImage: controller.profileUrl.value !=
                                       null
                                   ? NetworkImage(controller.profileUrl.value!)
                                   : null,
                             ),
-                          ),
-                        ),
-                      ],
-                    ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              child: GestureDetector(
+                                onTap: controller.openBottomSheet,
+                                child: Badge(
+                                  largeSize: 30,
+                                  backgroundColor: AppColor.white,
+                                  label: Image.asset('assets/icons/pen.png'),
+                                                                  ),
+                              ),
+                            )
+                          ]),
+                        ]),
+
                     //내 댓글, 구매내역, 로그아웃
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         InkWell(
-                          onTap: () => Get.toNamed(AppRoutes.myComments,arguments: [controller.teamInfo]),
+                          onTap: () => Get.toNamed(AppRoutes.myComments,
+                              arguments: [controller.teamInfo]),
                           child: Container(
                             width: 115,
                             decoration: BoxDecoration(
@@ -92,11 +103,13 @@ class MyInfoScreen extends GetView<MyInfoController> {
                                           color: AppColor.darkWhite)),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(8, 8, 0, 8),
                                   child: CircleAvatar(
                                     radius: 15,
                                     backgroundColor: Colors.white,
-                                    child: Image.asset('assets/icons/message.png',
+                                    child: Image.asset(
+                                        'assets/icons/message.png',
                                         color: AppColor.mainDarkBlue,
                                         width: 20,
                                         height: 20),
@@ -182,7 +195,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
         ),
         Positioned(
           bottom: 0,
-          right: 27,
+          right: MediaQuery.of(context).size.width / 14,
           child: Obx(() {
             if (controller.teamInfo.value?.data().name == null) {
               return Container(
@@ -199,12 +212,11 @@ class MyInfoScreen extends GetView<MyInfoController> {
                       )
                     ]),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 24, bottom : 16),
+                  padding: const EdgeInsets.only(top: 24, bottom: 16),
                   child: ListTile(
                     leading: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50)
-                      ),
+                          borderRadius: BorderRadius.circular(50)),
                       child: Image.asset('assets/images/app_logo.png'),
                     ),
                     title: Text('팀을선택해주세요',

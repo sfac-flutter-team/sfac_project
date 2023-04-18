@@ -45,9 +45,8 @@ class AppTextStyle {
   //헤더영문 몬세라트 세미볼드폰트 14사이즈
   static TextStyle hEngMontSemiBold14({Color color = AppColor.black}) =>
       TextStyle(
-          fontFamily: 'MontserratBold',
+          fontFamily: 'MontserratSemiBold',
           fontSize: 14,
-          letterSpacing: -2,
           color: color);
 
   //본문(body) 영문 프리텐다드 레귤러폰트 20사이즈 -2자간

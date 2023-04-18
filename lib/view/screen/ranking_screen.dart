@@ -5,7 +5,8 @@ import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
-import 'package:sfac_project/view/widget/rank_list.dart';
+import 'package:sfac_project/view/widget/player_rank_list.dart';
+import 'package:sfac_project/view/widget/team_rank_list.dart';
 
 class RankingScreen extends GetView<RankingController> {
   const RankingScreen({super.key});
@@ -28,7 +29,6 @@ class RankingScreen extends GetView<RankingController> {
                         Text('팀 순위', style: AppTextStyle.hKorPreSemiBold17())),
                 TextButton(
                     onPressed: () => controller.handleRankingOnPressed(1),
-                    
                     child:
                         Text('개인순위', style: AppTextStyle.hKorPreSemiBold17())),
               ],
@@ -132,29 +132,24 @@ class RankingScreen extends GetView<RankingController> {
                         ),
                         //경기수, 승점
                         Padding(
-                          padding: const EdgeInsets.only(right: 16),
+                          padding: const EdgeInsets.only(right: 16, left: 8),
                           child: SizedBox(
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(left: 16, right: 16),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('순위',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
                                   Text('팀',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
-                                    width: 230,
+                                    width: 200,
                                   ),
                                   Text('경기 수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 25,
-                                  ),
                                   Text('승점',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                 ],
@@ -186,89 +181,9 @@ class RankingScreen extends GetView<RankingController> {
                                     );
                                   },
                                   itemBuilder: (context, index) {
-                                    return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: SizedBox(
-                                                    child: Text(
-                                                      controller
-                                                          .standingInfo[index]
-                                                          .data()
-                                                          .rank
-                                                          .toString(),
-                                                      style: AppTextStyle
-                                                          .hKorPreSemiBold14(),
-                                                    ),
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  width: 20,
-                                                ),
-                                                ClipRRect(
-                                                  child: SizedBox(
-                                                      height: 40,
-                                                      width: 40,
-                                                      child: Image.network(
-                                                          controller
-                                                              .standingInfo[
-                                                                  index]
-                                                              .data()
-                                                              .team
-                                                              .logo)),
-                                                ),
-                                                const SizedBox(
-                                                  width: 20,
-                                                ),
-                                                Text(
-                                                    controller
-                                                        .standingInfo[index]
-                                                        .data()
-                                                        .team
-                                                        .name
-                                                        .toString(),
-                                                    style: AppTextStyle
-                                                        .hKorPreSemiBold14()),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                      controller
-                                                          .standingInfo[index]
-                                                          .data()
-                                                          .played
-                                                          .toString(),
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: AppTextStyle
-                                                          .hKorPreSemiBold14()),
-                                                  const SizedBox(
-                                                    width: 40,
-                                                  ),
-                                                  Text(
-                                                      controller
-                                                          .standingInfo[index]
-                                                          .data()
-                                                          .points
-                                                          .toString(),
-                                                      style: AppTextStyle
-                                                          .hKorPreSemiBold14()),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ));
+                                    return TeamRankList(
+                                        standing: controller.standingInfo[index]
+                                            .data());
                                   }),
                             ),
                           ),
@@ -310,19 +225,17 @@ class RankingScreen extends GetView<RankingController> {
                         ),
                         const SizedBox(height: 30),
                         Padding(
-                          padding: const EdgeInsets.only(right: 16),
+                          padding: const EdgeInsets.only(right: 16, left: 8),
                           child: SizedBox(
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(left: 16, right: 16),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text('순위',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
                                   Text('선수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
@@ -330,9 +243,6 @@ class RankingScreen extends GetView<RankingController> {
                                   ),
                                   Text('득점',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const SizedBox(
-                                    width: 35,
-                                  ),
                                   Text('도움',
                                       style: AppTextStyle.hKorPreSemiBold14()),
                                 ],
@@ -366,86 +276,12 @@ class RankingScreen extends GetView<RankingController> {
                                   },
                                   itemBuilder: (context, index) {
                                     if (controller.playerInfo.value != null) {
-                                      // RankList(player: controller.);
-                                      // return Padding(
-                                      //     padding: const EdgeInsets.all(8.0),
-                                      //     child: Row(
-                                      //       mainAxisAlignment:
-                                      //           MainAxisAlignment.spaceBetween,
-                                      //       children: [
-                                      //         Row(
-                                      //           children: [
-                                      //             Padding(
-                                      //               padding:
-                                      //                   const EdgeInsets.all(
-                                      //                       8.0),
-                                      //               child: SizedBox(
-                                      //                 child: Text(
-                                      //                   controller
-                                      //                       .standingInfo[index]
-                                      //                       .data()
-                                      //                       .rank
-                                      //                       .toString(),
-                                      //                   style: AppTextStyle
-                                      //                       .hKorPreSemiBold14(),
-                                      //                 ),
-                                      //               ),
-                                      //             ),
-                                      //             const SizedBox(width: 20),
-                                      //             ClipRRect(
-                                      //               child: SizedBox(
-                                      //                   height: 40,
-                                      //                   width: 40,
-                                      //                   child: Image.network(
-                                      //                       controller
-                                      //                           .playerInfo
-                                      //                           .value!
-                                      //                           .data()[index]
-                                      //                           .photo)),
-                                      //             ),
-                                      //             const SizedBox(width: 20),
-                                      //             Text(
-                                      //                 controller
-                                      //                     .playerInfo.value!
-                                      //                     .data()[index]
-                                      //                     .name
-                                      //                     .toString(),
-                                      //                 style: AppTextStyle
-                                      //                     .hKorPreSemiBold14()),
-                                      //           ],
-                                      //         ),
-                                      //         Padding(
-                                      //           padding:
-                                      //               const EdgeInsets.all(8.0),
-                                      //           child: Row(
-                                      //             mainAxisAlignment:
-                                      //                 MainAxisAlignment
-                                      //                     .spaceBetween,
-                                      //             children: [
-                                      //               Text(
-                                      //                   controller
-                                      //                       .playerInfo.value!
-                                      //                       .data()[index]
-                                      //                       .total
-                                      //                       .toString(),
-                                      //                   textAlign:
-                                      //                       TextAlign.center,
-                                      //                   style: AppTextStyle
-                                      //                       .hKorPreSemiBold14()),
-                                      //               const SizedBox(width: 50),
-                                      //               Text(
-                                      //                   controller
-                                      //                       .playerInfo.value!
-                                      //                       .data()[index]
-                                      //                       .assists
-                                      //                       .toString(),
-                                      //                   style: AppTextStyle
-                                      //                       .hKorPreSemiBold14()),
-                                      //             ],
-                                      //           ),
-                                      //         ),
-                                      //       ],
-                                      //     ));
+                                      PlayerRankList(
+                                          player: controller.playerInfo.value!
+                                              .data()[index],
+                                          standing: controller
+                                              .standingInfo[index]
+                                              .data());
                                     }
                                     return const Text('로딩중');
                                   }),
