@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/service/storage_service.dart';
-import 'package:sfac_project/util/app_color.dart';
-import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
-
 import '../model/team.dart';
 import '../service/db_service.dart';
 
