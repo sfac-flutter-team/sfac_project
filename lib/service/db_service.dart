@@ -11,6 +11,8 @@ import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/model/team.dart';
 import 'package:sfac_project/model/shoppingbasket.dart';
 
+import '../model/message.dart';
+
 class DBService {
   //유저 정보 인스턴스
   final userInfoRef = FirebaseFirestore.instance
@@ -192,7 +194,8 @@ class DBService {
     return db
         .collection('teams/$teamId/messages')
         .where('myInfo', isEqualTo: currentUserRef)
-        .orderBy('sendDate')
+        .orderBy('sendDate',descending: true)
         .snapshots();
   }
+  
 }
