@@ -46,7 +46,7 @@ class RankingScreen extends GetView<RankingController> {
                           color: AppColor.subDarkGrey,
                           child: Container(
                             color: AppColor.mainBlue,
-                            width: 210,
+                            width: MediaQuery.of(context).size.width / 2,
                             alignment: Alignment.centerLeft,
                           ),
                         ),
@@ -208,7 +208,7 @@ class RankingScreen extends GetView<RankingController> {
                           color: AppColor.subDarkGrey,
                           child: Container(
                             color: AppColor.mainBlue,
-                            width: 220,
+                            width: MediaQuery.of(context).size.width / 2,
                             alignment: Alignment.centerRight,
                           ),
                         ),
