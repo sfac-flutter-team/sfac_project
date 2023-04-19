@@ -95,7 +95,7 @@ class RankingScreen extends GetView<RankingController> {
                                           height: 15,
                                           width: 15,
                                           decoration: const BoxDecoration(
-                                              color: Colors.black),
+                                              color: Colors.orange),
                                         ),
                                         const SizedBox(
                                           width: 10,
