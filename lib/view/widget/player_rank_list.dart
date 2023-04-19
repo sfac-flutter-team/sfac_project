@@ -32,6 +32,7 @@ class PlayerRankList extends StatelessWidget {
                 ),
                 const SizedBox(width: 20),
                 ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
                   child: SizedBox(
                       height: 40,
                       width: 40,
