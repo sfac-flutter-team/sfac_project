@@ -8,6 +8,8 @@ import 'package:sfac_project/model/message.dart';
 import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/model/team.dart';
 
+import '../service/db_service.dart';
+
 class CommentsController extends GetxController {
   Rxn<QueryDocumentSnapshot<Team>> teamInfo = Get.arguments[0];
   TextEditingController textEditingController = TextEditingController();
@@ -15,19 +17,12 @@ class CommentsController extends GetxController {
   FocusNode focusNode = FocusNode();
   User user = Get.find<AuthController>().user!;
 
-  @override
-  void onInit() async {
-    super.onInit();
-  }
-
   Stream<List<Message>> streamMessages() {
     try {
       //찾고자 하는 컬렉션의 스냅샷(Stream)을 가져온다.
       final FirebaseFirestore firestore = FirebaseFirestore.instance;
       final CollectionReference myCollection = firestore
           .collection('teams/${teamInfo.value!.data().id.toString()}/messages');
-      //final Stream<QuerySnapshot> snapshots = myCollection.snapshots();
-
       return myCollection.snapshots().asyncMap((querySnapshot) async {
         final docs = querySnapshot.docs;
         final data = <Message>[];
@@ -52,6 +47,7 @@ class CommentsController extends GetxController {
       return Stream.error(ex.toString());
     }
   }
+  
 
   void onPressedSendButton() {
     try {

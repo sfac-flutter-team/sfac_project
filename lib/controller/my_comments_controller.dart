@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/view/widget/app_dialog.dart';
 import 'package:sfac_project/view/widget/app_snack_bar.dart';
-
-import '../model/message.dart';
 import '../model/team.dart';
 import '../service/db_service.dart';
 import 'auth_controller.dart';
@@ -33,7 +31,6 @@ class MyCommentsController extends GetxController {
   }
 
   Stream<QuerySnapshot> getData() {
-  var currentUserRef = firestoreInstance.collection("userInfo").doc(user.uid);
   return DBService().getData(user.uid, teamInfo.value!.data().id.toString());
 }
 
