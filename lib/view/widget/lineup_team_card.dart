@@ -29,7 +29,7 @@ class LineupTeamCard extends StatelessWidget {
             const SizedBox(width: 14),
             Expanded(
               child: Text(
-                style: AppTextStyle.hKorPreSemiBold14(),
+                style: AppTextStyle.hKorPreSemiBold10(),
                 !isSubstitutes ? lineup.team.name : '후보',
               ),
             )

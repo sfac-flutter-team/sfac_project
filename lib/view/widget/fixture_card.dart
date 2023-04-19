@@ -36,6 +36,7 @@ class FixtureCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
+                          textAlign: TextAlign.center,
                           style: AppTextStyle.bKorPreRegular14(
                             color: AppColor.subDarkGrey,
                           ),
@@ -76,6 +77,7 @@ class FixtureCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
+                          textAlign: TextAlign.center,
                           style: AppTextStyle.bKorPreRegular14(
                             color: AppColor.subDarkGrey,
                           ),
