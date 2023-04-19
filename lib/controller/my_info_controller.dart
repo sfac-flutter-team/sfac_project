@@ -52,17 +52,19 @@ class MyInfoController extends GetxController {
   void openBottomSheet() {
     Get.bottomSheet(Container(
       height: 230,
+      padding: EdgeInsets.all(26),
       decoration: BoxDecoration(
           color: AppColor.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           TextButton(
               onPressed: gallery,
               child: Text(
-                "갤러리에서 선택",
+                "앨범에서 사진 선택",
                 style: AppTextStyle.bKorPreRegular18,
               )),
           TextButton(
@@ -71,8 +73,9 @@ class MyInfoController extends GetxController {
                 "사진찍기",
                 style: AppTextStyle.bKorPreRegular18,
               )),
+          SizedBox(height: 8),
           SizedBox(
-            width: 300,
+            width: double.infinity,
             height: 50,
             child: ElevatedButton(
                 onPressed: () => Get.back(),
