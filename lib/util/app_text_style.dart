@@ -55,6 +55,10 @@ class AppTextStyle {
   static TextStyle hKorPreSemiBold14({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 14, color: color);
 
+  //헤더 한글 프리텐다드 세미볼드폰트 10사이즈
+  static TextStyle hKorPreSemiBold10({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardSemiBold', fontSize: 10, color: color);
+
   //본문(body) 한글 프리텐다드 레귤러폰트 20사이즈
   static TextStyle bKorPreRegular20({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 20, color: color);
@@ -77,4 +81,8 @@ class AppTextStyle {
   //본문(body) 한글 프리텐다드 레귤러폰트 12사이즈
   static TextStyle bKorPreRegular12({Color color = AppColor.black}) =>
       TextStyle(fontFamily: 'PretendardRegular', fontSize: 12, color: color);
+
+  //본문(body) 한글 프리텐다드 레귤러폰트 10사이즈
+  static TextStyle bKorPreRegular10({Color color = AppColor.black}) =>
+      TextStyle(fontFamily: 'PretendardRegular', fontSize: 10, color: color);
 }

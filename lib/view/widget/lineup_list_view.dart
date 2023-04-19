@@ -18,6 +18,7 @@ class LineupListView extends StatelessWidget {
     return Column(
       children: [
         Container(
+          height: 48,
           width: double.infinity,
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(
@@ -31,7 +32,7 @@ class LineupListView extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: Text(
-            style: AppTextStyle.bKorPreRegular14(
+            style: AppTextStyle.bKorPreRegular10(
               color: AppColor.white,
             ),
             lineup.coach.name,
@@ -57,13 +58,13 @@ class LineupListView extends StatelessWidget {
                     color: lineupType == LineupType.home
                         ? AppColor.mainBlue
                         : AppColor.black,
-                    width: 48,
+                    width: 36,
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(
-                      vertical: 12.0,
+                      vertical: 16.0,
                     ),
                     child: Text(
-                      style: AppTextStyle.hKorPreSemiBold24(
+                      style: AppTextStyle.hKorPreSemiBold14(
                         color: AppColor.white,
                       ),
                       lineup.players[index].number.toString(),
@@ -72,13 +73,14 @@ class LineupListView extends StatelessWidget {
                   const SizedBox(width: 16),
                   Expanded(
                     child: Text(
-                      style: AppTextStyle.bKorPreRegular14(),
+                      style: AppTextStyle.bKorPreRegular10(),
                       lineup.players[index].name,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
+                      style: AppTextStyle.bKorPreRegular10(),
                       lineup.players[index].pos.toString(),
                     ),
                   ),
@@ -112,13 +114,13 @@ class LineupListView extends StatelessWidget {
                     color: lineupType == LineupType.home
                         ? AppColor.mainBlue
                         : AppColor.black,
-                    width: 48,
+                    width: 36,
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(
-                      vertical: 12.0,
+                      vertical: 16.0,
                     ),
                     child: Text(
-                      style: AppTextStyle.hKorPreSemiBold24(
+                      style: AppTextStyle.hKorPreSemiBold14(
                         color: AppColor.white,
                       ),
                       lineup.substitutes[index].number.toString(),
@@ -127,12 +129,13 @@ class LineupListView extends StatelessWidget {
                   const SizedBox(width: 16),
                   Expanded(
                     child: Text(
-                        style: AppTextStyle.bKorPreRegular14(),
+                        style: AppTextStyle.bKorPreRegular10(),
                         lineup.substitutes[index].name),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 18.0),
                     child: Text(
+                      style: AppTextStyle.bKorPreRegular10(),
                       lineup.substitutes[index].pos.toString(),
                     ),
                   ),

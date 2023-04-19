@@ -56,12 +56,20 @@ class MyInfoScreen extends GetView<MyInfoController> {
                             ],
                           ),
                           Stack(children: [
-                            CircleAvatar(
-                              radius: 55,
-                              backgroundImage: controller.profileUrl.value !=
-                                      null
-                                  ? NetworkImage(controller.profileUrl.value!)
-                                  : null,
+                            Obx(
+                              () => CircleAvatar(
+                                radius: 55,
+                                backgroundColor: AppColor.white,
+                                backgroundImage: controller.profileUrl.value !=
+                                        null
+                                    ? NetworkImage(controller.profileUrl.value!)
+                                    : null,
+                                child: controller.profileUrl.value == null
+                                    ? Image.asset(
+                                        width: 60,
+                                        'assets/icons/circle-user.png')
+                                    : null,
+                              ),
                             ),
                             Positioned(
                               bottom: 0,
@@ -86,7 +94,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                           onTap: () => Get.toNamed(AppRoutes.myComments,
                               arguments: [controller.teamInfo]),
                           child: Container(
-                            width: 115,
+                            width: MediaQuery.of(context).size.width / 4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(13),
                                 color: AppColor.white.withOpacity(0.3)),
@@ -119,7 +127,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                         InkWell(
                           onTap: () => Get.toNamed(AppRoutes.purchasehistory),
                           child: Container(
-                            width: 115,
+                            width: MediaQuery.of(context).size.width / 4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(13),
                                 color: AppColor.white.withOpacity(0.3)),
@@ -151,7 +159,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                         InkWell(
                           onTap: controller.logout,
                           child: Container(
-                            width: 115,
+                            width: MediaQuery.of(context).size.width / 4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(13),
                                 color: AppColor.white.withOpacity(0.3)),
@@ -213,16 +221,23 @@ class MyInfoScreen extends GetView<MyInfoController> {
                   padding: const EdgeInsets.only(top: 24, bottom: 16),
                   child: ListTile(
                     leading: Container(
+                      width: 60,
+                      height: 60,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Image.asset('assets/images/app_logo.png'),
+                        color: AppColor.mainBlue,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Image.asset(
+                        fit: BoxFit.contain,
+                        'assets/images/app_logo_white.png',
+                      ),
                     ),
-                    title: Text('팀을선택해주세요',
-                        style: AppTextStyle.bKorPreRegular20()),
+                    title: const Text('팀을 선택해주세요',
+                        style: AppTextStyle.bKorPreRegular16),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam,
-                        child:
-                            Text("선택", style: AppTextStyle.bKorPreRegular20())),
+                        child: const Text("선택",
+                            style: AppTextStyle.bKorPreRegular16)),
                   ),
                 ),
               );
@@ -248,7 +263,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                           Image.network(controller.teamInfo.value!.data().logo),
                     ),
                     title: Text(controller.teamInfo.value!.data().name,
-                        style: AppTextStyle.bKorPreRegular20()),
+                        style: AppTextStyle.bKorPreRegular16),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam,
                         child: const Text(

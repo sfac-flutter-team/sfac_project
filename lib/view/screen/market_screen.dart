@@ -94,15 +94,15 @@ class MarketScreen extends GetView<MarketController> {
                                 ),
                               ),
                               const SizedBox(height: 15),
-                              Expanded(
-                                child: Text(
-                                  controller.productList[index]
-                                      .data()
-                                      .productName,
-                                  style: AppTextStyle.bKorPreRegular15,
-                                ),
+                              Text(
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                controller.productList[index]
+                                    .data()
+                                    .productName,
+                                style: AppTextStyle.bKorPreRegular15,
                               ),
-                              const SizedBox(height: 13),
+                              const Expanded(child: SizedBox(height: 13)),
                               Text(
                                 '${NumberFormat('###,###,###').format(controller.productList[index].data().price)} 원',
                                 style: AppTextStyle.hKorPreSemiBold18(),
