@@ -56,6 +56,13 @@ class _ProductPageState extends State<ProductPage> {
   }
 
   @override
+  initState() {
+    // 부모의 initState호출
+    super.initState();
+    selectedOption = widget.product.option?[0];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -95,7 +102,7 @@ class _ProductPageState extends State<ProductPage> {
           children: [
             Expanded(
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.all(20),
                 child:
                     ListView(physics: const BouncingScrollPhysics(), children: [
                   ClipRRect(
@@ -178,6 +185,7 @@ class _ProductPageState extends State<ProductPage> {
                                   ),
                                 Expanded(
                                   child: ListView.builder(
+                                    physics: const BouncingScrollPhysics(),
                                     itemCount:
                                         widget.product.option?.length ?? 0,
                                     itemBuilder: (context, index) => Material(
