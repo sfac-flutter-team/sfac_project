@@ -38,7 +38,7 @@ class MyTeamScreen extends GetView<MyTeamController> {
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height / 4,
                       alignment: Alignment.topCenter,
-                      padding: const EdgeInsets.all(50),
+                      padding: const EdgeInsets.all(60),
                       child: Text(
                         style: AppTextStyle.hKorPreSemiBold20(
                           color: AppColor.white,
