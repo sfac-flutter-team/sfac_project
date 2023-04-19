@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_color.dart';
-
-import '../util/app_text_style.dart';
 
 class RankingController extends GetxController {
   RxList<QueryDocumentSnapshot<Standing>> standingInfo =

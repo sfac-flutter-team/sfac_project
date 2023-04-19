@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/buyer_info_controller.dart';
 import 'package:sfac_project/util/app_color.dart';
-import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_elevated_button.dart';
 import 'package:sfac_project/view/widget/app_text_field.dart';

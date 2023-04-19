@@ -1,6 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:sfac_project/model/coach.dart';
 import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/model/team.dart';

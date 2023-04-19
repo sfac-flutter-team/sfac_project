@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:sfac_project/model/fixture.dart';
 import 'package:sfac_project/model/myInfo.dart';
@@ -9,9 +7,6 @@ import 'package:sfac_project/model/product.dart';
 import 'package:sfac_project/model/purchase.dart';
 import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/model/team.dart';
-import 'package:sfac_project/model/shoppingbasket.dart';
-
-import '../model/message.dart';
 
 class DBService {
   //유저 정보 인스턴스
@@ -167,7 +162,7 @@ class DBService {
     var data = await productRef.where('productID', isEqualTo: productId).get();
     return data.docs;
   }
-  
+
   final FirebaseFirestore db = FirebaseFirestore.instance;
 
   Future<Map<String, dynamic>> getUserInfo(String userId) async {
@@ -176,16 +171,11 @@ class DBService {
   }
 
   Future<void> updateUserInfoTeamId(String userId, int teamId) async {
-    await db
-        .collection("userInfo")
-        .doc(userId)
-        .update({"teamId": teamId});
+    await db.collection("userInfo").doc(userId).update({"teamId": teamId});
   }
 
   Future<void> deleteComment(String commentId, String teamId) async {
-    var messageRef = db
-        .collection('teams/$teamId/messages')
-        .doc(commentId);
+    var messageRef = db.collection('teams/$teamId/messages').doc(commentId);
     await messageRef.delete();
   }
 
@@ -194,8 +184,7 @@ class DBService {
     return db
         .collection('teams/$teamId/messages')
         .where('myInfo', isEqualTo: currentUserRef)
-        .orderBy('sendDate',descending: true)
+        .orderBy('sendDate', descending: true)
         .snapshots();
   }
-  
 }

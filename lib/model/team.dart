@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 class Team {
   int id; //팀 아이디
@@ -10,7 +8,6 @@ class Team {
     required this.id,
     required this.logo,
     required this.name,
-
   });
 
   factory Team.fromMap(Map<String, dynamic> map) {

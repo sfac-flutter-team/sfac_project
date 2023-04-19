@@ -7,7 +7,6 @@ import 'package:sfac_project/service/storage_service.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
-import 'package:sfac_project/view/widget/app_text_button.dart';
 
 import '../model/team.dart';
 import '../service/db_service.dart';
@@ -52,8 +51,8 @@ class MyInfoController extends GetxController {
   void openBottomSheet() {
     Get.bottomSheet(Container(
       height: 230,
-      padding: EdgeInsets.all(26),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(26),
+      decoration: const BoxDecoration(
           color: AppColor.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20), topRight: Radius.circular(20))),
@@ -63,17 +62,17 @@ class MyInfoController extends GetxController {
         children: [
           TextButton(
               onPressed: gallery,
-              child: Text(
+              child: const Text(
                 "앨범에서 사진 선택",
                 style: AppTextStyle.bKorPreRegular18,
               )),
           TextButton(
               onPressed: camera,
-              child: Text(
+              child: const Text(
                 "사진찍기",
                 style: AppTextStyle.bKorPreRegular18,
               )),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           SizedBox(
             width: double.infinity,
             height: 50,
@@ -83,7 +82,7 @@ class MyInfoController extends GetxController {
                     backgroundColor: AppColor.mainBlue,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                child: Text('취소하기')),
+                child: const Text('취소하기')),
           )
         ],
       ),

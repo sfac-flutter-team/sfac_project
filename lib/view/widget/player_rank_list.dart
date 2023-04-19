@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sfac_project/model/player.dart';
-import 'package:sfac_project/model/standing.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 
 class PlayerRankList extends StatelessWidget {

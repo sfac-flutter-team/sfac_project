@@ -8,8 +8,6 @@ import 'package:sfac_project/model/message.dart';
 import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/model/team.dart';
 
-import '../service/db_service.dart';
-
 class CommentsController extends GetxController {
   Rxn<QueryDocumentSnapshot<Team>> teamInfo = Get.arguments[0];
   TextEditingController textEditingController = TextEditingController();
@@ -47,7 +45,6 @@ class CommentsController extends GetxController {
       return Stream.error(ex.toString());
     }
   }
-  
 
   void onPressedSendButton() {
     try {

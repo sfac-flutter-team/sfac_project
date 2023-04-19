@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sfac_project/model/team.dart';
+import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/view/widget/app_dialog.dart';
 import 'package:sfac_project/view/widget/app_snack_bar.dart';
-import '../model/team.dart';
-import '../service/db_service.dart';
 import 'auth_controller.dart';
 
 class MyCommentsController extends GetxController {

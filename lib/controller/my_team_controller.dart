@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:sfac_project/controller/my_info_controller.dart';
 import 'package:sfac_project/model/fixture.dart';
-
-import '../model/myInfo.dart';
-import '../model/standing.dart';
-import '../model/team.dart';
-import '../service/db_service.dart';
+import 'package:sfac_project/model/myInfo.dart';
+import 'package:sfac_project/model/standing.dart';
+import 'package:sfac_project/model/team.dart';
+import 'package:sfac_project/service/db_service.dart';
 import 'auth_controller.dart';
 
 class MyTeamController extends GetxController {

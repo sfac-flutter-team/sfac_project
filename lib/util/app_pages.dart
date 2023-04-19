@@ -12,8 +12,6 @@ import 'package:sfac_project/view/page/product_page.dart';
 import 'package:sfac_project/view/page/purchase_history_page.dart';
 import 'package:sfac_project/view/page/shopping_basket_page.dart';
 import 'package:sfac_project/view/page/signup_page.dart';
-import 'package:sfac_project/view/screen/my_info_screen.dart';
-import 'package:sfac_project/view/screen/my_team_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -47,14 +45,23 @@ class AppPages {
         transition: Transition.fadeIn), // 상품 디테일
     GetPage(
         name: AppRoutes.shoppingbasket,
-        page: () => const ShoppingBasketPage()), //장바구니
+        page: () => const ShoppingBasketPage(),
+        transition: Transition.fadeIn), //장바구니
     GetPage(
         name: AppRoutes.buyerinfo,
-        page: () => const BuyerInfoPage()), // 구매자 정보 입력
-    GetPage(name: AppRoutes.calculate, page: () => const CalculatePage()), //계산
+        page: () => const BuyerInfoPage(),
+        transition: Transition.fadeIn), // 구매자 정보 입력
+    GetPage(
+        name: AppRoutes.calculate,
+        page: () => const CalculatePage(),
+        transition: Transition.fadeIn), //계산
     GetPage(
         name: AppRoutes.purchasehistory,
-        page: () => const PurchaseHistoryPage()),
-    GetPage(name: AppRoutes.myComments, page: () => const MyCommentsPage()),
+        page: () => const PurchaseHistoryPage(),
+        transition: Transition.fadeIn), //구매 내역
+    GetPage(
+        name: AppRoutes.myComments,
+        page: () => const MyCommentsPage(),
+        transition: Transition.fadeIn), //내 댓글
   ];
 }
