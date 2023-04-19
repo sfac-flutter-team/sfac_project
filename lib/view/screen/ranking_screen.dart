@@ -130,7 +130,7 @@ class RankingScreen extends GetView<RankingController> {
                         ),
                         //경기수, 승점
                         Padding(
-                          padding: const EdgeInsets.only(right: 16, left: 8),
+                          padding: const EdgeInsets.only(right: 8, left: 8),
                           child: SizedBox(
                             child: Padding(
                               padding:
@@ -146,14 +146,28 @@ class RankingScreen extends GetView<RankingController> {
                                   ),
                                   Text('팀',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const Expanded(child: SizedBox()),
-                                  Text('경기 수',
-                                      style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
-                                    width: 20,
+                                    width: 30,
                                   ),
-                                  Text('승점',
-                                      style: AppTextStyle.hKorPreSemiBold14()),
+                                  const Expanded(
+                                    flex: 2,
+                                    child: SizedBox(),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('경기 수',
+                                            style: AppTextStyle
+                                                .hKorPreSemiBold14()),
+                                        Text('승점',
+                                            style: AppTextStyle
+                                                .hKorPreSemiBold14()),
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
@@ -232,7 +246,7 @@ class RankingScreen extends GetView<RankingController> {
                         ),
                         const SizedBox(height: 30),
                         Padding(
-                          padding: const EdgeInsets.only(right: 16, left: 8),
+                          padding: const EdgeInsets.only(right: 8, left: 8),
                           child: SizedBox(
                             child: Padding(
                               padding:
@@ -246,14 +260,28 @@ class RankingScreen extends GetView<RankingController> {
                                   const SizedBox(width: 20),
                                   Text('선수',
                                       style: AppTextStyle.hKorPreSemiBold14()),
-                                  const Expanded(child: SizedBox()),
-                                  Text('득점',
-                                      style: AppTextStyle.hKorPreSemiBold14()),
                                   const SizedBox(
-                                    width: 30,
+                                    width: 40,
                                   ),
-                                  Text('도움',
-                                      style: AppTextStyle.hKorPreSemiBold14()),
+                                  const Expanded(
+                                    flex: 2,
+                                    child: SizedBox(),
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text('득점',
+                                            style: AppTextStyle
+                                                .hKorPreSemiBold14()),
+                                        Text('도움',
+                                            style: AppTextStyle
+                                                .hKorPreSemiBold14()),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

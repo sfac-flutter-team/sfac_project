@@ -89,14 +89,9 @@ class MyInfoController extends GetxController {
     ));
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> readTeams() {
-    final teamRef = FirebaseFirestore.instance.collection('teams');
-    return teamRef.get();
-  }
-
   void choiceTeam() async {
-    final snapshot = await readTeams();
-    final teamList = snapshot.docs.map((doc) => doc.data()).toList();
+    final snapshot = await DBService().readTeams();
+    final teamList = snapshot.map((doc) => doc.data()).toList();
     Get.bottomSheet(
       AppBottomSheet(
         height: 300,
@@ -106,25 +101,25 @@ class MyInfoController extends GetxController {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: teamList.map((data) {
-                final team = Team.fromMap(data['team']);
+              children: List<Widget>.from(teamList.map((team) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
                   child: InkWell(
                     onTap: () => updateTeamId(team.id),
                     child: Row(
                       children: [
-                        Image.network(width: 35, height: 35, team.logo),
+                        Image.network(
+                            width: 35, height: 35, team.logo.toString()),
                         const SizedBox(width: 15),
                         Text(
                           style: AppTextStyle.bKorPreRegular16,
-                          team.name,
+                          team.name.toString(),
                         ),
                       ],
                     ),
                   ),
                 );
-              }).toList(),
+              }).toList()),
             ),
           ),
         ),

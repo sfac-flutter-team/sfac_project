@@ -18,8 +18,8 @@ class StorageService {
       var ref = FirebaseStorage.instance.ref('profile/${user.value.uid}');
       await ref.putFile(File(res.path));
       var downloadUrl = await ref.getDownloadURL();
-      user.value.updatePhotoURL(downloadUrl);
-      this.profileUrl.value = downloadUrl;
+      await user.value.updatePhotoURL(downloadUrl);
+      profileUrl.value = downloadUrl;
       DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
       return profileUrl;
     }
@@ -33,8 +33,8 @@ class StorageService {
       var ref = FirebaseStorage.instance.ref('profile/${user.value.uid}');
       await ref.putFile(File(res.path));
       var downloadUrl = await ref.getDownloadURL();
-      user.value.updatePhotoURL(downloadUrl);
-      this.profileUrl.value = downloadUrl;
+      await user.value.updatePhotoURL(downloadUrl);
+      profileUrl.value = downloadUrl;
       DBService().updateUserInfoPhoto(user.value.uid, downloadUrl);
       return profileUrl;
     }
