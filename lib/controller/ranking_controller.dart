@@ -36,6 +36,8 @@ class RankingController extends GetxController {
       return AppColor.mainBlue;
     } else if (rank >= 17) {
       return Colors.red;
+    } else if (rank == 5) {
+      return Colors.orange;
     } else {
       return Colors.black;
     }
