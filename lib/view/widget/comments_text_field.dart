@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sfac_project/controller/comments_controller.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 

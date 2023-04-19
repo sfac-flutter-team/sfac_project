@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sfac_project/model/fixture.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';

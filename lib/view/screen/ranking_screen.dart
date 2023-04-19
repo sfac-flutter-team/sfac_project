@@ -1,8 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
-import 'package:sfac_project/model/player.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_text_style.dart';
 import 'package:sfac_project/view/widget/player_rank_list.dart';

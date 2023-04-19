@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
-import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/view/widget/app_dialog.dart';
 
 class FindPasswordController extends GetxController {

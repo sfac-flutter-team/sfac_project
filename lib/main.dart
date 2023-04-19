@@ -18,10 +18,6 @@ import 'package:sfac_project/controller/purchase_history_controller.dart';
 import 'package:sfac_project/controller/ranking_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/controller/my_team_controller.dart';
-import 'package:sfac_project/controller/ranking_controller.dart';
-import 'package:sfac_project/controller/my_team_controller.dart';
-import 'package:sfac_project/controller/market_controller.dart';
-import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/firebase_options.dart';
 import 'package:sfac_project/util/app_pages.dart';
 import 'package:sfac_project/util/app_routes.dart';
@@ -47,6 +43,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, //우측 상단 DEBUG리본 없애기
       initialBinding: BindingsBuilder(() {
         Get.put(AuthController());
+        Get.put(ShoppingBasketController());
         Get.lazyPut(() => LoginController(), fenix: true);
         Get.lazyPut(() => SignupController(), fenix: true);
         Get.lazyPut(() => FindPasswordController(), fenix: true);
@@ -60,7 +57,6 @@ class MyApp extends StatelessWidget {
         Get.lazyPut(() => RankingController(), fenix: true);
         Get.lazyPut(() => BuyerInfoController(), fenix: true);
         Get.lazyPut(() => PurchaseHistoryController(), fenix: true);
-        Get.put(ShoppingBasketController());
         Get.lazyPut(() => MyCommentsController(), fenix: true);
       }),
       localizationsDelegates: const [

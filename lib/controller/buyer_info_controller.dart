@@ -1,12 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remedi_kopo/remedi_kopo.dart';
 import 'package:sfac_project/controller/auth_controller.dart';
 import 'package:sfac_project/controller/shopping_basket_controller.dart';
 import 'package:sfac_project/model/purchase.dart';
-import 'package:sfac_project/model/shoppingbasket.dart';
 import 'package:sfac_project/service/db_service.dart';
 import 'package:sfac_project/util/app_routes.dart';
 

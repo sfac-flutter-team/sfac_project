@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sfac_project/model/myInfo.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
-import 'package:sfac_project/view/widget/app_bottom_sheets.dart';
 
 import '../../controller/my_info_controller.dart';
 
@@ -52,7 +49,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                                         const EdgeInsets.fromLTRB(24, 8, 24, 8),
                                     child: Text(
                                       controller.user.value.email!,
-                                      style: AppTextStyle.hEngMontSemiBold14(
+                                      style: AppTextStyle.hKorPreSemiBold14(
                                           color: AppColor.darkWhite),
                                     ),
                                   )),
@@ -75,7 +72,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                                   largeSize: 30,
                                   backgroundColor: AppColor.white,
                                   label: Image.asset('assets/icons/pen.png'),
-                                                                  ),
+                                ),
                               ),
                             )
                           ]),
@@ -195,7 +192,8 @@ class MyInfoScreen extends GetView<MyInfoController> {
         ),
         Positioned(
           bottom: 0,
-          left: 25, right: 25,
+          left: 25,
+          right: 25,
           child: Obx(() {
             if (controller.teamInfo.value?.data().name == null) {
               return Container(
@@ -253,7 +251,7 @@ class MyInfoScreen extends GetView<MyInfoController> {
                         style: AppTextStyle.bKorPreRegular20()),
                     trailing: TextButton(
                         onPressed: controller.choiceTeam,
-                        child: Text(
+                        child: const Text(
                           "선택",
                           style: AppTextStyle.bKorPreRegular16,
                         )),

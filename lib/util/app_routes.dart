@@ -23,5 +23,5 @@ class AppRoutes {
   static const buyerinfo = BuyerInfoPage.route; //구매자 정보 입력 페이지
   static const calculate = CalculatePage.route; //계산페이지
   static const purchasehistory = PurchaseHistoryPage.route; //구매내역페이지
-  static const myComments = MyCommentsPage.route;
+  static const myComments = MyCommentsPage.route; //내 댓글 페이지
 }

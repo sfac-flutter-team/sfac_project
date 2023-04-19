@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:sfac_project/controller/shopping_basket_controller.dart';
-import 'package:sfac_project/model/shoppingbasket.dart';
 import 'package:sfac_project/util/app_color.dart';
 import 'package:sfac_project/util/app_routes.dart';
 import 'package:sfac_project/util/app_text_style.dart';
@@ -82,7 +78,7 @@ class _CalculatePageState extends State<CalculatePage> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Container(
-                          alignment: Alignment(-1, 0),
+                          alignment: const Alignment(-1, 0),
                           child: Text(
                             '은행 이름 666666-66-666666',
                             style: AppTextStyle.hKorPreSemiBold20(),

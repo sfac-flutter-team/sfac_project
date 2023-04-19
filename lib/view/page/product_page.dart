@@ -87,9 +87,8 @@ class _ProductPageState extends State<ProductPage> {
                 backgroundColor: AppColor.mainBlue,
                 child: Obx(
                   () => Text(
-                    shoppingBasketController.shoppingBasket.value.length
-                        .toString(),
-                    style: AppTextStyle.bEngPretendard14,
+                    shoppingBasketController.shoppingBasket.length.toString(),
+                    style: AppTextStyle.bKorPreRegular14(color: AppColor.white),
                   ),
                 ),
               ),
@@ -135,7 +134,7 @@ class _ProductPageState extends State<ProductPage> {
                           color: AppColor.mainBlue)),
                   const SizedBox(height: 20),
                   for (var data in widget.product.productDetail)
-                    Text('- ${data}', style: AppTextStyle.bKorPreRegular14())
+                    Text('- $data', style: AppTextStyle.bKorPreRegular14())
                 ]),
               ),
             ),
